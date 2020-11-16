@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Vehicule {
+public class Vehicle {
 	@Id
 	private Long id;
 	private float hirePrice;
