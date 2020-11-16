@@ -1,8 +1,13 @@
 package controller;
 
 
+import model.Vehicule;
+import service.DBManager;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Home")
 public class HomeController extends HttpServlet {
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		EntityManager em = DBManager.getEntityManager();
+
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
