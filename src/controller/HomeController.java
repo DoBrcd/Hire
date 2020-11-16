@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Home")
+@WebServlet("/home")
 public class HomeController extends HttpServlet {
 	
 	@Override
