@@ -7,7 +7,7 @@ public class Vehicule {
 	private int maxSpeed;
 	private String model;
 	private String state;
-	private hiringState isHiring;
+	private StateHiring isHiring;
 	private String brand;
 	
 	public float getHirePrice() {
@@ -40,10 +40,10 @@ public class Vehicule {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public hiringState getIsHiring() {
+	public StateHiring getIsHiring() {
 		return isHiring;
 	}
-	public void setIsHiring(hiringState isHiring) {
+	public void setIsHiring(StateHiring isHiring) {
 		this.isHiring = isHiring;
 	}
 	public String getBrand() {
