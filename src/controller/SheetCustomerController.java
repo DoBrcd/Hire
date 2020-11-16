@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/home")
-public class HomeController extends HttpServlet {
+@WebServlet("/client/sheet")
+public class SheetCustomerController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class HomeController extends HttpServlet {
 		out.println("<html>");
 		out.println("<head><title>Hello World </title></head>");
 		out.println("<body>");
-		out.println("<h1>Hello World test !</h1>");
+		out.println("<h1>Hello World sheet client controllers !</h1>");
 		out.println("</body></html>");
 	}
 }

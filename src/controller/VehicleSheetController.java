@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/home")
-public class HomeController extends HttpServlet {
+@WebServlet("/vehicle/sheet")
+public class VehicleSheetController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
-		out.println("<head><title>Hello World </title></head>");
+		out.println("<head><title>Hello World VehicleSheetController</title></head>");
 		out.println("<body>");
-		out.println("<h1>Hello World test !</h1>");
+		out.println("<h1>Hello World VehicleSheetController !</h1>");
 		out.println("</body></html>");
 	}
 }
