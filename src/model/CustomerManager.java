@@ -1,5 +1,8 @@
 package model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class CustomerManager extends Employee implements I_CustomerManager {
 
 	@Override
