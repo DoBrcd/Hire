@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Airplane")
-public class Airplane extends Vehicule {
+public class Airplane extends Vehicle {
 
 	private int nbMotor;
 

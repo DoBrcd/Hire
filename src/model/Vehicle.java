@@ -14,7 +14,7 @@ import javax.persistence.InheritanceType;
 
 @DiscriminatorColumn(name="vehicule_type", discriminatorType=DiscriminatorType.STRING, length=20)
 
-public class Vehicule {
+public class Vehicle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
