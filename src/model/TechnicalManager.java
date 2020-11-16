@@ -1,8 +1,10 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("TechnicalManager")
 public class TechnicalManager extends Employee implements I_TechnicalManager {
 
 	@Override

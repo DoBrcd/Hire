@@ -1,11 +1,19 @@
 package model;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+
+@DiscriminatorColumn(name="vehicule_type", discriminatorType=DiscriminatorType.STRING, length=20)
+
 public class Vehicule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

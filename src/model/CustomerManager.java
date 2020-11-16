@@ -1,8 +1,10 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("CustomerManager")
 public class CustomerManager extends Employee implements I_CustomerManager {
 
 	@Override

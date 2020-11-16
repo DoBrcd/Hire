@@ -1,8 +1,14 @@
 package model;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.DiscriminatorType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="position", discriminatorType=DiscriminatorType.STRING, length=20)
 public class Employee extends Person {
 	private String identifiant;
 	private String password;
