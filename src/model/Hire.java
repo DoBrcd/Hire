@@ -2,16 +2,29 @@ package model;
 
 import java.util.Date;
 
-public class Hire {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
+@Entity
+public class Hire {
+	
+	@Id
 	private int id;
 	private Date dateBegining;
 	private Date dateEnding;
 	private int kmExpected;
 	private float priceExpected;
+	  @OneToOne
+	  @JoinColumn(name = "idClient_fk")
 	private Long idClient;
+	  
+	  @OneToOne
+	  @JoinColumn(name = "idVehicle_fk")
 	private Long idVehicle;
-	  public Date getDateBegining() {
+	
+	public Date getDateBegining() {
 		return dateBegining;
 	}
 	public void setDateBegining(Date dateBegining) {

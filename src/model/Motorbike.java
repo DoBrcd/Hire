@@ -1,5 +1,10 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Motorbike")
 public class Motorbike extends Vehicle {
 	private String power;
 	private int km;

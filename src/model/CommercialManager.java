@@ -1,5 +1,10 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("CommercialManager")
 public class CommercialManager extends Employee implements I_CommercialManager {
 
 	@Override
