@@ -2,8 +2,13 @@ package model;
 
 import java.util.Date;
 
-public class Hire {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Hire {
+	
+	@Id
 	private int id;
 	private Date dateBegining;
 	private Date dateEnding;
