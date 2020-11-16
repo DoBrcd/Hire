@@ -1,31 +1,25 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Hire {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private Date dateBegining;
 	private Date dateEnding;
 	private int kmExpected;
 	private float priceExpected;
-	  @OneToOne
+	  @ManyToOne
 	  @JoinColumn(name = "idClient_fk")
-	private Long idClient;
-	  
+	private Customer client;
+
 	  @OneToOne
 	  @JoinColumn(name = "idVehicle_fk")
-	private Long idVehicle;
+	private Vehicle vehicle;
 	
 	public Date getDateBegining() {
 		return dateBegining;
@@ -51,18 +45,6 @@ public class Hire {
 	public void setPriceExpected(float priceExpected) {
 		this.priceExpected = priceExpected;
 	}
-	public Long getIdClient() {
-		return idClient;
-	}
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
-	}
-	public Long getIdVehicle() {
-		return idVehicle;
-	}
-	public void setIdVehicle(Long idVehicle) {
-		this.idVehicle = idVehicle;
-	}
 	public int getId() {
 		return id;
 	}
@@ -70,4 +52,23 @@ public class Hire {
 		this.id = id;
 	}
 
+	public Customer getClient()
+	{
+		return client;
+	}
+
+	public void setClient(Customer client)
+	{
+		this.client = client;
+	}
+
+	public Vehicle getVehicle()
+	{
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle)
+	{
+		this.vehicle = vehicle;
+	}
 }
