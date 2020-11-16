@@ -17,9 +17,9 @@ public class HomeController extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
-		out.println("<head><title>Hello World</title></head>");
+		out.println("<head><title>Hello World </title></head>");
 		out.println("<body>");
-		out.println("<h1>Hello World !</h1>");
+		out.println("<h1>Hello World test !</h1>");
 		out.println("</body></html>");
 	}
 }
