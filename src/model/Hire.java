@@ -16,7 +16,8 @@ public class Hire {
 	private float priceExpected;
 	private Long idClient;
 	private Long idVehicle;
-	  public Date getDateBegining() {
+	
+	public Date getDateBegining() {
 		return dateBegining;
 	}
 	public void setDateBegining(Date dateBegining) {

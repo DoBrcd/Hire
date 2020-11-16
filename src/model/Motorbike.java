@@ -1,5 +1,8 @@
 package model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Motorbike extends Vehicule {
 	private String power;
 	private int km;
