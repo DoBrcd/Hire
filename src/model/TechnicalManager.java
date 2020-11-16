@@ -8,13 +8,13 @@ import javax.persistence.Entity;
 public class TechnicalManager extends Employee implements I_TechnicalManager {
 
 	@Override
-	public void CreatVehicle() {
+	public void createVehicle() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void UpdateVehicle() {
+	public void updateVehicle() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -8,13 +8,13 @@ import javax.persistence.Entity;
 public class CustomerManager extends Employee implements I_CustomerManager {
 
 	@Override
-	public void CreatClient() {
+	public void createClient() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void UpdateClient() {
+	public void updateClient() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -6,13 +6,13 @@ import javax.persistence.Entity;
 public class GeneralManager extends Employee implements I_CommercialManager, I_CustomerManager, I_TechnicalManager {
 
 	@Override
-	public void CreatVehicle() {
+	public void createVehicle() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void UpdateVehicle() {
+	public void updateVehicle() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -24,13 +24,13 @@ public class GeneralManager extends Employee implements I_CommercialManager, I_C
 	}
 
 	@Override
-	public void CreatClient() {
+	public void createClient() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void UpdateClient() {
+	public void updateClient() {
 		// TODO Auto-generated method stub
 		
 	}
