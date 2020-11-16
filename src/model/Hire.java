@@ -5,9 +5,9 @@ import java.util.Date;
 
 @Entity
 public class Hire {
-
+	
 	@Id
-	@GeneratedValue
+	 @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private Date dateBegining;
 	private Date dateEnding;
