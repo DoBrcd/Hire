@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Hire {
@@ -14,7 +16,12 @@ public class Hire {
 	private Date dateEnding;
 	private int kmExpected;
 	private float priceExpected;
+	  @OneToOne
+	  @JoinColumn(name = "idClient_fk")
 	private Long idClient;
+	  
+	  @OneToOne
+	  @JoinColumn(name = "idVehicle_fk")
 	private Long idVehicle;
 	
 	public Date getDateBegining() {
