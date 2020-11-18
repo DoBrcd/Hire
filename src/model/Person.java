@@ -11,6 +11,7 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	private String firstName;
 	private String phone;
 	private String email;
 
@@ -25,6 +26,12 @@ public class Person {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getPhone() {
 		return phone;
