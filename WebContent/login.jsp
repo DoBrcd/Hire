@@ -8,7 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div align="center">
+	<h2 align="center">
+	<% if(request.getAttribute("msg2") != null) { %>
+		<p style="color: red">
+			<%= request.getAttribute("msg2") %>
+		</p>
+	<% } %>
+	</h2>
 		<h1>Employee Login Form</h1>
 		<form action="<%=request.getContextPath()%>/" method="post">
 			<table style="with: 100%">

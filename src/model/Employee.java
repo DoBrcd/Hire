@@ -10,6 +10,10 @@ import javax.persistence.DiscriminatorType;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="position", discriminatorType=DiscriminatorType.STRING, length=20)
 public class Employee extends Person {
+	@Override
+	public String toString() {
+		return "Employee [identifiant=" + identifiant + ", password=" + password + "]";
+	}
 	private String identifiant;
 	private String password;
 	

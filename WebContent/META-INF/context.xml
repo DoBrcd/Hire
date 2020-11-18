@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="mainApp" auth="Container" type="javax.sql.DataSource"
+              maxTotal="50" maxIdle="10" maxWaitMillis="10000"
+              username="team5" password="3Ym33Y9J" driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://vps817240.ovh.net:3306/team5_schema?serverTimezone=Europe/Paris"/>
+</Context>
