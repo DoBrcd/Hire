@@ -30,19 +30,33 @@ public class CreateCustomerController extends HttpServlet {	@Override
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pageName="/client/create.jsp";
 		Customer newClient = new Customer();
 		String name = req.getParameter("name");
 		String firstName = req.getParameter("firstName");
 		String phone = req.getParameter("phone");
 		String email = req.getParameter("email");
 		String address = req.getParameter("address");
+		
 		newClient.setName(name);
 		newClient.setFirstName(firstName);
 		newClient.setPhone(phone);
 		newClient.setEmail(email);
 		newClient.setAddress(address);
-		DBManager.addNewCustomer(newClient);
+		
+		int result= DBManager.addNewCustomer(newClient);
+		
+		switch(result) {
+			case -1 :
+				System.out.println("Already exist");
+				//resp.sendRedirect(req.getContextPath() + location);
+				break;
+
+			default :
+				resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + newClient.getId());
+				return;
+		}
+
+		String pageName="/client/create.jsp";
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		try {
 			rd.forward(req, resp);
@@ -51,5 +65,6 @@ public class CreateCustomerController extends HttpServlet {	@Override
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 }
