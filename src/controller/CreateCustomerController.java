@@ -43,12 +43,11 @@ public class CreateCustomerController extends HttpServlet {	@Override
 		newClient.setEmail(email);
 		newClient.setAddress(address);
 		
-		int result= DBManager.addNewCustomer(newClient);
+		int result= DBManager.createNewCustomer(newClient);
 		
 		switch(result) {
 			case -1 :
 				System.out.println("Already exist");
-				//resp.sendRedirect(req.getContextPath() + location);
 				break;
 
 			default :

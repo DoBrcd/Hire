@@ -17,7 +17,7 @@ public class DBManager
         return em;
     }
 
-	public static int addNewCustomer(Customer newClient) {
+	public static int createNewCustomer(Customer newClient) {
 		try {
 			getEntityManager().getTransaction().begin();
 			em.persist(newClient);
