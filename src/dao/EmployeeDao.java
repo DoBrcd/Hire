@@ -1,16 +1,13 @@
 package dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import org.hibernate.Hibernate;
-
+import model.CommercialManager;
 import model.Employee;
 import service.DBManager;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 public class EmployeeDao implements EmployeeDaoInterface {
 	
@@ -19,14 +16,15 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	 public boolean login(String username, String password) {
 	 
 	  if (em != null) {
-	   try {
-		   Query query = em.createQuery("select p from Employee p where p.identifiant=1");
+	   try {	     
+		   Query query = em.createQuery("select p from Employee p where p.identifiant='"+username+"'");
 		    Employee employee = (Employee) query.getSingleResult();
 		    if (employee == null) {
 		      System.out.println("Personne non trouvée");
 		    } else {
 		    	if (password.equals(employee.getPassword())) {
-		    	     System.out.println("employee: " + employee.toString());
+		    	     System.out.println("employee: " + employee.toString()+" "+employee.getDecriminatorValue());
+		    	     
 		    	     return true;
 		    	    }
 		    }
@@ -48,5 +46,47 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	 return "jjjjjjjjjj";
 	 }
 
+	@Override
+	public String getPosition(String username) {
+		{
+			String position="Employee";
+			 
+			  if (em != null) {
+			   try {	     
+				   Query query = em.createQuery("select p from Employee p where p.identifiant='"+username+"'");
+				    Employee employee = (Employee) query.getSingleResult();
+				    if (employee == null) {
+				      System.out.println("Personne non trouvée");
+				    } else {
+				    	
+				    	    position=employee.getDecriminatorValue();
+				    	     
+				    	     return position;
+				    	    }
+				    
+			   } catch (Exception exception) {
+			    System.out.println("Exception occred while reading user data: "
+			      + exception.getMessage());
+			    return position;
+			   }
 
+			  } else {
+			   System.out.println("DB server down.....");
+			  }
+			  return position;
+			 }
+	
+
+
+}
+
+	@Override
+	public Employee CreateEmployee(Employee e) {
+
+	    EntityTransaction transac = em.getTransaction();
+	    transac.begin();
+	    em.merge(e);
+	    transac.commit();
+		return e;
+	}
 }

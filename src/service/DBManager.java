@@ -9,9 +9,15 @@ public class DBManager
 
     public static EntityManager getEntityManager()
     {
-        if(em == null)
-        	  em = Persistence.createEntityManagerFactory("default").createEntityManager();
+    	try {
+    		  if(em == null)
+            	  em = Persistence.createEntityManagerFactory("default").createEntityManager();
 
+    		
+    	}catch(Exception e) {
+    		System.out.print("exption : "+e);
+    	}
+      
         
         return em;
     }

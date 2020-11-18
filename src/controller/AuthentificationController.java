@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Employee;
 import service.EmployeeServiceImp;
@@ -17,8 +18,13 @@ import service.EmployeeServiceInterface;
 public class AuthentificationController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 HttpSession maSession=req.getSession();
+		 String id=(String)maSession.getAttribute("id");
+		 String pageName="/login.jsp";
+		 if(id!=null) {
+			pageName="/home.jsp"; 
+		 }
 		
-		String pageName="/login.jsp";
 		  RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		  try {
 		    rd.forward(req, resp);
@@ -38,16 +44,20 @@ public class AuthentificationController extends HttpServlet {
         String password = req.getParameter("password");
      
         System.out.println(username + " :: " + password);
-        String page = "login.jsp";
+        String page = "/login.jsp";
         if(username.trim().length() >= 0 && username != null &&
           password.trim().length() >= 0 && password != null) {
          EmployeeServiceInterface employeService = new EmployeeServiceImp();
          boolean flag = employeService.login(username, password);
          if(flag) {
+        	 HttpSession maSession=req.getSession();
+        	 maSession.setAttribute("id", username);
+        	 String position=employeService.getPosition(username);
+        	 maSession.setAttribute("position", position);
           System.out.println("Login success!!!");
           req.setAttribute("username", username);
           req.setAttribute("msg", "Login Success.....");
-          page = "home.jsp";
+          page = "/home.jsp";
          } else {
           req.setAttribute("msg", "Wrong Username or Password, Try again!!!");
          }
