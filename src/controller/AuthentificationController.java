@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Employee;
 import service.EmployeeServiceImp;
 import service.EmployeeServiceInterface;
 
@@ -20,11 +18,11 @@ public class AuthentificationController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 HttpSession maSession=req.getSession();
 		 String id=(String)maSession.getAttribute("id");
-		 String pageName="/login.jsp";
 		 if(id!=null) {
-			pageName="/home.jsp"; 
+			 resp.sendRedirect(req.getContextPath() + "/home");
+			 return;
 		 }
-		
+		 String pageName="/login.jsp";
 		  RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		  try {
 		    rd.forward(req, resp);
@@ -37,9 +35,6 @@ public class AuthentificationController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-
         String username = req.getParameter("username");
         String password = req.getParameter("password");
      
@@ -52,12 +47,12 @@ public class AuthentificationController extends HttpServlet {
          if(flag) {
         	 HttpSession maSession=req.getSession();
         	 maSession.setAttribute("id", username);
-        	 String position=employeService.getPosition(username);
+        	 String position = employeService.getPosition(username);
         	 maSession.setAttribute("position", position);
-          System.out.println("Login success!!!");
-          req.setAttribute("username", username);
-          req.setAttribute("msg", "Login Success.....");
-          page = "/home.jsp";
+	          System.out.println("Login success!!!");
+	          req.setAttribute("username", username);
+	          req.setAttribute("msg", "Login Success.....");
+	          resp.sendRedirect(req.getContextPath() + "/home");
          } else {
           req.setAttribute("msg", "Wrong Username or Password, Try again!!!");
          }
