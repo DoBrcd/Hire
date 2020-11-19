@@ -13,11 +13,8 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/logout")
 public class LogoutController extends HttpServlet {
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 HttpSession maSession=req.getSession();
+		 HttpSession maSession = req.getSession();
 		 maSession.invalidate();
 		 req.setAttribute("msg", "Vous étes déconnecté");
 		 resp.sendRedirect(req.getContextPath());
