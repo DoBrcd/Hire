@@ -16,7 +16,7 @@ import model.Customer;
 import model.CustomerManager;
 
 @WebServlet("/client/search")
-public class SearchCustomerController extends HttpServlet {
+public class SearchCustomerController extends BaseController {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,5 +34,6 @@ public class SearchCustomerController extends HttpServlet {
 	  } catch (IOException e) {
 	    e.printStackTrace();
 	  }
+
 	}
 }
