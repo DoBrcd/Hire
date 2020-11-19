@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Customer;
 import model.CustomerManager;
+import service.CustomerServiceImp;
+import service.CustomerServiceInterface;
 
 @WebServlet("/client/search")
 public class SearchCustomerController extends BaseController {
@@ -21,8 +23,8 @@ public class SearchCustomerController extends BaseController {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pageName="/client/research.jsp";
-		CustomerManager manager = new CustomerManager();
-		ArrayList<Customer> customers = manager.getAllClients();
+		CustomerServiceInterface customerService = new CustomerServiceImp();
+		ArrayList<Customer> customers = customerService.getAllCustomers();
 		System.out.println(customers);
 		req.setAttribute("customers", customers);
 		

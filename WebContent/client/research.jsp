@@ -11,7 +11,12 @@
 	<%
 		java.util.ArrayList<model.Customer> customers = (java.util.ArrayList<model.Customer>) request.getAttribute("customers");
 		for(model.Customer customer : customers){
-			out.println(customer.getEmail());
+	%>
+		<div>
+			<p><%= customer.getName()%><p>
+			<p><%= customer.getEmail()%></p>
+		</div>
+	<%
 		}
 	%>
 </body>
