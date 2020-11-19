@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -51,6 +53,10 @@ public class GeneralManager extends Employee implements I_CommercialManager, I_C
 	public void getTheTenMoreHiring() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public ArrayList<Customer> getAllClients(){
+		return null;
 	}
 
 }
