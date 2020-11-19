@@ -16,11 +16,12 @@ import service.CustomerServiceInterface;
 import service.DBManager;
 
 @WebServlet("/client/create")
-public class CreateCustomerController extends HttpServlet {
+public class CreateCustomerController extends BaseController {
 	final String pageName = "/client/create.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doGet(req, resp);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		try {
 			rd.forward(req, resp);

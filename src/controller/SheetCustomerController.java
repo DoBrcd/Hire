@@ -14,12 +14,12 @@ import service.CustomerServiceImp;
 import service.CustomerServiceInterface;
 
 @WebServlet("/client/sheet")
-public class SheetCustomerController extends HttpServlet {
+public class SheetCustomerController extends BaseController {
 	final String pageName = "/client/sheet.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		super.doGet(req, resp);
 		CustomerServiceInterface customerService = new CustomerServiceImp();
 		Customer client = customerService.get(Integer.parseInt(req.getParameter("id")));
 

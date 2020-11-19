@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/client/remove")
-public class RemoveCustomerController extends HttpServlet {
+public class RemoveCustomerController extends BaseController {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doGet(req, resp);
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
