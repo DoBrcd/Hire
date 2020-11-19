@@ -49,7 +49,6 @@ public class CreateCustomerController extends HttpServlet {	@Override
 			case -1 :
 				System.out.println("Already exist");
 				break;
-
 			default :
 				resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + newClient.getId());
 				return;
