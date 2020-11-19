@@ -26,11 +26,12 @@ public class CreateVehicleController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 HttpSession maSession=req.getSession();
 		 String id=(String)maSession.getAttribute("id");
-		 String pageName="/login.jsp";
-		 if(id!=null) {
-			pageName="/createVehicle.jsp"; 
+		 String pageName="/createVehicle.jsp";
+		 
+		 if(id==null) {
+			 resp.sendRedirect(req.getContextPath());
 		 }
-		
+	
 		  RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		  try {
 		    rd.forward(req, resp);
