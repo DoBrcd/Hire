@@ -2,7 +2,6 @@ package dao;
 
 import model.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface CustomerDaoInterface {
@@ -14,8 +13,6 @@ public interface CustomerDaoInterface {
 	 */
 	public int createNewCustomer(Customer newClient);
 	
-	public List<Customer>  getAll();
-	
 	/**
 	 * Return a Customer stored in database based on id
 	 * @param id The id of the customer we look for
@@ -23,5 +20,10 @@ public interface CustomerDaoInterface {
 	 */
 	public Customer getById(int id);
 	
-	public ArrayList<Customer> getAllCustomers();
+	/**
+	 * get all customers from the database
+	 * @param 
+	 * @return List of customers
+	 */
+	public List<Customer> getAllCustomers();
 }

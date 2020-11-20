@@ -54,9 +54,5 @@ public class GeneralManager extends Employee implements I_CommercialManager, I_C
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public ArrayList<Customer> getAllClients(){
-		return null;
-	}
 
 }

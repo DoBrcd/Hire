@@ -2,7 +2,6 @@ package dao;
 
 import model.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -31,12 +30,6 @@ public class CustomerDao implements CustomerDaoInterface {
 		return newClient.getId();
 	}
 
-	@Override
-	public List<Customer> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/**
 	 * Return a Customer stored in database based on id
 	 * @param id The id of the customer we look for
@@ -47,12 +40,17 @@ public class CustomerDao implements CustomerDaoInterface {
 		return em.find(Customer.class, id);
 	}
 
+	/**
+	 * get all customers from the database
+	 * @param 
+	 * @return List of customers
+	 */
 	@Override
-	public ArrayList<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers() {
 		if (em != null) {
 			try {
 				Query query = em.createQuery("select p from Customer p");
-				ArrayList<Customer> customers = (ArrayList<Customer>) query.getResultList();
+				List<Customer> customers = (List<Customer>) query.getResultList();
 				return customers;
 			} catch (Exception exception) {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());

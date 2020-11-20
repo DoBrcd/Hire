@@ -9,10 +9,11 @@
 <body>
 	<h1>La liste des Clients</h1>
 	<%
-		java.util.ArrayList<model.Customer> customers = (java.util.ArrayList<model.Customer>) request.getAttribute("customers");
+		java.util.List<model.Customer> customers = (java.util.List<model.Customer>) request.getAttribute("customers");
 		for(model.Customer customer : customers){
 	%>
 		<div>
+			<p><a href="/Hire/client/sheet?id=<%= customer.getId()%>"> Voir le profil complet</a></p>
 			<p><%= customer.getName()%><p>
 			<p><%= customer.getEmail()%></p>
 		</div>

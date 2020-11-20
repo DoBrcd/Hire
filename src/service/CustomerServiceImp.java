@@ -1,6 +1,5 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dao.CustomerDao;
@@ -20,11 +19,6 @@ public class CustomerServiceImp implements CustomerServiceInterface{
 		return dao.createNewCustomer(newClient);
 	}
 
-	@Override
-	public List<Customer> getAll() {
-		return dao.getAll();
-	}
-
 	/**
 	 * Return a Customer stored in database based on id
 	 * @param id The id of the customer we look for
@@ -34,8 +28,13 @@ public class CustomerServiceImp implements CustomerServiceInterface{
 	public Customer getById(int id) {
 		return dao.getById(id);
 	}
-	
-	public ArrayList<Customer> getAllCustomers() {
+	/**
+	 * return a list of customers
+	 * @param 
+	 * @return List of customers
+	 */
+	@Override
+	public List<Customer> getAllCustomers() {
 		return dao.getAllCustomers();
 	}
 }

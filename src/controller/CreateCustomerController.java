@@ -49,7 +49,7 @@ public class CreateCustomerController extends BaseController {
 		newClient.setAddress(address);
 
 		CustomerServiceInterface clientService = new CustomerServiceImp();
-		int result = clientService.createNew(newClient);
+		int result = clientService.createNewCustomer(newClient);
 
 		switch (result) {
 			case -1:
