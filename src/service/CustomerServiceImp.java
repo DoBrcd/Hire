@@ -8,10 +8,16 @@ import model.Customer;
 import dao.CustomerDaoInterface;
 
 public class CustomerServiceImp implements CustomerServiceInterface{
-	CustomerDaoInterface dao = new CustomerDao();
+	private CustomerDaoInterface dao = new CustomerDao();
+	
+	/**
+	 * createNewCustomer
+	 * @param newClient
+	 * @return id, -1 if error
+	 */
 	@Override
-	public int createNew(Customer newClient) {
-		return dao.createNew(newClient);
+	public int createNewCustomer(Customer newClient){
+		return dao.createNewCustomer(newClient);
 	}
 
 	@Override
@@ -19,9 +25,14 @@ public class CustomerServiceImp implements CustomerServiceInterface{
 		return dao.getAll();
 	}
 
+	/**
+	 * getById
+	 * @param id
+	 * @return Customer
+	 */
 	@Override
-	public Customer get(int id) {
-		return dao.get(id);
+	public Customer getById(int id) {
+		return dao.getById(id);
 	}
 	
 	public ArrayList<Customer> getAllCustomers() {

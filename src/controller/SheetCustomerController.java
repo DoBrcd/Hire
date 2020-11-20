@@ -21,7 +21,7 @@ public class SheetCustomerController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doGet(req, resp);
 		CustomerServiceInterface customerService = new CustomerServiceImp();
-		Customer client = customerService.get(Integer.parseInt(req.getParameter("id")));
+		Customer client = customerService.getById(Integer.parseInt(req.getParameter("id")));
 
 		req.setAttribute("name", client.getName());
 		req.setAttribute("firstName", client.getFirstName());

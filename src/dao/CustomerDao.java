@@ -10,11 +10,17 @@ import javax.persistence.Query;
 
 import service.DBManager;
 
-
 public class CustomerDao implements CustomerDaoInterface {
-	EntityManager em = DBManager.getEntityManager();
+	private EntityManager em = DBManager.getEntityManager();
+
+	/**
+	 * createNewCustomer
+	 * 
+	 * @param newClient
+	 * @return id, -1 if error
+	 */
 	@Override
-	public int createNew(Customer newClient) {
+	public int createNewCustomer(Customer newClient) {
 		try {
 			em.getTransaction().begin();
 			em.persist(newClient);
@@ -32,29 +38,34 @@ public class CustomerDao implements CustomerDaoInterface {
 		return null;
 	}
 
+	/**
+	 * getById
+	 * 
+	 * @param id
+	 * @return Customer
+	 */
 	@Override
-	public Customer get(int id) {
+	public Customer getById(int id) {
 		return em.find(Customer.class, id);
 	}
-	
+
 	@Override
-	public ArrayList<Customer> getAllCustomers(){
-		if(em != null) {
+	public ArrayList<Customer> getAllCustomers() {
+		if (em != null) {
 			try {
 				Query query = em.createQuery("select p from Customer p");
 				ArrayList<Customer> customers = (ArrayList<Customer>) query.getResultList();
 				return customers;
-			}catch (Exception exception) {
-			    System.out.println("Exception occred while reading user data: "
-			  	      + exception.getMessage());
-			  	return null;
-	  	   }
+			} catch (Exception exception) {
+				System.out.println("Exception occred while reading user data: " + exception.getMessage());
+				return null;
+			}
 
 		} else {
 			System.out.println("DB server down.....");
 		}
 		return null;
-		
+
 	}
 
 }
