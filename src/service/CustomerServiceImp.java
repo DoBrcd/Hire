@@ -30,7 +30,6 @@ public class CustomerServiceImp implements CustomerServiceInterface{
 	}
 	/**
 	 * return a list of customers
-	 * @param 
 	 * @return List of customers
 	 */
 	@Override

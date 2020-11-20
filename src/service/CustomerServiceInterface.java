@@ -23,7 +23,6 @@ public interface CustomerServiceInterface {
 	
 	/**
 	 * get all customers from the database
-	 * @param 
 	 * @return List of customers
 	 */
 	public List<Customer> getAllCustomers();

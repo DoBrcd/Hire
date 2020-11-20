@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+	<%@ page import="java.util.List" %>
+	<%@ page import="model.Customer" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +10,14 @@
 </head>
 <body>
 	<h1>La liste des Clients</h1>
+
 	<%
-		java.util.List<model.Customer> customers = (java.util.List<model.Customer>) request.getAttribute("customers");
-		for(model.Customer customer : customers){
+		List<Customer> customers = (List<Customer>) request.getAttribute("customers");
+		for(Customer customer : customers){
 	%>
 		<div>
 			<p><a href="/Hire/client/sheet?id=<%= customer.getId()%>"> Voir le profil complet</a></p>
-			<p><%= customer.getName()%><p>
-			<p><%= customer.getEmail()%></p>
+			<p><%= customer.getName()%> : <%= customer.getEmail()%><p>
 		</div>
 	<%
 		}

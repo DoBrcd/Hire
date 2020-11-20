@@ -42,7 +42,6 @@ public class CustomerDao implements CustomerDaoInterface {
 
 	/**
 	 * get all customers from the database
-	 * @param 
 	 * @return List of customers
 	 */
 	@Override
