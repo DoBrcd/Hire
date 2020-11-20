@@ -2,26 +2,38 @@ package service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import dao.CustomerDao;
-import dao.CustomerDaoInterface;
 import model.Customer;
+import dao.CustomerDaoInterface;
 
 public class CustomerServiceImp implements CustomerServiceInterface{
-	CustomerDaoInterface dao = new CustomerDao();
+	private CustomerDaoInterface dao = new CustomerDao();
+	
+	/**
+	 * Create a new Customer sheet and store it in database
+	 * @param newClient Customer we need to store in database
+	 * @return Customer id if Customer was well store, else -1
+	 */
 	@Override
-	public int createNew(Customer newClient) {
-		return dao.createNew(newClient);
+	public int createNewCustomer(Customer newClient){
+		return dao.createNewCustomer(newClient);
 	}
 
+	/**
+	 * Return a Customer stored in database based on id
+	 * @param id The id of the customer we look for
+	 * @return Customer if we find it, else null
+	 */
 	@Override
-	public List<Customer> getAll() {
-		return dao.getAll();
+	public Customer getById(int id) {
+		return dao.getById(id);
 	}
-
+	/**
+	 * return a list of customers
+	 * @return List of customers
+	 */
 	@Override
-	public Customer get(int id) {
-		return dao.get(id);
+	public List<Customer> getAllCustomers() {
+		return dao.getAllCustomers();
 	}
 }

@@ -1,16 +1,24 @@
 package dao;
 
+import model.Customer;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
-import model.Customer;
 import service.DBManager;
 
 public class CustomerDao implements CustomerDaoInterface {
-	EntityManager em = DBManager.getEntityManager();
+	private EntityManager em = DBManager.getEntityManager();
+
+	/**
+	 * Create a new Customer sheet and store it in database
+	 * @param newClient Customer we need to store in database
+	 * @return Customer id if Customer was well store, else -1
+	 */
 	@Override
-	public int createNew(Customer newClient) {
+	public int createNewCustomer(Customer newClient) {
 		try {
 			em.getTransaction().begin();
 			em.persist(newClient);
@@ -22,15 +30,37 @@ public class CustomerDao implements CustomerDaoInterface {
 		return newClient.getId();
 	}
 
+	/**
+	 * Return a Customer stored in database based on id
+	 * @param id The id of the customer we look for
+	 * @return Customer if we find it, else null
+	 */
 	@Override
-	public List<Customer> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer getById(int id) {
+		return em.find(Customer.class, id);
 	}
 
+	/**
+	 * get all customers from the database
+	 * @return List of customers
+	 */
 	@Override
-	public Customer get(int id) {
-		return em.find(Customer.class, id);
+	public List<Customer> getAllCustomers() {
+		if (em != null) {
+			try {
+				Query query = em.createQuery("select p from Customer p");
+				List<Customer> customers = (List<Customer>) query.getResultList();
+				return customers;
+			} catch (Exception exception) {
+				System.out.println("Exception occred while reading user data: " + exception.getMessage());
+				return null;
+			}
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;
+
 	}
 
 }
