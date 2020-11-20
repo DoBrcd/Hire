@@ -36,4 +36,19 @@ public class CustomerServiceImp implements CustomerServiceInterface{
 	public List<Customer> getAllCustomers() {
 		return dao.getAllCustomers();
 	}
+	/**
+	 * Update a customer in database
+	 * @param A customer instance with the updated data
+	 */
+	public void update(Customer customer) {
+		dao.update(customer);
+	}
+	
+	/**
+	 * remove a customer from database
+	 * @param The Id of the customer to remove
+	 */
+	public void remove(int customerId) {
+		dao.remove(customerId);
+	}
 }
