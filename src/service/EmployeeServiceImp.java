@@ -24,7 +24,6 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
     @Override
     public String getPosition(String s)
     {
-        //  Auto-generated method stub
         return emDao.getPosition(s);
     }
 
@@ -32,7 +31,6 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
     @Override
     public Employee createEmployee(Employee e)
     {
-        //  Auto-generated method stub
         return emDao.CreateEmployee(e);
     }
 
@@ -95,5 +93,4 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
         return position.equals(CommercialManager.class.getName())
                 || position.equals(GeneralManager.class.getName());
     }
-
 }
