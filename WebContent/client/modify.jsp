@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Customer</title>
+<title>Modifier un client</title>
 </head>
 <body>
 	<% Customer customer = (Customer) request.getAttribute("customer"); %>
