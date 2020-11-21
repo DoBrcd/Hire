@@ -14,35 +14,48 @@ public class VehicleDao implements VehicleDaoInterface {
 	
 	@Override
 	public List<Vehicle> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		  List<Vehicle> vehicles = em.createQuery("Select v From Vehicle v",
+				  Vehicle.class).getResultList();
+		  return vehicles;
 	}
 
 	@Override
 	public Vehicle getByid(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return em.find(Vehicle.class, id);
 	}
 
 	@Override
 	public Vehicle add(Vehicle v) {
-		  EntityTransaction transac = em.getTransaction();
-		    transac.begin();
-		    em.merge(v);
-		    transac.commit();
+		 em.getTransaction().begin();
+		 em.persist(v);
+		 em.getTransaction().commit();
 			return v;
 	}
 
 	@Override
 	public Vehicle update(Vehicle v) {
-		// TODO Auto-generated method stub
-		return null;
+
+		 em.getTransaction().begin();
+	     em.merge(v);
+	     em.getTransaction().commit();
+	  	 return v;
+				
+		  			
 	}
 
 	@Override
 	public boolean delete(Vehicle v) {
-		// TODO Auto-generated method stub
-		return false;
+			try {
+			  em.getTransaction().begin();
+			  em.remove(v);
+			  em.getTransaction().commit();
+			  return true;
+				
+			}catch(Exception e) {
+				return false;
+			}
+		 
 	}
 
 }

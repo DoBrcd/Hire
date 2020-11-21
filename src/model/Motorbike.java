@@ -1,19 +1,21 @@
 package model;
 
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Motorbike")
+
 public class Motorbike extends Vehicle {
-	private String power;
+	private int power;
 	private int km;
 	
 	
-	public String getPower() {
-		return power;
+	public int getPower() {
+		return this.power;
 	}
-	public void setPower(String power) {
+	public void setPower(int power) {
 		this.power = power;
 	}
 	public int getKm() {

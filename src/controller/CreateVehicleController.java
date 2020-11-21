@@ -22,6 +22,11 @@ import service.VehicleServiceInterface;
 @WebServlet("/vehicle/create")
 public class CreateVehicleController extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 HttpSession maSession=req.getSession();
@@ -53,33 +58,72 @@ public class CreateVehicleController extends HttpServlet {
         String state = req.getParameter("state");
         float price = Float.parseFloat(req.getParameter("price"));
         int maxSpeed =Integer.parseInt(req.getParameter("maxSpeed"));
-        Vehicle v;
+        Vehicle v = null;
+        
+        VehicleServiceInterface vehicleservice=new VehicleServiceImp();
+        Vehicle newvehicle=null;
         switch(vehicleType) {
         case "Car":
           // code block
-        	v=new Car();
-        	
+        	Car c=new Car();
+            int powercar =Integer.parseInt(req.getParameter("powercar"));
+            int kmCar =Integer.parseInt(req.getParameter("kmCar"));
+            int sitsnumber =Integer.parseInt(req.getParameter("sitsnumber"));
+            c.setPower(powercar);
+            c.setKm(kmCar);
+            c.setSitsNumber(sitsnumber);
+            
+            c.setBrand(brand);
+            c.setHirePrice(price);
+            c.setMaxSpeed(maxSpeed);
+            c.setState(state);
+            c.setModel(model);
+           	c.setState(state);
+           	
+           	 newvehicle=vehicleservice.add(c);
+     
+         
           break;
         case "Motorbike":
           // code block
-        	v=new Motorbike();
+        	Motorbike m=new Motorbike();
+            int powerMotor =Integer.parseInt(req.getParameter("powerMotor"));
+            int kmMotor =Integer.parseInt(req.getParameter("kmMotor"));
+            m.setPower(powerMotor);
+            m.setKm(kmMotor);
+            
+            m.setBrand(brand);
+            m.setHirePrice(price);
+            m.setMaxSpeed(maxSpeed);
+            m.setState(state);
+            m.setModel(model);
+           	m.setState(state);
+           	
+           	 newvehicle=vehicleservice.add(m);
+           
           break;
         case "Aireplane":
             // code block
-        	v=new Airplane();
+        	Airplane a=new Airplane();
+            int nbMotors =Integer.parseInt(req.getParameter("nbMotors"));
+            a.setNbMotor(nbMotors);
+            
+            a.setBrand(brand);
+            a.setHirePrice(price);
+            a.setMaxSpeed(maxSpeed);
+            a.setState(state);
+            a.setModel(model);
+           	a.setState(state);
+           	
+           	 newvehicle=vehicleservice.add(a);
+          
             break;
-        default:
-          // code block
-        	v=new Vehicle();
+
       }
-        v.setBrand(brand);
-        v.setHirePrice(price);
-        v.setMaxSpeed(maxSpeed);
-        v.setState(state);
-        v.setModel(model);
-       	v.setState(state);
-        VehicleServiceInterface vehicleservice=new VehicleServiceImp();
-        Vehicle newvehicle=vehicleservice.add(v);
+        
+    
+   
+       
         
     
      if(newvehicle !=null) {

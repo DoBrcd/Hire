@@ -1,11 +1,14 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import model.CommercialManager;
 import model.Employee;
+import model.Vehicle;
 import service.DBManager;
 
 
@@ -17,7 +20,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	 
 	  if (em != null) {
 	   try {	     
-		   Query query = em.createQuery("select p from Employee p where p.identifiant='"+username+"'");
+		   Query query = em.createQuery("select p from Employee p where p.identifiant=:identifiant").setParameter("identifiant", username);
 		    Employee employee = (Employee) query.getSingleResult();
 		    if (employee == null) {
 		      System.out.println("Personne non trouvée");
@@ -53,7 +56,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 			 
 			  if (em != null) {
 			   try {	     
-				   Query query = em.createQuery("select p from Employee p where p.identifiant='"+username+"'");
+				   Query query = em.createQuery("select p from Employee p where p.identifiant=:identifiant").setParameter("identifiant", username);
 				    Employee employee = (Employee) query.getSingleResult();
 				    if (employee == null) {
 				      System.out.println("Personne non trouvée");
@@ -88,5 +91,38 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	    em.merge(e);
 	    transac.commit();
 		return e;
+	}
+
+	@Override
+	public List<Employee> getAll() {
+		  List<Employee> employees = em.createQuery("Select v From Employee v",
+				  Employee.class).getResultList();
+		  return employees;
+	}
+
+	@Override
+	public Employee getByid(Long id) {
+		return em.find(Employee.class, id);
+	}
+
+	@Override
+	public Employee update(Employee v) {
+		 em.getTransaction().begin();
+	     em.merge(v);
+	     em.getTransaction().commit();
+	  	 return v;
+	}
+
+	@Override
+	public boolean delete(Employee v) {
+		try {
+			  em.getTransaction().begin();
+			  em.remove(v);
+			  em.getTransaction().commit();
+			  return true;
+				
+			}catch(Exception e) {
+				return false;
+			}
 	}
 }
