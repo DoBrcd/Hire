@@ -25,4 +25,16 @@ public interface CustomerDaoInterface {
 	 * @return List of customers
 	 */
 	public List<Customer> getAllCustomers();
+	
+	/**
+	 * Update a customer in database
+	 * @param A customer instance with the updated data
+	 */
+	public void update(Customer customer);
+	
+	/**
+	 * remove a customer from database
+	 * @param The Id of the customer to remove
+	 */
+	public void remove(int customerId);
 }

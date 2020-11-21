@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Customer</title>
+<title>Créer un client</title>
 </head>
 <body>
 	<h1>Créer une nouvelle fiche client</h1>

@@ -52,7 +52,7 @@ public class CustomerDao implements CustomerDaoInterface {
 				List<Customer> customers = (List<Customer>) query.getResultList();
 				return customers;
 			} catch (Exception exception) {
-				System.out.println("Exception occred while reading user data: " + exception.getMessage());
+				System.out.println("Exception occured while reading user data: " + exception.getMessage());
 				return null;
 			}
 
@@ -61,6 +61,50 @@ public class CustomerDao implements CustomerDaoInterface {
 		}
 		return null;
 
+	}
+	
+	/**
+	 * Update a customer in database
+	 * @param A customer instance with the updated data
+	 */
+	@Override
+	public void update(Customer customer) {
+		if(em != null) {
+			try {
+				Customer entityCustomer = em.find(Customer.class, customer.getId());
+				em.getTransaction().begin();
+				entityCustomer.setName(customer.getName());
+				entityCustomer.setFirstName(customer.getFirstName());
+				entityCustomer.setEmail(customer.getEmail());
+				entityCustomer.setPhone(customer.getPhone());
+				entityCustomer.setAddress(customer.getAddress());
+				em.getTransaction().commit();
+			}catch(Exception exception) {
+				System.out.println("Exception occured while reading user data: " + exception.getMessage());
+			}
+		} else {
+			System.out.println("DB server down.....");
+		}
+	}
+	
+	/**
+	 * remove a customer from database
+	 * @param The Id of the customer to remove
+	 */
+	@Override
+	public void remove(int customerId) {
+		if(em != null) {
+			try {
+				Customer customer = em.find(Customer.class, customerId);
+				em.getTransaction().begin();
+				em.remove(customer);
+				em.getTransaction().commit();
+			}catch(Exception exception) {
+				System.out.println("Exception occured while reading user dara: " + exception.getMessage());
+			}
+		}else {
+			System.out.println("DB server down.....");
+		}
 	}
 
 }
