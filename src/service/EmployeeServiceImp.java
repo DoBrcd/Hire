@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.EmployeeDao;
 import model.*;
 
@@ -59,6 +61,35 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
                 || position.equals(GeneralManager.class.getName());
     }
 
+
+
+	@Override
+	public List<Employee> getAll() {
+		return emDao.getAll();
+	}
+
+
+
+	@Override
+	public Employee getByid(Long id) {
+		return emDao.getByid(id);
+	}
+
+
+
+	@Override
+	public Employee update(Employee v) {
+		return emDao.update(v);
+	}
+
+
+
+	@Override
+	public boolean delete(Employee v) {
+		return emDao.delete(v);
+	}
+
+
     /**
      * Tells if a given position can create a customer
      * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
@@ -93,4 +124,5 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
         return position.equals(CommercialManager.class.getName())
                 || position.equals(GeneralManager.class.getName());
     }
+
 }

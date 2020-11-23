@@ -1,6 +1,7 @@
 package model;
 
 
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -10,6 +11,7 @@ public class Car extends Vehicle {
 	private int power;
 	private int km;
 	private int sitsNumber;
+	
 	public int getPower() {
 		return power;
 	}

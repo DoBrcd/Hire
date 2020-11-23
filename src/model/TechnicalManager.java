@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 @DiscriminatorValue("TechnicalManager")
 public class TechnicalManager extends Employee implements I_TechnicalManager {
 
+	/**
+	 * 
+	 */
+	
 	@Override
 	public void createVehicle() {
 		// TODO Auto-generated method stub
