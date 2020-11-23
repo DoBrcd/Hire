@@ -16,18 +16,11 @@
 		<p><strong>Adresse</strong> : <%= customer.getAddress() %></p>
 		<p><strong>Téléphone</strong> : <%= customer.getPhone() %></p>
 		<p><strong>E-mail</strong> : <%= customer.getEmail() %></p>
-		<p><button><a href="/Hire/client/modify?id=<%= customer.getId() %>">Modifier</a></button></p>
+		<p><button><a href="${pageContext.request.contextPath}/client/modify?id=<%= customer.getId() %>">Modifier</a></button></p>
 	</div>
-	<form method="post" action="/Hire/client/remove">
+	<form method="post" action="${pageContext.request.contextPath}/client/remove">
 		<input type="hidden" name="id" value="<%= customer.getId() %>"></input>
 		<button type="submit">Supprimer</button>
 	</form>
-
-
-
-
-
-
-
 </body>
 </html>
