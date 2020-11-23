@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +25,7 @@ public class ResearchVehicleController extends BaseController {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
 
 		super.doGet(req, resp);
 		
@@ -40,6 +39,13 @@ public class ResearchVehicleController extends BaseController {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+=======
+		if (isAuthenticated(req, resp)) {
+			VehicleServiceInterface vService = new VehicleServiceImp();
+			List<Vehicle> data = vService.getAll();
+			req.setAttribute("data", data);
+			redirectToView(req, resp, pageName);
+>>>>>>> d0218c3d39916064aa58b81a68d1fa40bfed1a5d
 		}
 	}
 
@@ -49,7 +55,6 @@ public class ResearchVehicleController extends BaseController {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 }
