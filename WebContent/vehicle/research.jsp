@@ -74,10 +74,7 @@ background-size: cover;
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
-    <%! List eList = (ArrayList)request.getAttribute("data");%>
-<% for (int i=0; i<request.getAttribute("data").length; i++) { %> 
-<%= i %> <br>
-<% }%>
+
   </tbody>
 </table>
 </div>

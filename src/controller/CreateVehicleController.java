@@ -20,23 +20,20 @@ import service.VehicleServiceImp;
 import service.VehicleServiceInterface;
 
 @WebServlet("/vehicle/create")
-public class CreateVehicleController extends HttpServlet {
+public class CreateVehicleController extends BaseController {
 	
 	/**
 	 * 
 	 */
+	private final String pageName="/vehicle/create.jsp";
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 HttpSession maSession=req.getSession();
-		 String id=(String)maSession.getAttribute("id");
-		 String pageName="/createVehicle.jsp";
-		 
-		 if(id==null) {
-			 resp.sendRedirect(req.getContextPath());
-		 }
-	
+
+		super.doGet(req, resp);
+
+		
 		  RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		  try {
 		    rd.forward(req, resp);
@@ -50,7 +47,7 @@ public class CreateVehicleController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
+		super.doPost(req, resp);
 
         String vehicleType = req.getParameter("vehicleType");
         String model = req.getParameter("model");
@@ -147,5 +144,7 @@ public class CreateVehicleController extends HttpServlet {
 	    e.printStackTrace();
 	  }
        
+
+	
 	}
 	}

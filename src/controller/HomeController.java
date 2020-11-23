@@ -1,29 +1,41 @@
 package controller;
 
+import service.EmployeeServiceImp;
+import service.EmployeeServiceInterface;
 
-import service.DBManager;
-
-import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/home")
-public class HomeController extends HttpServlet {
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EntityManager em = DBManager.getEntityManager();
+public class HomeController extends BaseController
+{
+    final String pageName = "home.jsp";
 
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<head><title>Hello World </title></head>");
-		out.println("<body>");
-		out.println("<h1>Hello World test !</h1>");
-		out.println("</body></html>");
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    {
+        super.doGet(req, resp);
+
+        EmployeeServiceInterface service = new EmployeeServiceImp();
+
+        final String position = (String) req.getSession().getAttribute("position");
+
+        boolean canUserCreate = service.canCreate(position);
+
+        req.setAttribute("userCanAccessStats", service.canAccessStats(position));
+        req.setAttribute("userCanCreate", canUserCreate);
+
+        if(canUserCreate)
+		{
+			req.setAttribute("userCanCreateVehicle", service.canCreateVehicle(position));
+			req.setAttribute("userCanCreateCustomer", service.canCreateCustomer(position));
+			req.setAttribute("userCanCreateHiring", service.canCreateHiring(position));
+		}
+
+        req.getRequestDispatcher(pageName).include(req, resp);
+    }
 }
