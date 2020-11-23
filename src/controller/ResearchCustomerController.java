@@ -1,6 +1,5 @@
 package controller;
 
-
 import model.Customer;
 import service.CustomerServiceImp;
 import service.CustomerServiceInterface;
@@ -13,14 +12,13 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/client/search")
-public class SearchCustomerController extends BaseController {
+public class ResearchCustomerController extends BaseController {
 
 	public static final String pageName = "/client/research.jsp";
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		if(isAuthenticated(req, resp))
-		{
+		if (isAuthenticated(req, resp)) {
 			CustomerServiceInterface customerService = new CustomerServiceImp();
 			List<Customer> customers = customerService.getAllCustomers();
 			req.setAttribute("customers", customers);

@@ -37,7 +37,7 @@ public class BaseController extends HttpServlet {
 		boolean isAuthenticated = isAuthenticated(request);
 
 		if(!isAuthenticated)
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/");
 
 		return isAuthenticated;
 	}

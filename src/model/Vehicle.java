@@ -1,5 +1,6 @@
 package model;
 
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -14,12 +15,11 @@ import javax.persistence.InheritanceType;
 
 @DiscriminatorColumn(name="vehicule_type", discriminatorType=DiscriminatorType.STRING, length=20)
 
-public class Vehicle {
+public  class Vehicle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private float hirePrice;
-	private String status;
 	private int maxSpeed;
 	private String model;
 	private String state;
@@ -31,12 +31,6 @@ public class Vehicle {
 	}
 	public void setHirePrice(float hirePrice) {
 		this.hirePrice = hirePrice;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	public int getMaxSpeed() {
 		return maxSpeed;
