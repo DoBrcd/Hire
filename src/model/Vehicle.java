@@ -20,7 +20,6 @@ public  class Vehicle {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private float hirePrice;
-	private String status;
 	private int maxSpeed;
 	private String model;
 	private String state;
@@ -32,12 +31,6 @@ public  class Vehicle {
 	}
 	public void setHirePrice(float hirePrice) {
 		this.hirePrice = hirePrice;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	public int getMaxSpeed() {
 		return maxSpeed;
