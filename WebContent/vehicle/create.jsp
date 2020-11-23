@@ -21,8 +21,8 @@ $(document).ready(function(){
     case 'Motorbike':
     	$(".moto").show();
         break;
-    case 'Aireplane':
-    	$(".aireplane").show();
+    case 'Airplane':
+    	$(".airplane").show();
         break;
     default:
       console.log(`Sorry, we are out of ${type}.`);
