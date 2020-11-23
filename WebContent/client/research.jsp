@@ -16,7 +16,7 @@
 		for(Customer customer : customers){
 	%>
 		<div>
-			<p><a href="/Hire/client/sheet?id=<%= customer.getId()%>"> Voir le profil complet</a></p>
+			<p><a href="${pageContext.request.contextPath}/client/sheet?id=<%= customer.getId()%>"> Voir le profil complet</a></p>
 			<p><%= customer.getName()%> : <%= customer.getEmail()%><p>
 		</div>
 	<%
