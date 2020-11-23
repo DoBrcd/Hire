@@ -74,18 +74,10 @@ background-size: cover;
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
-    <c:choose>
-  <c:when test="${empty monArrayList}">
-    pas d'information
-  </c:when>
-  <c:otherwise>
-    <c:forEach items="${monArrayList}" var"p">
-      ${p.info1}
-      ${p.info2}
-      ...
-    </c:forEach>
-  </c:otherwise>
-</c:choose>
+    <%! List eList = (ArrayList)request.getAttribute("data");%>
+<% for (int i=0; i<request.getAttribute("data").length; i++) { %> 
+<%= i %> <br>
+<% }%>
   </tbody>
 </table>
 </div>
