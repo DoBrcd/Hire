@@ -1,72 +1,57 @@
 package controller;
 
-import java.io.IOException;
-import java.util.Map;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import model.Customer;
 import service.CustomerServiceImp;
 import service.CustomerServiceInterface;
-import service.DBManager;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet("/client/create")
 public class CreateCustomerController extends BaseController {
-	final String pageName = "/client/create.jsp";
+	public static final String pageName = "/client/create.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doGet(req, resp);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-		try {
-			rd.forward(req, resp);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(isAuthenticated(req, resp))
+		{
+			redirectToView(req, resp, pageName);
 		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if(isAuthenticated(req, resp))
+		{
+			Customer newClient = new Customer();
+			String name = req.getParameter("name");
+			String firstName = req.getParameter("firstName");
+			String phone = req.getParameter("phone");
+			String email = req.getParameter("email");
+			String address = req.getParameter("address");
 
-		Customer newClient = new Customer();
-		String name = req.getParameter("name");
-		String firstName = req.getParameter("firstName");
-		String phone = req.getParameter("phone");
-		String email = req.getParameter("email");
-		String address = req.getParameter("address");
+			newClient.setName(name);
+			newClient.setFirstName(firstName);
+			newClient.setPhone(phone);
+			newClient.setEmail(email);
+			newClient.setAddress(address);
 
-		newClient.setName(name);
-		newClient.setFirstName(firstName);
-		newClient.setPhone(phone);
-		newClient.setEmail(email);
-		newClient.setAddress(address);
+			CustomerServiceInterface clientService = new CustomerServiceImp();
+			int result = clientService.createNewCustomer(newClient);
 
-		CustomerServiceInterface clientService = new CustomerServiceImp();
-		int result = clientService.createNewCustomer(newClient);
+			switch (result) {
+				case -1:
+					System.out.println("Already exist");
+					break;
+				default:
+					resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + newClient.getId());
+					return;
+			}
 
-		switch (result) {
-			case -1:
-				System.out.println("Already exist");
-				break;
-			default:
-				resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + newClient.getId());
-				return;
+			redirectToView(req, resp, pageName);
 		}
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-		try {
-			rd.forward(req, resp);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 }
