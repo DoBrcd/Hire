@@ -19,6 +19,7 @@ public  class Vehicle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	private float hirePrice;
 	private int maxSpeed;
 	private String model;
@@ -26,6 +27,12 @@ public  class Vehicle {
 	private StateHiring isHiring;
 	private String brand;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public float getHirePrice() {
 		return hirePrice;
 	}

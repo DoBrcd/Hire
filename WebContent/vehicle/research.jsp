@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+	<%@ page import="java.util.List" %>
+	<%@ page import="model.Vehicle" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -68,12 +69,17 @@ background-size: cover;
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
+ 	<%
+		List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles");
+		for(Vehicle vehicle : vehicles){
+	%>
+		<div>
+			<p><a href="/Hire/client/sheet?id=<%= vehicle.getId()%>"> Voir le profil complet</a></p>
+			<p><%= vehicle.getModel() %> : <%= vehicle.getBrand()%><p>
+		</div>
+	<%
+		}
+	%>
 
   </tbody>
 </table>

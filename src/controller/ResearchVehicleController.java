@@ -29,10 +29,10 @@ public class ResearchVehicleController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		super.doGet(req, resp);
+		
 		VehicleServiceInterface vService = new VehicleServiceImp();
-
-		List<Vehicle> data = vService.getAll();
-		req.setAttribute("data", data);
+		List<Vehicle> vehicles = vService.getAll();
+		req.setAttribute("vehicles", vehicles);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
 		try {
 			rd.forward(req, resp);
