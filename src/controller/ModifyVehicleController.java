@@ -104,7 +104,7 @@ public class ModifyVehicleController extends BaseController {
 				m.setKm(kmMotor);
 				vehicleMotorbike = vehicleservice.update(m);
 				break;
-			case "Aireplane":
+			case "Airplane":
 				// code block
 				Vehicle vehicleAirplane = new Airplane();
 				vehicleAirplane.setId(id);
