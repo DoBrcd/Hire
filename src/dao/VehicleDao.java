@@ -235,7 +235,6 @@ public class VehicleDao implements VehicleDaoInterface {
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
 		if (em != null) {
 			try {
-				System.out.println("coucou " + dateBegin);
 				String query = "SELECT DISTINCT v FROM Vehicle v LEFT JOIN v.hires h WHERE h IS NULL OR NOT (('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
 				//String query = "SELECT v FROM Vehicle v WHERE v.id NOT IN( SELECT h.idVehicle_fk FROM Hire h WHERE ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
 				  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery(query).getResultList();
