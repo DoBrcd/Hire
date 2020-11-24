@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +32,7 @@ public class CreateVehicleController extends BaseController {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		super.doPost(req, resp);
-
+		
 		String vehicleType = req.getParameter("vehicleType");
 		String model = req.getParameter("model");
 		String brand = req.getParameter("brand");
@@ -112,14 +113,7 @@ public class CreateVehicleController extends BaseController {
 
 		String pageName = "/createVehicle.jsp";
 
-		RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
-		try {
-			rd.forward(req, resp);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		redirectToView(req, resp, pageName);
 
 	}
 }

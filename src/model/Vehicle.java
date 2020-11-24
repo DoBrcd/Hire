@@ -24,7 +24,7 @@ public  class Vehicle {
 	private int maxSpeed;
 	private String model;
 	private String state;
-	private StateHiring isHiring;
+	private StateHiring isHiring=StateHiring.Free;
 	private String brand;
 	
 	public Long getId() {
