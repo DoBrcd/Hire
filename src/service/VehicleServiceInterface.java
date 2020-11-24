@@ -59,21 +59,21 @@ public interface VehicleServiceInterface {
 	public List<Vehicle> getAllByCriteria(String model,String brand);
 	
 	/**
-	 * lister toutes les vehicules par critaria
+	 * lister toutes les voitures par critaria
 	 * @param String model,String brand,String type
-	 * @return List de toutes les vehicules correpondant aux critaire
+	 * @return List de toutes les voitures correpondant aux critaire
 	 */
 	public List<Car> getAllCarByCriteria(String model,String brand);
 	/**
-	 * lister toutes les vehicules par critaria
+	 * lister toutes les avions par critaria
 	 * @param String model,String brand,String type
-	 * @return List de toutes les vehicules correpondant aux critaire
+	 * @return List de toutes les avions correpondant aux critaire
 	 */
 	public List<Airplane> getAllAirplaneByCriteria(String model,String brand);
 	/**
-	 * lister toutes les vehicules par critaria
+	 * lister toutes les moto par critaria
 	 * @param String model,String brand,String type
-	 * @return List de toutes les vehicules correpondant aux critaire
+	 * @return List de toutes les moto correpondant aux critaire
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand);
 

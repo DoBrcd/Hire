@@ -198,10 +198,10 @@ public class VehicleDao implements VehicleDaoInterface {
 	}
 
 	/**
-	 * lister toutes les vehicules par critaria
+	 * lister toutes les voitures par critaria
 	 * 
 	 * @param String model,String brand,String type
-	 * @return List de toutes les vehicules correpondant aux critaire
+	 * @return List de toutes les voitures correpondant aux critaire
 	 */
 
 	@Override
@@ -228,6 +228,12 @@ public class VehicleDao implements VehicleDaoInterface {
 
 	}
 
+	/**
+	 * lister toutes les Airplanes par critaria
+	 * 
+	 * @param String model,String brand,String type
+	 * @return List de toutes les Airplanes correpondant aux critaire
+	 */
 	@Override
 	public List<Airplane> getAllAirplaneByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -248,6 +254,14 @@ public class VehicleDao implements VehicleDaoInterface {
 		}
 		return null;
 	}
+	
+	
+	/**
+	 * lister toutes les Motorbikes par critaria
+	 * 
+	 * @param String model,String brand,String type
+	 * @return List de toutes les Motorbikes correpondant aux critaire
+	 */
 	@Override
 	public List<Motorbike> getAllMotorbikeByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -269,6 +283,12 @@ public class VehicleDao implements VehicleDaoInterface {
 		return null;
 	}
 
+	/**
+	 * lister toutes les vehicules par critaria
+	 * 
+	 * @param String model,String brand,String type
+	 * @return List de toutes les vehicules correpondant aux critaire
+	 */
 	@Override
 	public List<Vehicle> getAllByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
