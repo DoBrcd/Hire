@@ -18,8 +18,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 
 		if (em != null) {
 			try {
-				Query query = em.createQuery("select p from Employee p where p.identifiant=:identifiant")
-						.setParameter("identifiant", username);
+				Query query = em.createQuery("select p from Employee p where p.identifiant=:identifiant").setParameter("identifiant", username);
 				Employee employee = (Employee) query.getSingleResult();
 				if (employee == null) {
 					System.out.println("Personne non trouvée");
@@ -41,9 +40,12 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	}
 
 	@Override
-	public String register(Employee user) {
-		String msg = "Registration unsuccessful, try again.....";
-		return "jjjjjjjjjj";
+	public int register(Employee user) {
+		em.getTransaction().begin();
+		em.persist(user);
+		em.getTransaction().commit();
+		em.flush();
+		return user.getId();
 	}
 
 	@Override
@@ -71,16 +73,6 @@ public class EmployeeDao implements EmployeeDaoInterface {
 			System.out.println("DB server down.....");
 		}
 		return position;
-	}
-
-	@Override
-	public Employee CreateEmployee(Employee e) {
-
-		EntityTransaction transac = em.getTransaction();
-		transac.begin();
-		em.merge(e);
-		transac.commit();
-		return e;
 	}
 
 	@Override

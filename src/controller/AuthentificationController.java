@@ -2,6 +2,7 @@ package controller;
 
 import service.EmployeeServiceImp;
 import service.EmployeeServiceInterface;
+import service.Encrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +32,8 @@ public class AuthentificationController extends BaseController
     {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        //password = Encrypt.encrypt(password, "ENSSAT-Lannion");
+        
 
         if(username != null && password != null && username.trim().length() > 0 && password.trim().length() > 0)
         {

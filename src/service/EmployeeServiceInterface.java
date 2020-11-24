@@ -8,22 +8,13 @@ public interface EmployeeServiceInterface {
 	public boolean login(String username, String password);
 
 
-	 public String registration(Employee e);
+	 public int registration(Employee e);
 	 public String getPosition(String s);
-	 public Employee createEmployee(Employee e);
 	 
 	 public List<Employee> getAll();
 	 public Employee getByid(Long id);
 	 public Employee update(Employee v);
 	 public boolean delete(Employee v);
-
-
-	/**
-	 * Tells if a given position can do a creation, whatever it is
-	 * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-	 * @return True if the user is allowed to do a creation, else false
-	 */
-	public boolean canCreate(String position);
 
 	/**
 	 * Tells if a given position can create a vehicle
@@ -52,4 +43,12 @@ public interface EmployeeServiceInterface {
 	 * @return True if the user is allowed to access statistics, else false
 	 */
 	public boolean canAccessStats(String position);
+
+
+	/**
+	 * Tells if a given position can do a creation, whatever it is
+	 * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
+	 * @return True if the user is allowed to do a creation, else false
+	 */
+	boolean canCreate(String position);
 }

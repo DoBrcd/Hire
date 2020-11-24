@@ -17,7 +17,7 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
 
 
     @Override
-    public String registration(Employee e)
+    public int registration(Employee e)
     {
         return emDao.register(e);
     }
@@ -29,19 +29,12 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
         return emDao.getPosition(s);
     }
 
-
-    @Override
-    public Employee createEmployee(Employee e)
-    {
-        return emDao.CreateEmployee(e);
-    }
-
     /**
      * Tells if a given position can do a creation, whatever it is
      * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
      * @return True if the user is allowed to do a creation, else false
      */
-    @Override
+	@Override
     public boolean canCreate(String position)
     {
         return position.equals(TechnicalManager.class.getName()) ||
