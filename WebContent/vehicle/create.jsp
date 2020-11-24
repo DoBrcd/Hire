@@ -75,7 +75,7 @@ background-size: cover;
     <option selected>Choose...</option>
     <option value="Motorbike">Motorbike</option>
     <option value="Car">Car</option>
-    <option value="Aireplane">Aireplane</option>
+    <option value="Airplane">Airplane</option>
   </select>
 </div>
   <div class="form-row">
@@ -151,7 +151,7 @@ background-size: cover;
    
     </div>
   </div>
-   <div class="form-row aireplane hidevehicle">
+   <div class="form-row airplane hidevehicle">
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">NB motors</label>
       <input type="number" class="form-control" id="validationTooltip03" name="nbMotors" >

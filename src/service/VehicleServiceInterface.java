@@ -2,6 +2,9 @@ package service;
 
 import java.util.List;
 
+import model.Airplane;
+import model.Car;
+import model.Motorbike;
 import model.Vehicle;
 
 public interface VehicleServiceInterface {
@@ -16,7 +19,7 @@ public interface VehicleServiceInterface {
 	 * @param id de la vehicule
 	 * @return un vehicule ou null
 	 */
-	public Vehicle getByid(Long id);
+	public Vehicle getById(int id);
 	/**
 	 * ajouter un vehicule
 	 * @param un vehcule (car , moto ou avion)
@@ -34,5 +37,45 @@ public interface VehicleServiceInterface {
 	 * @param instance conteine le id
 	 * @return boolean true ou false
 	 */
-	public boolean delete(Vehicle v);
+	public boolean delete(int v);
+	/**
+	 * pour recuperer tous les models
+	 * @param null
+	 * @return liste de tous les model
+	 */
+	public List<String> getAllModels();
+	/**
+	 * pour recuperer tous les brand
+	 * @param null
+	 * @return liste de tous les brand
+	 */
+	public List<String> getAllBrand();
+	
+	/**
+	 * lister toutes les vehicules par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les vehicules correpondant aux critaire
+	 */
+	public List<Vehicle> getAllByCriteria(String model,String brand);
+	
+	/**
+	 * lister toutes les voitures par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les voitures correpondant aux critaire
+	 */
+	public List<Car> getAllCarByCriteria(String model,String brand);
+	/**
+	 * lister toutes les avions par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les avions correpondant aux critaire
+	 */
+	public List<Airplane> getAllAirplaneByCriteria(String model,String brand);
+	/**
+	 * lister toutes les moto par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les moto correpondant aux critaire
+	 */
+	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand);
+
+	
 }
