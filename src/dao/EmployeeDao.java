@@ -43,8 +43,8 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	public int register(Employee user) {
 		em.getTransaction().begin();
 		em.persist(user);
-		em.getTransaction().commit();
 		em.flush();
+		em.getTransaction().commit();
 		return user.getId();
 	}
 

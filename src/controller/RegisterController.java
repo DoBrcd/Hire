@@ -45,11 +45,9 @@ public class RegisterController extends BaseController {
 		if (password.equals(confirmPassword)) {
 
 			password = Encrypt.encrypt(password, "ENSSAT-Lannion");
-			System.out.println(password);
 
 			if (username != null && password != null && username.trim().length() > 0 && password.trim().length() > 0) {
 				EmployeeServiceInterface employeService = new EmployeeServiceImp();
-				//boolean flag = employeService.login(username, password);
 				Employee newEmployee;
 				switch (req.getParameter("position")) {
 				case "Employee":
