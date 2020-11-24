@@ -4,6 +4,9 @@ import java.util.List;
 
 import dao.VehicleDao;
 import dao.VehicleDaoInterface;
+import model.Airplane;
+import model.Car;
+import model.Motorbike;
 import model.Vehicle;
 
 public class VehicleServiceImp implements VehicleServiceInterface {
@@ -15,7 +18,6 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 */
 	@Override
 	public List<Vehicle> getAll() {
-		// TODO Auto-generated method stub
 		return vehicleDao.getAll();
 	}
 	/**
@@ -24,9 +26,9 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 * @return un vehicule ou null
 	 */
 	@Override
-	public Vehicle getByid(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Vehicle getById(int id) {
+		//  Auto-generated method stub
+		return vehicleDao.getById(id);
 	}
 	/**
 	 * ajouter un vehicule
@@ -46,8 +48,8 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 */
 	@Override
 	public Vehicle update(Vehicle v) {
-		// TODO Auto-generated method stub
-		return null;
+		//  Auto-generated method stub
+		return vehicleDao.update(v);
 	}
 	/**
 	 * pour supprimer un vehcule
@@ -55,9 +57,63 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 * @return boolean true ou false
 	 */
 	@Override
-	public boolean delete(Vehicle v) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(int v) {
+		//  Auto-generated method stub
+		return vehicleDao.delete(v);
+	}
+	/**
+	 * pour recuperer tous les Models
+	 * @param null
+	 * @return liste de tous les Models
+	 */
+	@Override
+	public List<String> getAllModels() {
+		//  Auto-generated method stub
+		return vehicleDao.getAllModels();
+	}
+	/**
+	 * pour recuperer tous les brand
+	 * @param null
+	 * @return liste de tous les brand
+	 */
+	@Override
+	public List<String> getAllBrand() {
+		//  Auto-generated method stub
+		return vehicleDao.getAllBrand();
+	}
+	
+	/**
+	 * lister toutes les vehicules par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les vehicules correpondant aux critaire
+	 */
+	public List<Vehicle> getAllByCriteria(String model,String brand){
+		return vehicleDao.getAllByCriteria( model, brand);
+	}
+	
+	/**
+	 * lister toutes les vehicules par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les vehicules correpondant aux critaire
+	 */
+	public List<Car> getAllCarByCriteria(String model,String brand){
+		return vehicleDao.getAllCarByCriteria( model, brand);
+	}
+	/**
+	 * lister toutes les vehicules par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les vehicules correpondant aux critaire
+	 */
+	public List<Airplane> getAllAirplaneByCriteria(String model,String brand){
+		return vehicleDao.getAllAirplaneByCriteria( model, brand);
+	}
+	/**
+	 * lister toutes les vehicules par critaria
+	 * @param String model,String brand,String type
+	 * @return List de toutes les vehicules correpondant aux critaire
+	 */
+	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand){
+		return vehicleDao.getAllMotorbikeByCriteria( model, brand);
 	}
 	
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){

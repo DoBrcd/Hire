@@ -37,6 +37,7 @@ public class CreateVehicleController extends BaseController {
 			String model = req.getParameter("model");
 			String brand = req.getParameter("brand");
 			StateVehicle state = StateVehicle.valueOf(req.getParameter("state"));
+
 			float price = Float.parseFloat(req.getParameter("price"));
 			int maxSpeed = Integer.parseInt(req.getParameter("maxSpeed"));
 			Vehicle v = null;
@@ -56,10 +57,9 @@ public class CreateVehicleController extends BaseController {
 				c.setBrand(brand);
 				c.setHirePrice(price);
 				c.setIsHiring(StateHiring.Free);
+
 				c.setMaxSpeed(maxSpeed);
-				c.setState(state);
 				c.setModel(model);
-				c.setState(state);
 
 				newvehicle = vehicleservice.add(c);
 
@@ -72,13 +72,11 @@ public class CreateVehicleController extends BaseController {
 				m.setPower(powerMotor);
 				m.setKm(kmMotor);
 				m.setIsHiring(StateHiring.Free);
+
 				m.setBrand(brand);
 				m.setHirePrice(price);
 				m.setMaxSpeed(maxSpeed);
-				m.setState(state);
 				m.setModel(model);
-				m.setState(state);
-
 				newvehicle = vehicleservice.add(m);
 
 				break;
@@ -88,12 +86,11 @@ public class CreateVehicleController extends BaseController {
 				int nbMotors = Integer.parseInt(req.getParameter("nbMotors"));
 				a.setNbMotor(nbMotors);
 				a.setIsHiring(StateHiring.Free);
+
 				a.setBrand(brand);
 				a.setHirePrice(price);
 				a.setMaxSpeed(maxSpeed);
-				a.setState(state);
 				a.setModel(model);
-				a.setState(state);
 
 				newvehicle = vehicleservice.add(a);
 

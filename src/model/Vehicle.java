@@ -18,18 +18,22 @@ import javax.persistence.InheritanceType;
 public  class Vehicle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private int id;
+
 	private float hirePrice;
 	private int maxSpeed;
 	private String model;
-	private StateVehicle state;
-	private StateHiring isHiring;
+
+	private String state;
+	private StateHiring isHiring=StateHiring.Free;
 	private String brand;
 	
-	public Long getId() {
-		return this.id;
+	public int getId() {
+		return id;
 	}
-	
+	public void setId(int id) {
+		this.id = id;
+	}
 	public float getHirePrice() {
 		return hirePrice;
 	}
@@ -47,12 +51,6 @@ public  class Vehicle {
 	}
 	public void setModel(String model) {
 		this.model = model;
-	}
-	public StateVehicle getState() {
-		return state;
-	}
-	public void setState(StateVehicle state) {
-		this.state = state;
 	}
 	public StateHiring getIsHiring() {
 		return isHiring;
