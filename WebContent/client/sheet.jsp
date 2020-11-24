@@ -19,7 +19,7 @@
 		<p><button><a href="${pageContext.request.contextPath}/client/modify?id=<%= customer.getId() %>">Modifier</a></button></p>
 	</div>
 	<form method="post" action="${pageContext.request.contextPath}/client/remove">
-		<input type="hidden" name="id" value="<%= customer.getId() %>"></input>
+		<input type="hidden" name="id" value="<%= customer.getId() %>" />
 		<button type="submit">Supprimer</button>
 	</form>
 </body>
