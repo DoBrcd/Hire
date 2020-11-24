@@ -116,7 +116,7 @@ body {
 				</div>
 			</div>
 			<%
-				Car c = new Car();
+				Car c =null;
 			if (typeVehicle == "Car") {
 				c = (Car) vehicle;
 			}
@@ -125,23 +125,23 @@ body {
 				<div class="col-md-6 mb-3">
 					<label for="validationTooltip03">power</label> <input type="text"
 						class="form-control" id="validationTooltip03" name="powercar"
-						value="<%=c.getPower()%>"disabled>
+						value="<%if(c!= null){%><%=c.getPower()%><%}%>" disabled>
 				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">KM</label> <input type="number"
 						class="form-control" id="maxSpeedcar" name="kmCar"
-						value="<%=c.getMaxSpeed()%>"disabled>
+						value="<%if(c!= null){%><%=c.getMaxSpeed()%><%}%>" disabled>
 				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">sits number</label> <input type="number"
-						class="form-control" id="sitsnumber" name="sitsnumber"value="<%=c.getSitsNumber()%>" disabled>
-				
+						class="form-control" id="sitsnumber" name="sitsnumber" value="<%if(c!= null){%><%=c.getSitsNumber()%><%}%>" disabled>
+			
 				</div>
 			</div>
 			<%
-				Motorbike m = new Motorbike();
+				Motorbike m = null;
 			if (typeVehicle == "Motorbike") {
 				m = (Motorbike) vehicle;
 			}
@@ -150,18 +150,18 @@ body {
 				<div class="col-md-6 mb-3">
 					<label for="validationTooltip03">power</label> <input type="text"
 						class="form-control" id="validationTooltip03" name="powerMotor"
-						value="<%=m.getPower()%>" disabled>
+						value="<%if(m!= null){%><%=m.getPower()%><%}%>"disabled>
 					<div class="invalid-tooltip"></div>
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">KM</label> <input type="number"
 						class="form-control" id="maxSpeed" name="kmMotor"
-						value="<%=m.getKm()%>" disabled>
+						value="<%if(m!= null){%><%=m.getKm()%><%}%>" disabled>
 
 				</div>
 			</div>
 			<%
-				Airplane a = new Airplane();
+				Airplane a =null;
 			if (typeVehicle == "Airplane") {
 				a = (Airplane) vehicle;
 			}
@@ -170,7 +170,7 @@ body {
 				<div class="col-md-6 mb-3">
 					<label for="validationTooltip03">NB motors</label> <input
 						type="number" class="form-control" id="validationTooltip03"
-						name="nbMotors" value="<%=a.getNbMotor()%>" disabled>
+						name="nbMotors" value="<%if(a!= null){%><%=a.getNbMotor()%><%}%>" disabled>
 
 				</div>
 
