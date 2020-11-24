@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="model.StateVehicle" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,8 +22,8 @@ $(document).ready(function(){
     case 'Motorbike':
     	$(".moto").show();
         break;
-    case 'Aireplane':
-    	$(".aireplane").show();
+    case 'Airplane':
+    	$(".airplane").show();
         break;
     default:
       console.log(`Sorry, we are out of ${type}.`);
@@ -75,7 +76,7 @@ background-size: cover;
     <option selected>Choose...</option>
     <option value="Motorbike">Motorbike</option>
     <option value="Car">Car</option>
-    <option value="Aireplane">Aireplane</option>
+    <option value="Airplane">Airplane</option>
   </select>
 </div>
   <div class="form-row">
@@ -94,8 +95,12 @@ background-size: cover;
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">state</label>    
-        <input type="text" class="form-control" id="state"  name="state"aria-describedby="validationTooltipUsernamePrepend" required>
+      <label for="validationTooltipUsername">state</label>
+      <select name="state" id="name">
+        <% for(StateVehicle state : StateVehicle.values()){ %>
+        	<option value="<%= state.name() %>"><%= state.name() %></option>
+        <% } %>
+        </select>
     </div>
   </div>
   <div class="form-row">
@@ -151,7 +156,7 @@ background-size: cover;
    
     </div>
   </div>
-   <div class="form-row aireplane hidevehicle">
+   <div class="form-row airplane hidevehicle">
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">NB motors</label>
       <input type="number" class="form-control" id="validationTooltip03" name="nbMotors" >

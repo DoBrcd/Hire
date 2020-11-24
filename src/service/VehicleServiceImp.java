@@ -16,7 +16,7 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	@Override
 	public List<Vehicle> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return vehicleDao.getAll();
 	}
 	/**
 	 * recuperer un vehicule par id
@@ -58,6 +58,10 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	public boolean delete(Vehicle v) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
+		return this.vehicleDao.getFreevehicle(dateBegin, dateEnd);
 	}
 
 }

@@ -35,4 +35,6 @@ public interface VehicleServiceInterface {
 	 * @return boolean true ou false
 	 */
 	public boolean delete(Vehicle v);
+	
+	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd);
 }

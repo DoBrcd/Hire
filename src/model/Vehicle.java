@@ -22,9 +22,13 @@ public  class Vehicle {
 	private float hirePrice;
 	private int maxSpeed;
 	private String model;
-	private String state;
+	private StateVehicle state;
 	private StateHiring isHiring;
 	private String brand;
+	
+	public Long getId() {
+		return this.id;
+	}
 	
 	public float getHirePrice() {
 		return hirePrice;
@@ -44,10 +48,10 @@ public  class Vehicle {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public String getState() {
+	public StateVehicle getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(StateVehicle state) {
 		this.state = state;
 	}
 	public StateHiring getIsHiring() {

@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
+import model.Customer;
 import model.Vehicle;
 import service.DBManager;
 
@@ -18,9 +20,20 @@ public class VehicleDao implements VehicleDaoInterface {
 	 */
 	@Override
 	public List<Vehicle> getAll() {
-		  List<Vehicle> vehicles = em.createQuery("Select v From Vehicle v",
-				  Vehicle.class).getResultList();
-		  return vehicles;
+
+			if (em != null) {
+				try {
+					  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("select p from Vehicle p").getResultList();
+					  return vehicles;
+				} catch (Exception exception) {
+					System.out.println("Exception occured while reading user data: " + exception.getMessage());
+					return null;
+				}
+
+			} else {
+				System.out.println("DB server down.....");
+			}
+			return null;
 	}
 	/**
 	 * recuperer un vehicule par id
@@ -76,6 +89,23 @@ public class VehicleDao implements VehicleDaoInterface {
 				return false;
 			}
 		 
+	}
+	
+	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
+		if (em != null) {
+			try {
+				String query = "SELECT v FROM Vehicle v WHERE v.id NOT IN( SELECT h.idVehicle_fk FROM Hire h WHERE ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
+				  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery(query).getResultList();
+				  return vehicles;
+			} catch (Exception exception) {
+				System.out.println("Exception occured while reading user data: " + exception.getMessage());
+				return null;
+			}
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;		
 	}
 
 }
