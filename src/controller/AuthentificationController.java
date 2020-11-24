@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.Employee;
+
 import java.io.IOException;
 
 @WebServlet("/")
@@ -36,13 +39,14 @@ public class AuthentificationController extends BaseController
 
         if(username != null && password != null && username.trim().length() > 0 && password.trim().length() > 0)
         {
-            EmployeeServiceInterface employeService = new EmployeeServiceImp();
-            boolean flag = employeService.login(username, password);
-            if(flag)
+            EmployeeServiceInterface employeeService = new EmployeeServiceImp();
+            Employee employee = employeeService.login(username, password);
+            if(employee != null)
             {
                 HttpSession maSession = req.getSession();
+                maSession.setAttribute("employee", employee);
                 maSession.setAttribute("id", username);
-                String position = employeService.getPosition(username);
+                String position = employeeService.getPosition(username);
                 maSession.setAttribute("position", position);
                 resp.sendRedirect(req.getContextPath() + "/home");
             }

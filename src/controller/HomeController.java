@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Employee;
+
 import java.io.IOException;
 
 @WebServlet("/home")
@@ -21,19 +24,19 @@ public class HomeController extends BaseController
         {
             EmployeeServiceInterface service = new EmployeeServiceImp();
 
-            final String position = (String) req.getSession().getAttribute("position");
+            final Employee user = (Employee) req.getSession().getAttribute("employee");
 
-            boolean canUserCreate = service.canCreate(position);
+            boolean canUserCreate = service.canCreate(user);
 
-            req.setAttribute("userCanAccessStats", service.canAccessStats(position));
+            req.setAttribute("userCanAccessStats", service.canAccessStats(user));
             req.setAttribute("userCanCreate", canUserCreate);
 
             if(canUserCreate)
             {
-                req.setAttribute("userCanCreateVehicle", service.canCreateVehicle(position));
-                req.setAttribute("userCanCreateCustomer", service.canCreateCustomer(position));
-                req.setAttribute("userCanCreateHiring", service.canCreateHiring(position));
-                req.setAttribute("userCanCreateEmployee", service.canCreateEmployee(position));
+                req.setAttribute("userCanCreateVehicle", service.canCreateVehicle(user));
+                req.setAttribute("userCanCreateCustomer", service.canCreateCustomer(user));
+                req.setAttribute("userCanCreateHiring", service.canCreateHiring(user));
+                req.setAttribute("userCanCreateEmployee", service.canCreateEmployee(user));
             }
 
             req.getRequestDispatcher(pageName).include(req, resp);

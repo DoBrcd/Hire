@@ -14,7 +14,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	private EntityManager em = DBManager.getEntityManager();
 
 	@Override
-	public boolean login(String username, String password) {
+	public Employee login(String username, String password) {
 
 		if (em != null) {
 			try {
@@ -25,18 +25,18 @@ public class EmployeeDao implements EmployeeDaoInterface {
 				} else {
 					if (password.equals(employee.getPassword())) {
 						System.out.println("employee: " + employee.toString() + " " + employee.getDecriminatorValue());
-						return true;
+						return employee;
 					}
 				}
 			} catch (Exception exception) {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
-				return false;
+				return null;
 			}
 
 		} else {
 			System.out.println("DB server down.....");
 		}
-		return false;
+		return null;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	}
 
 	@Override
-	public Employee getByid(Long id) {
+	public Employee getByid(int id) {
 		return em.find(Employee.class, id);
 	}
 

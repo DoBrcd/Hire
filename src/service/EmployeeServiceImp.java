@@ -10,7 +10,7 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
     private EmployeeDao emDao = new EmployeeDao();
 
     @Override
-    public boolean login(String username, String password)
+    public Employee login(String username, String password)
     {
         return emDao.login(username, password);
     }
@@ -29,53 +29,20 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
         return emDao.getPosition(s);
     }
 
-    /**
-     * Tells if a given position can do a creation, whatever it is
-     * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-     * @return True if the user is allowed to do a creation, else false
-     */
-	@Override
-    public boolean canCreate(String position)
-    {
-        return position.equals(TechnicalManager.class.getName()) ||
-                position.equals(CustomerManager.class.getName()) ||
-                position.equals(GeneralManager.class.getName());
-    }
-
-    /**
-     * Tells if a given position can create a vehicle
-     * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-     * @return True if the user is allowed to create a vehicle, else false
-     */
     @Override
-    public boolean canCreateVehicle(String position)
-    {
-        return position.equals(TechnicalManager.class.getName())
-                || position.equals(GeneralManager.class.getName());
-    }
-
-
-
-	@Override
 	public List<Employee> getAll() {
 		return emDao.getAll();
 	}
 
-
-
 	@Override
-	public Employee getByid(Long id) {
+	public Employee getByid(int id) {
 		return emDao.getByid(id);
 	}
-
-
 
 	@Override
 	public Employee update(Employee v) {
 		return emDao.update(v);
 	}
-
-
 
 	@Override
 	public boolean delete(Employee v) {
@@ -83,49 +50,39 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
 	}
 
 
-    /**
-     * Tells if a given position can create a customer
-     * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-     * @return True if the user is allowed to create a customer, else false
-     */
-    @Override
-    public boolean canCreateCustomer(String position)
-    {
-        return position.equals(CustomerManager.class.getName())
-                || position.equals(GeneralManager.class.getName());
-    }
-
-    /**
-     * Tells if a given position can create a hiring
-     * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-     * @return True if the user is allowed to create an hiring, else false
-     */
-    @Override
-    public boolean canCreateHiring(String position)
-    {
-        return position.equals(GeneralManager.class.getName());
-    }
-
-    /**
-     * Tells if a given position can access to statistics
-     * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-     * @return True if the user is allowed to access statistics, else false
-     */
-    @Override
-    public boolean canAccessStats(String position)
-    {
-        return position.equals(CommercialManager.class.getName())
-                || position.equals(GeneralManager.class.getName());
-    }
-
-    /**
-     * Tells if a given position can access to statistics
-     * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
-     * @return True if the user is allowed to access statistics, else false
-     */
 	@Override
-	public Object canCreateEmployee(String position) {
-        return position.equals(GeneralManager.class.getName());
+	public boolean canCreateVehicle(Employee employee) {
+		return employee instanceof I_TechnicalManager;
 	}
 
+
+	@Override
+	public boolean canCreateCustomer(Employee employee) {
+		return employee instanceof I_CustomerManager;
+	}
+
+
+	@Override
+	public boolean canCreateHiring(Employee employee) {
+		return employee instanceof GeneralManager; 
+	}
+
+
+	@Override
+	public boolean canAccessStats(Employee employee) {
+		return employee instanceof I_CommercialManager;
+	}
+
+
+	@Override
+	public Object canCreateEmployee(Employee employee) {
+		return employee instanceof GeneralManager;
+	}
+
+
+	@Override
+	public boolean canCreate(Employee employee) {
+		return employee instanceof I_CustomerManager 
+				|| employee instanceof I_TechnicalManager;
+	}
 }
