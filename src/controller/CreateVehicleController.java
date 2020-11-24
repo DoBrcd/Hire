@@ -32,88 +32,86 @@ public class CreateVehicleController extends BaseController {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		
-		String vehicleType = req.getParameter("vehicleType");
-		String model = req.getParameter("model");
-		String brand = req.getParameter("brand");
-		String state = req.getParameter("state");
-		float price = Float.parseFloat(req.getParameter("price"));
-		int maxSpeed = Integer.parseInt(req.getParameter("maxSpeed"));
-		Vehicle v = null;
+		if (isAuthenticated(req, resp)) {
 
-		VehicleServiceInterface vehicleservice = new VehicleServiceImp();
-		Vehicle newvehicle = null;
-		switch (vehicleType) {
-		case "Car":
-			// code block
-			Car c = new Car();
-			int powercar = Integer.parseInt(req.getParameter("powercar"));
-			int kmCar = Integer.parseInt(req.getParameter("kmCar"));
-			int sitsnumber = Integer.parseInt(req.getParameter("sitsnumber"));
-			c.setPower(powercar);
-			c.setKm(kmCar);
-			c.setSitsNumber(sitsnumber);
+			String vehicleType = req.getParameter("vehicleType");
+			String model = req.getParameter("model");
+			String brand = req.getParameter("brand");
+			String state = req.getParameter("state");
+			float price = Float.parseFloat(req.getParameter("price"));
+			int maxSpeed = Integer.parseInt(req.getParameter("maxSpeed"));
+			Vehicle v = null;
 
-			c.setBrand(brand);
-			c.setHirePrice(price);
-			c.setMaxSpeed(maxSpeed);
-			c.setState(state);
-			c.setModel(model);
-			c.setState(state);
+			VehicleServiceInterface vehicleservice = new VehicleServiceImp();
+			Vehicle newvehicle = null;
+			switch (vehicleType) {
+			case "Car":
+				// code block
+				Car c = new Car();
+				int powercar = Integer.parseInt(req.getParameter("powercar"));
+				int kmCar = Integer.parseInt(req.getParameter("kmCar"));
+				int sitsnumber = Integer.parseInt(req.getParameter("sitsnumber"));
+				c.setPower(powercar);
+				c.setKm(kmCar);
+				c.setSitsNumber(sitsnumber);
 
-			newvehicle = vehicleservice.add(c);
+				c.setBrand(brand);
+				c.setHirePrice(price);
+				c.setMaxSpeed(maxSpeed);
+				c.setState(state);
+				c.setModel(model);
+				c.setState(state);
 
-			break;
-		case "Motorbike":
-			// code block
-			Motorbike m = new Motorbike();
-			int powerMotor = Integer.parseInt(req.getParameter("powerMotor"));
-			int kmMotor = Integer.parseInt(req.getParameter("kmMotor"));
-			m.setPower(powerMotor);
-			m.setKm(kmMotor);
+				newvehicle = vehicleservice.add(c);
 
-			m.setBrand(brand);
-			m.setHirePrice(price);
-			m.setMaxSpeed(maxSpeed);
-			m.setState(state);
-			m.setModel(model);
-			m.setState(state);
+				break;
+			case "Motorbike":
+				// code block
+				Motorbike m = new Motorbike();
+				int powerMotor = Integer.parseInt(req.getParameter("powerMotor"));
+				int kmMotor = Integer.parseInt(req.getParameter("kmMotor"));
+				m.setPower(powerMotor);
+				m.setKm(kmMotor);
 
-			newvehicle = vehicleservice.add(m);
+				m.setBrand(brand);
+				m.setHirePrice(price);
+				m.setMaxSpeed(maxSpeed);
+				m.setState(state);
+				m.setModel(model);
+				m.setState(state);
 
-			break;
-		case "Aireplane":
-			// code block
-			Airplane a = new Airplane();
-			int nbMotors = Integer.parseInt(req.getParameter("nbMotors"));
-			a.setNbMotor(nbMotors);
+				newvehicle = vehicleservice.add(m);
 
-			a.setBrand(brand);
-			a.setHirePrice(price);
-			a.setMaxSpeed(maxSpeed);
-			a.setState(state);
-			a.setModel(model);
-			a.setState(state);
+				break;
+			case "Airplane":
+				// code block
+				Airplane a = new Airplane();
+				int nbMotors = Integer.parseInt(req.getParameter("nbMotors"));
+				a.setNbMotor(nbMotors);
 
-			newvehicle = vehicleservice.add(a);
+				a.setBrand(brand);
+				a.setHirePrice(price);
+				a.setMaxSpeed(maxSpeed);
+				a.setState(state);
+				a.setModel(model);
+				a.setState(state);
 
-			break;
+				newvehicle = vehicleservice.add(a);
 
+				break;
+
+			}
+
+			if (newvehicle != null) {
+				req.setAttribute("msg", "mission accomplished");
+				req.setAttribute("flag", "true");
+
+			} else {
+				req.setAttribute("msg", "mission faild");
+				req.setAttribute("flag", "false");
+
+			}
+			redirectToView(req, resp, pageName);
 		}
-
-		if (newvehicle != null) {
-			req.setAttribute("msg", "mission accomplished");
-			req.setAttribute("flag", "true");
-
-		} else {
-			req.setAttribute("msg", "mission faild");
-			req.setAttribute("flag", "false");
-
-		}
-
-		
-
-		redirectToView(req, resp, pageName);
-
 	}
 }
