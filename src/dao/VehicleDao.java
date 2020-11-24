@@ -1,19 +1,17 @@
 package dao;
 
-import java.util.List;
+import model.Airplane;
+import model.Car;
+import model.Motorbike;
+import model.Vehicle;
+import service.DBManager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-
-import model.Airplane;
-import model.Car;
-import model.Motorbike;
-import model.Vehicle;
-import service.DBManager;
+import java.util.List;
 
 public class VehicleDao implements VehicleDaoInterface {
 
@@ -238,7 +236,7 @@ public class VehicleDao implements VehicleDaoInterface {
 		if (em != null) {
 			try {
 				System.out.println("coucou " + dateBegin);
-				String query = "SELECT DISTINCT v FROM Vehicle v LEFT JOIN v.hires h WHERE v.hires IS NULL OR NOT ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding)";
+				String query = "SELECT DISTINCT v FROM Vehicle v LEFT JOIN v.hires h WHERE h IS NULL OR NOT (('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
 				//String query = "SELECT v FROM Vehicle v WHERE v.id NOT IN( SELECT h.idVehicle_fk FROM Hire h WHERE ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
 				  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery(query).getResultList();
 				  return vehicles;
