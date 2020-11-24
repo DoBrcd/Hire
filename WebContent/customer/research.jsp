@@ -60,11 +60,16 @@ body {
 </nav><div class="container">
 	<form class="needs-validation bg-light p-3 mt-5"
 		action="<%=request.getContextPath()%>/customer/research" method="post">
+				<% if(request.getAttribute("msg") != null) { %>
+		<div class="alert alert-danger" role="alert">
+			  <%=request.getAttribute("msg") %>
+			</div>
+			<% } %>	
 		<div class="input-group mb-3">
 
 			<div class="form-group">
 			    <label for="exampleInputEmail1">Nom ou mail du client</label>
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="reqResearch">
 			</div>
 
 		</div>

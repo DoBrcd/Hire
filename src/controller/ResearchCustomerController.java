@@ -66,11 +66,12 @@ public class ResearchCustomerController extends BaseController {
 		if (isAuthenticated(req, resp)) {
 			CustomerServiceInterface customerService = new CustomerServiceImp();
 
-			String name = req.getParameter("name");
-			String id = req.getParameter("id");
+			String reqResearch = req.getParameter("reqResearch");
 			
-			List<Customer> customers = customerService.getAllCustomersByCriteria(name);
-
+			List<Customer> customers = customerService.getAllCustomersByCriteria(reqResearch);
+			req.setAttribute("id", customers);
+			req.setAttribute("noms", customers);
+			req.setAttribute("customers", customers);
 			redirectToView(req, resp, pageName);
 			
 		}

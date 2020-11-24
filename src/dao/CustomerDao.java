@@ -117,10 +117,9 @@ public class CustomerDao implements CustomerDaoInterface {
 		if (em != null) {
 			CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 			CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
-			Root<Customer> vehicleRoot = criteriaQuery.from(Customer.class);
-			Predicate predicateForName = criteriaBuilder.equal(vehicleRoot.get("name"), name);
-			Predicate predicateForMail = criteriaBuilder.equal(vehicleRoot.get("email"), name);
-
+			Root<Customer> customerRoot = criteriaQuery.from(Customer.class);
+			Predicate predicateForName = criteriaBuilder.like(customerRoot.get("name"), name);
+			Predicate predicateForMail = criteriaBuilder.like(customerRoot.get("email"), name);
 			Predicate predicate = criteriaBuilder.or(predicateForName, predicateForMail);
 			
 			try {

@@ -41,7 +41,7 @@
                                 Véhicule
                             </a>
                         <% } if((boolean)request.getAttribute("userCanCreateCustomer")) { %>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/client/create">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/create">
                                 Client
                             </a>
                         <% } %>
@@ -55,7 +55,7 @@
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/research">
                         Véhicule
                     </a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/client/search">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/research">
                         Client
                     </a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/research">
