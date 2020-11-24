@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.Collection;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -27,6 +30,9 @@ public  class Vehicle {
 	private String state;
 	private StateHiring isHiring=StateHiring.Free;
 	private String brand;
+	
+	@OneToMany(mappedBy="vehicle")
+	private Collection<Hire> hires;
 	
 	public int getId() {
 		return id;

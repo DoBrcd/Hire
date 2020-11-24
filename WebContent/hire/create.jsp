@@ -29,7 +29,7 @@
 			<label name="vehicle">La liste des véhicles à louer</label>
 			<select name="vehicle">
 				<% for(Vehicle vehicle : vehicles){ %>
-					<option value="<%= vehicle.getId() %>"><%= vehicle.getModel() %></option>
+					<option value="<%= vehicle.getId() %>"> <%= vehicle.getBrand() %> <%= vehicle.getModel() %></option>
 				<% } %>
 			</select>
 		</div>

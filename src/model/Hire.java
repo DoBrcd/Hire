@@ -17,7 +17,7 @@ public class Hire {
 	  @JoinColumn(name = "idClient_fk")
 	private Customer client;
 
-	  @OneToOne
+	  @ManyToOne
 	  @JoinColumn(name = "idVehicle_fk")
 	private Vehicle vehicle;
 	
