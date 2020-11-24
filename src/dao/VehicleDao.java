@@ -138,10 +138,10 @@ public class VehicleDao implements VehicleDaoInterface {
 	 * @return boolean true ou false
 	 */
 	@Override
-	public boolean delete(Vehicle v) {
+	public boolean delete(int v) {
 		if(em != null) {
 			try {
-				Vehicle vehicle = em.find(Vehicle.class, v.getId());
+				Vehicle vehicle = em.find(Vehicle.class, v);
 				em.getTransaction().begin();
 				em.remove(vehicle);
 				em.getTransaction().commit();
@@ -248,7 +248,6 @@ public class VehicleDao implements VehicleDaoInterface {
 		}
 		return null;
 	}
-
 	@Override
 	public List<Motorbike> getAllMotorbikeByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -256,7 +255,6 @@ public class VehicleDao implements VehicleDaoInterface {
 		Root<Motorbike> vehicleRoot = criteriaQuery.from(Motorbike.class);
 		Predicate predicateForBrand = criteriaBuilder.equal(vehicleRoot.get("brand"), brand);
 		Predicate predicateForModel = criteriaBuilder.equal(vehicleRoot.get("model"), model);
-
 		Predicate predicate = criteriaBuilder.or(predicateForBrand, predicateForModel);
 
 		try {

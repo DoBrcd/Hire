@@ -30,7 +30,7 @@ $(document).ready(function(){
 			$(".moto").show();
 			break;
 		case 'Airplane':
-			$(".aireplane").show();
+			$(".airplane").show();
 			break;
 		default:
 			console.log(`Sorry, we are out of ${type}.`);
@@ -166,7 +166,7 @@ body {
 				a = (Airplane) vehicle;
 			}
 			%>
-			<div class="form-row aireplane hidevehicle">
+			<div class="form-row airplane hidevehicle">
 				<div class="col-md-6 mb-3">
 					<label for="validationTooltip03">NB motors</label> <input
 						type="number" class="form-control" id="validationTooltip03"

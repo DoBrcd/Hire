@@ -58,7 +58,7 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 * @return boolean true ou false
 	 */
 	@Override
-	public boolean delete(Vehicle v) {
+	public boolean delete(int v) {
 		//  Auto-generated method stub
 		return vehicleDao.delete(v);
 	}

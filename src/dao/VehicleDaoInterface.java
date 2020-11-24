@@ -37,7 +37,7 @@ public interface VehicleDaoInterface {
 	 * @param instance conteine le id
 	 * @return boolean true ou false
 	 */
-	public boolean delete(Vehicle v);
+	public boolean delete(int v);
 	
 	
 	/**

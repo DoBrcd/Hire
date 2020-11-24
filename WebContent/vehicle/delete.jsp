@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Modifier une vehicle</title>
+<title>Modifier un véhicule</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -30,7 +30,7 @@ $(document).ready(function(){
 			$(".moto").show();
 			break;
 		case 'Airplane':
-			$(".aireplane").show();
+			$(".airplane").show();
 			break;
 		default:
 			console.log(`Sorry, we are out of ${type}.`);
@@ -166,7 +166,7 @@ body {
 				a = (Airplane) vehicle;
 			}
 			%>
-			<div class="form-row aireplane hidevehicle">
+			<div class="form-row airplane hidevehicle">
 				<div class="col-md-6 mb-3">
 					<label for="validationTooltip03">NB motors</label> <input
 						type="number" class="form-control" id="validationTooltip03"

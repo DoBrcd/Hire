@@ -62,10 +62,9 @@ public class DeleteVehicleController extends BaseController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (isAuthenticated(req, resp)) {
 			VehicleServiceInterface vService = new VehicleServiceImp();
-			Long id=Long.parseLong(req.getParameter("id"));
-			Vehicle v=new Vehicle();
-			v.setId(id);
-			boolean flag = vService.delete(v);
+			int id=Integer.parseInt(req.getParameter("id"));
+			
+			boolean flag = vService.delete(id);
 
 		
 			resp.sendRedirect(req.getContextPath() + "/vehicle/research");
