@@ -58,7 +58,7 @@ public class ModifyVehicleController extends BaseController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		if (isAuthenticated(req, resp)) {
-			Long id = Long.parseLong(req.getParameter("id"));
+			int id = Integer.parseInt(req.getParameter("id"));
 
 			String vehicleType = req.getParameter("vehicleType");
 			String model = req.getParameter("model");
