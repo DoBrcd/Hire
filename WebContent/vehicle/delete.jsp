@@ -86,13 +86,13 @@ body {
 					<label for="validationTooltip01">model</label> <input type="text"
 						class="form-control" id="validationTooltip01" name="model"
 						value="<%=vehicle.getModel()%>" disabled>
-					<div class="valid-tooltip">Looks good!</div>
+				
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationTooltip02">brand</label> <input type="text"
 						class="form-control" id="validationTooltip02" name="brand"
 						value="<%=vehicle.getBrand()%>"disabled>
-					<div class="valid-tooltip">Looks good!</div>
+					
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationTooltipUsername">state</label> <input
@@ -106,13 +106,13 @@ body {
 					<label for="validationTooltip03">price</label> <input type="text"
 						class="form-control" id="validationTooltip03" name="price"
 						value="<%=vehicle.getHirePrice()%>"disabled>
-					<div class="invalid-tooltip">Please provide a valid city.</div>
+				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">Maximum Speed</label> <input type="text"
 						class="form-control" id="maxSpeed" name="maxSpeed"
 						value="<%=vehicle.getMaxSpeed()%>"disabled>
-					<div class="invalid-tooltip">Please select a valid state.</div>
+				
 				</div>
 			</div>
 			<%
@@ -126,18 +126,18 @@ body {
 					<label for="validationTooltip03">power</label> <input type="text"
 						class="form-control" id="validationTooltip03" name="powercar"
 						value="<%=c.getPower()%>"disabled>
-					<div class="invalid-tooltip">Please provide a valid city.</div>
+				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">KM</label> <input type="number"
 						class="form-control" id="maxSpeedcar" name="kmCar"
 						value="<%=c.getMaxSpeed()%>"disabled>
-					<div class="invalid-tooltip">Please select a valid state.</div>
+				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">sits number</label> <input type="number"
 						class="form-control" id="sitsnumber" name="sitsnumber"value="<%=c.getSitsNumber()%>" disabled>
-					<div class="invalid-tooltip">Please select a valid state.</div>
+				
 				</div>
 			</div>
 			<%

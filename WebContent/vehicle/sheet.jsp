@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Modifier une vehicle</title>
+<title>Modifier un véhicule</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -30,7 +30,7 @@ $(document).ready(function(){
 			$(".moto").show();
 			break;
 		case 'Airplane':
-			$(".aireplane").show();
+			$(".airplane").show();
 			break;
 		default:
 			console.log(`Sorry, we are out of ${type}.`);
@@ -91,7 +91,7 @@ body {
 					<label for="validationTooltip02">brand</label> <input type="text"
 						class="form-control" id="validationTooltip02" name="brand"
 						value="<%=vehicle.getBrand()%>" disabled>
-					<div class="valid-tooltip">Looks good!</div>
+					
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="validationTooltipUsername">state</label> <input
@@ -105,13 +105,13 @@ body {
 					<label for="validationTooltip03">price</label> <input type="text"
 						class="form-control" id="validationTooltip03" name="price"
 						value="<%=vehicle.getHirePrice()%>" disabled>
-					<div class="invalid-tooltip">Please provide a valid city.</div>
+					
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">Maximum Speed</label> <input type="text"
 						class="form-control" id="maxSpeed" name="maxSpeed"
 						value="<%=vehicle.getMaxSpeed()%>" disabled>
-					<div class="invalid-tooltip">Please select a valid state.</div>
+					
 				</div>
 			</div>
 			<%
@@ -125,18 +125,18 @@ body {
 					<label for="validationTooltip03">power</label> <input type="text"
 						class="form-control" id="validationTooltip03" name="powercar"
 						value="<%=c.getPower()%>" disabled>
-					<div class="invalid-tooltip">Please provide a valid city.</div>
+				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">KM</label> <input type="number"
 						class="form-control" id="maxSpeedcar" name="kmCar"
 						value="<%=c.getMaxSpeed()%>" disabled>
-					<div class="invalid-tooltip">Please select a valid state.</div>
+				
 				</div>
 				<div class="col-md-3 mb-3">
 					<label for="maxSpeed">sits number</label> <input type="number"
 						class="form-control" id="sitsnumber" name="sitsnumber" value="<%=c.getSitsNumber()%>" disabled>
-					<div class="invalid-tooltip">Please select a valid state.</div>
+			
 				</div>
 			</div>
 			<%
@@ -165,7 +165,7 @@ body {
 				a = (Airplane) vehicle;
 			}
 			%>
-			<div class="form-row aireplane hidevehicle">
+			<div class="form-row airplane hidevehicle">
 				<div class="col-md-6 mb-3">
 					<label for="validationTooltip03">NB motors</label> <input
 						type="number" class="form-control" id="validationTooltip03"

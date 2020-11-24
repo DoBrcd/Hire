@@ -19,7 +19,7 @@ import service.VehicleServiceInterface;
 @WebServlet("/vehicle/create")
 public class CreateVehicleController extends BaseController {
 
-	private final String pageName = "/vehicle/create.jsp";
+	private static final String pageName = "/vehicle/create.jsp";
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -111,7 +111,7 @@ public class CreateVehicleController extends BaseController {
 
 		}
 
-		String pageName = "/createVehicle.jsp";
+		
 
 		redirectToView(req, resp, pageName);
 
