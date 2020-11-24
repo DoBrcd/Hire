@@ -71,6 +71,11 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/create">Nouvelle location</a>
                 </li>
             <% } %>
+            <% if((boolean)request.getAttribute("userCanCreate") && (boolean)request.getAttribute("userCanCreateEmployee")) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Nouvel employée</a>
+                </li>
+            <% } %>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>

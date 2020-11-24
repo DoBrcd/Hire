@@ -44,6 +44,12 @@ public interface EmployeeServiceInterface {
 	 */
 	public boolean canAccessStats(String position);
 
+	/**
+	 * Tells if a given position can access to employee
+	 * @param position The user's position as a String (user's class name: TechnicalManager, GeneralManager, ...)
+	 * @return True if the user is allowed to access employee, else false
+	 */
+	public Object canCreateEmployee(String position);
 
 	/**
 	 * Tells if a given position can do a creation, whatever it is
@@ -51,4 +57,5 @@ public interface EmployeeServiceInterface {
 	 * @return True if the user is allowed to do a creation, else false
 	 */
 	boolean canCreate(String position);
+
 }

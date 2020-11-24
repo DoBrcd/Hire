@@ -33,6 +33,7 @@ public class HomeController extends BaseController
                 req.setAttribute("userCanCreateVehicle", service.canCreateVehicle(position));
                 req.setAttribute("userCanCreateCustomer", service.canCreateCustomer(position));
                 req.setAttribute("userCanCreateHiring", service.canCreateHiring(position));
+                req.setAttribute("userCanCreateEmployee", service.canCreateEmployee(position));
             }
 
             req.getRequestDispatcher(pageName).include(req, resp);
