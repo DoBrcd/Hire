@@ -27,7 +27,7 @@ background-size: cover;
 	<% } %>
 	</h2>
 		
-		<form action="<%=request.getContextPath()%>/" method="post" class="form bg-light p-2" style="width: 18rem;">
+		<form action="<%=request.getContextPath()%>/register" method="post" class="form bg-light p-2" style="width: 18rem;">
 		<h1>Employee Login Form</h1>
 		<% if(request.getAttribute("msg") != null) { %>
 		<div class="alert alert-danger" role="alert">
