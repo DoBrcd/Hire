@@ -16,9 +16,9 @@
 		<p><strong>Adresse</strong> : <%= customer.getAddress() %></p>
 		<p><strong>Téléphone</strong> : <%= customer.getPhone() %></p>
 		<p><strong>E-mail</strong> : <%= customer.getEmail() %></p>
-		<p><button><a href="${pageContext.request.contextPath}/client/modify?id=<%= customer.getId() %>">Modifier</a></button></p>
+		<p><button><a href="${pageContext.request.contextPath}/customer/modify?id=<%= customer.getId() %>">Modifier</a></button></p>
 	</div>
-	<form method="post" action="${pageContext.request.contextPath}/client/remove">
+	<form method="post" action="${pageContext.request.contextPath}/customer/remove">
 		<input type="hidden" name="id" value="<%= customer.getId() %>"></input>
 		<button type="submit">Supprimer</button>
 	</form>

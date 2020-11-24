@@ -51,4 +51,13 @@ public class CustomerServiceImp implements CustomerServiceInterface{
 	public void remove(int customerId) {
 		dao.remove(customerId);
 	}
+
+	/**
+	 * return a list of customers
+	 * @return List of customers by criteria
+	 */
+	@Override
+	public List<Customer> getAllCustomersByCriteria(String name) {
+		return dao.getAllCustomersByCriteria(name);
+	}
 }
