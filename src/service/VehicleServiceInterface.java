@@ -19,7 +19,7 @@ public interface VehicleServiceInterface {
 	 * @param id de la vehicule
 	 * @return un vehicule ou null
 	 */
-	public Vehicle getById(Long id);
+	public Vehicle getById(int id);
 	/**
 	 * ajouter un vehicule
 	 * @param un vehcule (car , moto ou avion)

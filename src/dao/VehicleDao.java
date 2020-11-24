@@ -41,7 +41,7 @@ public class VehicleDao implements VehicleDaoInterface {
 	 * @return un vehicule ou null
 	 */
 	@Override
-	public Vehicle getById(Long id) {
+	public Vehicle getById(int id) {
 
 		return em.find(Vehicle.class, id);
 	}

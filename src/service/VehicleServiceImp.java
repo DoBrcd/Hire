@@ -27,7 +27,7 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 * @return un vehicule ou null
 	 */
 	@Override
-	public Vehicle getById(Long id) {
+	public Vehicle getById(int id) {
 		//  Auto-generated method stub
 		return vehicleDao.getById(id);
 	}

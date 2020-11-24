@@ -27,7 +27,7 @@ public class VehicleSheetController extends BaseController {
 		if(isAuthenticated(req, resp))
 		{
 			VehicleServiceInterface vService = new VehicleServiceImp();
-			Vehicle v = vService.getById(Long.parseLong(req.getParameter("id")));
+			Vehicle v = vService.getById(Integer.parseInt(req.getParameter("id")));
 
 			
 			if (v instanceof Car) {

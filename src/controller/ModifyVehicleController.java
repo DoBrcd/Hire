@@ -24,7 +24,7 @@ public class ModifyVehicleController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		if (isAuthenticated(req, resp)) {
-			Long id = Long.parseLong(req.getParameter("id"));
+			int id = Integer.parseInt(req.getParameter("id"));
 
 			VehicleServiceInterface vService = new VehicleServiceImp();
 			Vehicle v = vService.getById(id);
