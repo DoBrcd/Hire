@@ -73,6 +73,7 @@ public class ModifyVehicleController extends BaseController {
 			case "Car":
 				// code block
 				Vehicle vehicleCar = new Car();
+				vehicleCar.setId(id);
 				vehicleCar.setBrand(brand);
 				vehicleCar.setHirePrice(price);
 				vehicleCar.setMaxSpeed(maxSpeed);
@@ -90,6 +91,7 @@ public class ModifyVehicleController extends BaseController {
 			case "Motorbike":
 				// code block
 				Vehicle vehicleMotorbike = new Motorbike();
+				vehicleMotorbike.setId(id);
 				vehicleMotorbike.setBrand(brand);
 				vehicleMotorbike.setHirePrice(price);
 				vehicleMotorbike.setMaxSpeed(maxSpeed);
@@ -105,6 +107,7 @@ public class ModifyVehicleController extends BaseController {
 			case "Aireplane":
 				// code block
 				Vehicle vehicleAirplane = new Airplane();
+				vehicleAirplane.setId(id);
 				vehicleAirplane.setBrand(brand);
 				vehicleAirplane.setHirePrice(price);
 				vehicleAirplane.setMaxSpeed(maxSpeed);
