@@ -39,4 +39,9 @@ public class CreateHireLocation extends BaseController {
 			redirectToView(req, resp, pageName);
 		}
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		
+	}
 }

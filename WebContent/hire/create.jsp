@@ -33,8 +33,22 @@
 				<% } %>
 			</select>
 		</div>
+		<div>
+			<label name="km">Nombre de kilomètres prévues</label>
+			<input type="number" name="km">
+		</div>
+		<div>
+			<label name="prix">Prix prévionnel</label>
+			<input type="number" name="prix">
+		</div>
+		<div>
+			<input type="checkbox" name="reduction" id="reduction">
+			<label name="reduction" disabled>Appliquer une réduction</label>
+		</div>
 		<button type="submit">Louer</button>
 	</form>
-
+	<script>
+		document.getElementById("reduction").disabled = true;
+	</script>
 </body>
 </html>
