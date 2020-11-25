@@ -52,9 +52,11 @@ public class BaseController extends HttpServlet {
 	 * @param request The current HttpServletRequest to be sent to JSP
 	 * @param response The response that will be sent to user, which is dispatch to JSP
 	 * @param viewName The view name as the path to the corresponding JSP file
+	 * @param title The title of the view (default is "Hire")
 	 */
-	protected void redirectToView(HttpServletRequest req, HttpServletResponse resp, final String viewName)
+	protected void redirectToView(HttpServletRequest req, HttpServletResponse resp, final String viewName, final String title)
 	{
+		req.setAttribute("title", title);
 		if(isAuthenticated(req))
         {
             EmployeeServiceInterface service = new EmployeeServiceImp();
@@ -84,5 +86,16 @@ public class BaseController extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Sends a given view to user
+	 * @param request The current HttpServletRequest to be sent to JSP
+	 * @param response The response that will be sent to user, which is dispatch to JSP
+	 * @param viewName The view name as the path to the corresponding JSP file
+	 */
+	protected void redirectToView(HttpServletRequest req, HttpServletResponse resp, final String viewName)
+	{
+		redirectToView(req, resp, viewName, "Hire");
 	}
 }

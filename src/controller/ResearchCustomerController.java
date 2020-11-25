@@ -23,7 +23,7 @@ public class ResearchCustomerController extends BaseController {
 			List<Customer> customers = customerService.getAllCustomers();
 			req.setAttribute("customers", customers);
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Research Customer");
 		}
 	}
 }

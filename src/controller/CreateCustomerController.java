@@ -18,7 +18,7 @@ public class CreateCustomerController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Create Customer");
 		}
 	}
 
@@ -51,7 +51,7 @@ public class CreateCustomerController extends BaseController {
 					return;
 			}
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Create Customer");
 		}
 	}
 }

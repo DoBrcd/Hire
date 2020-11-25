@@ -24,22 +24,7 @@ public class HomeController extends BaseController
         {
             EmployeeServiceInterface service = new EmployeeServiceImp();
 
-            final Employee user = (Employee) req.getSession().getAttribute("employee");
-
-            boolean canUserCreate = service.canCreate(user);
-
-            req.setAttribute("userCanAccessStats", service.canAccessStats(user));
-            req.setAttribute("userCanCreate", canUserCreate);
-
-            if(canUserCreate)
-            {
-                req.setAttribute("userCanCreateVehicle", service.canCreateVehicle(user));
-                req.setAttribute("userCanCreateCustomer", service.canCreateCustomer(user));
-                req.setAttribute("userCanCreateHiring", service.canCreateHiring(user));
-                req.setAttribute("userCanCreateEmployee", service.canCreateEmployee(user));
-            }
-
-            req.getRequestDispatcher(pageName).include(req, resp);
+            redirectToView(req, resp, pageName, "Home");
         }
     }
 }

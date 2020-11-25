@@ -32,7 +32,7 @@ public class RegisterController extends BaseController {
 		if (!isAuthenticated(req))
 			resp.sendRedirect(req.getContextPath() + "/");
 		else {
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Register New Employee");
 		}
 	}
 
@@ -80,6 +80,6 @@ public class RegisterController extends BaseController {
 			}
 		}
 
-		redirectToView(req, resp, pageName);
+		redirectToView(req, resp, pageName, "Register New Employee");
 	}
 }

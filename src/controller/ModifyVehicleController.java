@@ -50,7 +50,7 @@ public class ModifyVehicleController extends BaseController {
 
 			}
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Modify Vehicle");
 		}
 	}
 
