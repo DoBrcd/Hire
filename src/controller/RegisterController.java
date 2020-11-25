@@ -38,44 +38,48 @@ public class RegisterController extends BaseController {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		String confirmPassword = req.getParameter("confirmPassword");
+		if (isAuthenticated(req)) {
+			String username = req.getParameter("username");
+			String password = req.getParameter("password");
+			String confirmPassword = req.getParameter("confirmPassword");
 
-		if (password.equals(confirmPassword)) {
+			if (password.equals(confirmPassword)) {
 
-			password = Encrypt.encrypt(password, "ENSSAT-Lannion");
+				password = Encrypt.encrypt(password, "ENSSAT-Lannion");
 
-			if (username != null && password != null && username.trim().length() > 0 && password.trim().length() > 0) {
-				EmployeeServiceInterface employeService = new EmployeeServiceImp();
-				Employee newEmployee;
-				switch (req.getParameter("position")) {
-				case "Employee":
-					newEmployee = new Employee(username, password);
-					break;
-				case "GeneralManager":
-					newEmployee = new GeneralManager(username, password);
-					break;
-				case "TechnicalManager":
-					newEmployee = new TechnicalManager(username, password);
-					break;
-				case "CommercialManager":
-					newEmployee = new CommercialManager(username, password);
-					break;
-				case "CustomerManager":
-					newEmployee = new CustomerManager(username, password);
-					break;
-				default:
-					newEmployee = new Employee(username, password);
-					break;
+				if (username != null && password != null && username.trim().length() > 0
+						&& password.trim().length() > 0) {
+					EmployeeServiceInterface employeService = new EmployeeServiceImp();
+					Employee newEmployee;
+					switch (req.getParameter("position")) {
+					case "Employee":
+						newEmployee = new Employee(username, password);
+						break;
+					case "GeneralManager":
+						newEmployee = new GeneralManager(username, password);
+						break;
+					case "TechnicalManager":
+						newEmployee = new TechnicalManager(username, password);
+						break;
+					case "CommercialManager":
+						newEmployee = new CommercialManager(username, password);
+						break;
+					case "CustomerManager":
+						newEmployee = new CustomerManager(username, password);
+						break;
+					default:
+						newEmployee = new Employee(username, password);
+						break;
+					}
+					employeService.registration(newEmployee);
+				} else {
+					req.setAttribute("msg", "Please enter username and password...");
 				}
-				employeService.registration(newEmployee);
 			} else {
-				req.setAttribute("msg", "Please enter username and password...");
+				req.setAttribute("msg", "Password and Confirm does not correspond");
 			}
-		} else {
-			req.setAttribute("msg", "Password and Confirm does not correspond");
 		}
-		req.getRequestDispatcher(pageName).include(req, resp);
+
+		redirectToView(req, resp, pageName);
 	}
 }

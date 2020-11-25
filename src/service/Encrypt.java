@@ -8,7 +8,7 @@ public class Encrypt {
 
 	public static String encrypt(String password, String key) {
 		try {
-			Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"), "Blowfish");
+			Key clef = new SecretKeySpec(key.getBytes("UTF-8"), "Blowfish");
 			Cipher cipher = Cipher.getInstance("Blowfish");
 			cipher.init(Cipher.ENCRYPT_MODE, clef);
 			return new String(cipher.doFinal(password.getBytes()));
@@ -19,7 +19,7 @@ public class Encrypt {
 
 	public String decrypt(String password, String key) {
 		try {
-			Key clef = new SecretKeySpec(key.getBytes("ISO-8859-2"), "Blowfish");
+			Key clef = new SecretKeySpec(key.getBytes("UTF-8"), "Blowfish");
 			Cipher cipher = Cipher.getInstance("Blowfish");
 			cipher.init(Cipher.DECRYPT_MODE, clef);
 			return new String(cipher.doFinal(password.getBytes()));

@@ -5,6 +5,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Employee;
+import service.EmployeeServiceImp;
+import service.EmployeeServiceInterface;
+
 import java.io.IOException;
 
 /**
@@ -48,13 +53,32 @@ public class BaseController extends HttpServlet {
 	 * @param response The response that will be sent to user, which is dispatch to JSP
 	 * @param viewName The view name as the path to the corresponding JSP file
 	 */
-	protected void redirectToView(HttpServletRequest request, HttpServletResponse response, final String viewName)
+	protected void redirectToView(HttpServletRequest req, HttpServletResponse resp, final String viewName)
 	{
+		if(isAuthenticated(req))
+        {
+            EmployeeServiceInterface service = new EmployeeServiceImp();
+
+            final Employee employee = (Employee) req.getSession().getAttribute("employee");
+
+            boolean canUserCreate = service.canCreate(employee);
+
+            req.setAttribute("userCanAccessStats", service.canAccessStats(employee));
+            req.setAttribute("userCanCreate", canUserCreate);
+
+            if(canUserCreate)
+            {
+                req.setAttribute("userCanCreateVehicle", service.canCreateVehicle(employee));
+                req.setAttribute("userCanCreateCustomer", service.canCreateCustomer(employee));
+                req.setAttribute("userCanCreateHiring", service.canCreateHiring(employee));
+                req.setAttribute("userCanCreateEmployee", service.canCreateEmployee(employee));
+            }
+        }
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(viewName);
 
 		try
 		{
-			rd.forward(request, response);
+			rd.forward(req, resp);
 		}
 		catch(ServletException | IOException e)
 		{
