@@ -20,7 +20,7 @@ public class ResearchHireController extends BaseController {
 
 	private static final long serialVersionUID = 1L;
 
-	private final String pageName = "/hire/research.jsp";
+	private final String pageName = "/views/hire/research.jsp";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
