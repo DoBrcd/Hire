@@ -4,10 +4,6 @@ import com.hire.model.Employee;
 import com.hire.service.EmployeeServiceInterface;
 import com.hire.service.impl.EmployeeServiceImp;
 
-import model.Employee;
-import service.EmployeeServiceImp;
-import service.EmployeeServiceInterface;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -113,9 +109,9 @@ public class BaseController extends HttpServlet {
 	 * @param req The current HttpServletRequest to be sent to JSP
 	 * @param resp The response that will be sent to user, which is dispatch to JSP
 	 */
-	protected void redirectToHome(HttpServletRequest req, HttpServletResponse resp)
+	protected void redirectToHome(HttpServletRequest req, HttpServletResponse resp) throws IOException
 	{
-		redirectToView(req, resp, "/home");
+		resp.sendRedirect(req.getContextPath() + "/home");
 	}
 
 	protected Employee getEmployee(HttpServletRequest req)
