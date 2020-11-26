@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>:: Home ::</title>
+    <title>:: <%=pageContext.findAttribute("title") %> ::</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -32,14 +32,14 @@
             <% if((boolean)request.getAttribute("userCanCreate")) { %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
-                       data-toggle="dropdown">Création</a>
+                       data-toggle="dropdown">Crï¿½ation</a>
                     <div class="dropdown-menu">
                         <% if((boolean)request.getAttribute("userCanCreateVehicle")) { %>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/create">
-                                Véhicule
+                                Vï¿½hicule
                             </a>
                         <% } if((boolean)request.getAttribute("userCanCreateCustomer")) { %>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/create">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/client/create">
                                 Client
                             </a>
                         <% } %>
@@ -51,9 +51,9 @@
                    data-toggle="dropdown">Recherche</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/research">
-                        Véhicule
+                        Vï¿½hicule
                     </a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/research">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/client/search">
                         Client
                     </a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/research">
@@ -71,12 +71,16 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/create">Nouvelle location</a>
                 </li>
             <% } %>
+            <% if((boolean)request.getAttribute("userCanCreate") && (boolean)request.getAttribute("userCanCreateEmployee")) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Nouvel employï¿½e</a>
+                </li>
+            <% } %>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>
 
         </ul>
-        <%--        <h3><%= session.getAttribute("id")  %> <%= session.getAttribute("position")  %>--%>
-        </h3>
+        <%--        <h3><%= session.getAttribute("id")  %> <%= session.getAttribute("position")  %></h3> --%>
     </div>
 </nav>

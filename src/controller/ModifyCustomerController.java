@@ -23,7 +23,7 @@ public class ModifyCustomerController extends BaseController {
 
 			req.setAttribute("customer",customer);
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Modify Customer");
 		}
 	}
 	

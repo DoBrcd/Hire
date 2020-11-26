@@ -23,7 +23,7 @@ public class SheetCustomerController extends BaseController {
 
 			req.setAttribute("customer",customer);
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Customer Sheet #" + customer.getId());
 		}
 	}
 }

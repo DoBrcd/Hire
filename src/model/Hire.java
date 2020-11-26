@@ -13,11 +13,13 @@ public class Hire {
 	private Date dateEnding;
 	private int kmExpected;
 	private float priceExpected;
+	private boolean reduction;
+	private StatePayement payement;
 	  @ManyToOne
 	  @JoinColumn(name = "idClient_fk")
 	private Customer client;
 
-	  @OneToOne
+	  @ManyToOne
 	  @JoinColumn(name = "idVehicle_fk")
 	private Vehicle vehicle;
 	
@@ -70,5 +72,19 @@ public class Hire {
 	public void setVehicle(Vehicle vehicle)
 	{
 		this.vehicle = vehicle;
+	}
+	
+	public boolean getReduction() {
+		return this.reduction;
+	}
+	
+	public void setReduction(boolean reduction) {
+		this.reduction = reduction;
+	}
+	public StatePayement getPayement() {
+		return payement;
+	}
+	public void setPayement(StatePayement payement) {
+		this.payement = payement;
 	}
 }

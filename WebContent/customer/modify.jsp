@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="../templates/header.jsp" %>
 <%@ page import="model.Customer" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Modifier un client</title>
-</head>
-<body>
+
 	<% Customer customer = (Customer) request.getAttribute("customer"); %>
 	<h1>Modifier les informations de votre client</h1>
 	<form action="#" method="post" class="form-customer">
@@ -39,5 +34,8 @@
 		</table>
 		<p><button><a href="${pageContext.request.contextPath}/customer/sheet?id=<%= customer.getId() %>">Retour</a></button></p>
 	</form>
-</body>
-</html>
+	
+	
+<%@include file="../templates/footer.jsp" %>
+	
+	
