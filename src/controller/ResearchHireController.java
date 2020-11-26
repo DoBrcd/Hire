@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Airplane;
 import model.Car;
 import model.Motorbike;
+import model.Vehicle;
 import model.Hire;
 import service.HireService;
 import service.HireService;
@@ -26,17 +27,17 @@ public class ResearchHireController extends BaseController {
 
 	private final String pageName = "/hire/research.jsp";
 
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 HireServiceInterface hService = new HireService();
-		 VehicleServiceInterface vService = new VehicleServiceImp();
-		 List<String> models = vService.getAllModels();
-		 List<String> brands = vService.getAllBrand();
+
 		if (isAuthenticated(req, resp)) {
+			HireServiceInterface hService = new HireService();
+			VehicleServiceInterface vService = new VehicleServiceImp();
+			List<String> models = vService.getAllModels();
+			List<String> brands = vService.getAllBrand();
 
 			List<Hire> Hires = hService.getAll();
 			req.setAttribute("models", models);
@@ -52,21 +53,51 @@ public class ResearchHireController extends BaseController {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		
-		 HireServiceInterface hService = new HireService();
-		 VehicleServiceInterface vService = new VehicleServiceImp();
-		 List<String> models = vService.getAllModels();
-		 List<String> brands = vService.getAllBrand();
-		if (isAuthenticated(req, resp)) {
 
-			List<Hire> Hires = hService.getAll();
+		if (isAuthenticated(req, resp)) {
+			 HireServiceInterface hService = new HireService();
+			VehicleServiceInterface vService = new VehicleServiceImp();
+			List<String> models = vService.getAllModels();
+			List<String> brands = vService.getAllBrand();
+
+			String vehicleType = req.getParameter("vehicleType");
+			String brand = req.getParameter("brand");
+			String model = req.getParameter("model");
+			String reqResearch = req.getParameter("reqResearch");
+			
 			req.setAttribute("models", models);
 			req.setAttribute("brands", brands);
-			req.setAttribute("Hires", Hires);
-			redirectToView(req, resp, pageName, "Research Hire");
+			int codeResearche=0;
+			int codeModel=0;
+			int codeBrand=0;
+			int codeType=0;
+			
+			if( !reqResearch.equals("")) {
+				 codeResearche=1;
+			}
+			if(! vehicleType.equals("not-selected")) {
+				codeType=1;		
+						}
+			if( !brand.equals("not-selected")) {
+				codeBrand=1;
+				
+			}
+			if( !model.equals("not-selected")) {
+				codeModel=1;
+			}
+			int code=(codeModel* 1)+(codeBrand* 2)+(codeType*4)+(codeResearche* 8);
+			
+		 System.out.println(code);
+		 System.out.println(codeModel+"  "+codeBrand +" "+codeType +"   "+codeResearche);
+				List<Hire> Hires = hService.getAll(code, model,  brand,  vehicleType,  reqResearch);
+				//System.out.print("testo");
+				req.setAttribute("Hires", Hires);
+				req.setAttribute("msg", "msg");
+			
+			redirectToView(req, resp, pageName, "Research Vehicle");
 		}
-			
-			
+
+	
 		
 
 	}

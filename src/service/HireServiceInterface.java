@@ -20,6 +20,12 @@ public interface HireServiceInterface {
 	 */
 	public List<Hire> getAll();
 	
+	/**
+	 * lister toutes les loactions
+	 * @param code de rechrche corrposndant au cas de filtre
+	 * @return List de toutes les loactions correpondants
+	 */
+	public List<Hire> getAll(int code,String model,String brand,String typeVehicle, String research);
 	
 	
 	/**

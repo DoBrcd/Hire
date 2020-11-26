@@ -54,5 +54,12 @@ public class HireService implements HireServiceInterface{
 	public boolean delete(int v){
 		return hireDao.delete(v);
 	}
+
+
+	@Override
+	public List<Hire> getAll(int code,String model,String brand,String typeVehicle, String research) {
+		//  Auto-generated method stub
+		return hireDao.getAll(code, model, brand, typeVehicle,  research);
+	}
 	
 }
