@@ -118,11 +118,13 @@ public class CustomerDao implements CustomerDaoInterface {
 			CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 			CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
 			Root<Customer> customerRoot = criteriaQuery.from(Customer.class);
-			Predicate predicateForName = criteriaBuilder.like(customerRoot.get("name"), reqSearch);
-			Predicate predicateForMail = criteriaBuilder.like(customerRoot.get("email"), reqSearch);
+			Predicate predicateForName = criteriaBuilder.like(customerRoot.get("name"),"%"+reqSearch+"%");
+			Predicate predicateForMail = criteriaBuilder.like(customerRoot.get("email"),"%"+ reqSearch+"%");
+
 			Predicate predicate = criteriaBuilder.or(predicateForName, predicateForMail);
 			
 			try {
+				criteriaQuery.where(predicate);
 				Query query =  em.createQuery(criteriaQuery);
 				List<Customer> customers = (List<Customer>) query.getResultList();
 				return customers;
@@ -136,5 +138,4 @@ public class CustomerDao implements CustomerDaoInterface {
 		}
 		return null;
 	}
-
 }
