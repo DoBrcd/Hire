@@ -93,6 +93,7 @@ public class CreateHireLocationController extends BaseController {
 			Vehicle vehicle = vehicleService.getById(idVehicle);
 			
 			float prix = vehicle.getHirePrice();
+			int selectKm = km;
 			km -= 50;
 			if(km > 0 && km <= 50) {
 				prix += km * 0.5;
@@ -116,12 +117,16 @@ public class CreateHireLocationController extends BaseController {
 				prix += km * 0.10;
 			}
 			
+			if(result) {
+				prix = (float) (prix * 0.9);
+			}
+			
 			Hire hire = new Hire();
 			hire.setClient(customer);
 			hire.setVehicle(vehicle);
 			hire.setDateBegining(dateBegin);
 			hire.setDateEnding(dateEnd);
-			hire.setKmExpected(km);
+			hire.setKmExpected(selectKm);
 			hire.setPriceExpected(prix);
 			hire.setReduction(result);
 			hire.setPayement(StatePayement.NotPaid);
