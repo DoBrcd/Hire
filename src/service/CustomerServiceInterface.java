@@ -37,4 +37,11 @@ public interface CustomerServiceInterface {
 	 * @param The Id of the customer to remove
 	 */
 	public void remove(int customerId);
+	
+	/**
+	 * lister toutes les clients par critère
+	 * @param String name
+	 * @return List de toutes les clients correpondant au critère
+	 */
+	public List<Customer> getAllCustomersByCriteria(String name);
 }

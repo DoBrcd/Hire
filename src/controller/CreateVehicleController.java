@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet("/vehicle/create")
 public class CreateVehicleController extends BaseController {
 
-	private static final String pageName = "/vehicle/create.jsp";
+	private static final String pageName = "/views/vehicle/create.jsp";
 	private static final long serialVersionUID = 1L;
 
 	@Override

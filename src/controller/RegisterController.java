@@ -19,7 +19,7 @@ public class RegisterController extends BaseController {
 		Employee, GeneralManager, TechnicalManager, CustomerManager, CommercialManager
 	}
 
-	public static final String pageName = "/register.jsp";
+	public static final String pageName = "/views/register.jsp";
 	private static final Position[] positionsList = { Position.Employee, Position.GeneralManager,
 			Position.TechnicalManager, Position.CustomerManager, Position.CommercialManager };
 

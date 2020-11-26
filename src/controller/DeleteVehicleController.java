@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet("/vehicle/delete")
 public class DeleteVehicleController extends BaseController {
 	private static final long serialVersionUID = 1L;
-	public static final String pageName = "/vehicle/delete.jsp";
+	public static final String pageName = "/views/vehicle/delete.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

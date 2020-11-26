@@ -21,7 +21,7 @@ public class ResearchVehicleController extends BaseController {
 
 	private static final long serialVersionUID = 1L;
 
-	private final String pageName = "/vehicle/research.jsp";
+	private final String pageName = "/views/vehicle/research.jsp";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

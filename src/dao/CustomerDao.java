@@ -1,11 +1,16 @@
 package dao;
 
 import model.Customer;
+import model.Vehicle;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import service.DBManager;
 
@@ -107,4 +112,30 @@ public class CustomerDao implements CustomerDaoInterface {
 		}
 	}
 
+	@Override
+	public List<Customer> getAllCustomersByCriteria(String reqSearch) {
+		if (em != null) {
+			CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+			CriteriaQuery<Customer> criteriaQuery = criteriaBuilder.createQuery(Customer.class);
+			Root<Customer> customerRoot = criteriaQuery.from(Customer.class);
+			Predicate predicateForName = criteriaBuilder.like(customerRoot.get("name"),"%"+reqSearch+"%");
+			Predicate predicateForMail = criteriaBuilder.like(customerRoot.get("email"),"%"+ reqSearch+"%");
+
+			Predicate predicate = criteriaBuilder.or(predicateForName, predicateForMail);
+			
+			try {
+				criteriaQuery.where(predicate);
+				Query query =  em.createQuery(criteriaQuery);
+				List<Customer> customers = (List<Customer>) query.getResultList();
+				return customers;
+			} catch (Exception exception) {
+				System.out.println("Exception occured while reading user data: " + exception.getMessage());
+				return null;
+			}
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;
+	}
 }
