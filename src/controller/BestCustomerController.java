@@ -10,11 +10,6 @@ import java.io.PrintWriter;
 @WebServlet("/stats")
 public class BestCustomerController extends BaseController {
 
-	BestCustomerController()
-	{
-		super();
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))

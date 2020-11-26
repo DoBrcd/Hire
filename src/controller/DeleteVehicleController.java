@@ -21,47 +21,52 @@ public class DeleteVehicleController extends BaseController {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (isAuthenticated(req, resp)) {
-			int id = Integer.parseInt(req.getParameter("id"));
+			if(!employeeService.canManageVehicle(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				int id = Integer.parseInt(req.getParameter("id"));
 
-			VehicleServiceInterface vService = new VehicleServiceImp();
-			Vehicle v = vService.getById(id);
+				VehicleServiceInterface vService = new VehicleServiceImp();
+				Vehicle v = vService.getById(id);
 
-			if (v instanceof Car) {
-				Car c = (Car) v;
-				req.setAttribute("typeVehicle", "Car");
-				req.setAttribute("vehicle", c);
+				if (v instanceof Car) {
+					Car c = (Car) v;
+					req.setAttribute("typeVehicle", "Car");
+					req.setAttribute("vehicle", c);
+				}
 
+				if (v instanceof Motorbike) {
+					Motorbike m = (Motorbike) v;
+					req.setAttribute("typeVehicle", "Motorbike");
+					req.setAttribute("vehicle", m);
+				}
+
+				if (v instanceof Airplane) {
+					Airplane a = (Airplane) v;
+					req.setAttribute("typeVehicle", "Airplane");
+					req.setAttribute("vehicle", a);
+				}
+
+				redirectToView(req, resp, pageName, "Delete Vehicle");
 			}
-
-			if (v instanceof Motorbike) {
-				Motorbike m = (Motorbike) v;
-				req.setAttribute("typeVehicle", "Motorbike");
-				req.setAttribute("vehicle", m);
-
-			}
-
-			if (v instanceof Airplane) {
-				Airplane a = (Airplane) v;
-				req.setAttribute("typeVehicle", "Airplane");
-				req.setAttribute("vehicle", a);
-
-			}
-
-			redirectToView(req, resp, pageName, "Delete Vehicle");
 		}
-	
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (isAuthenticated(req, resp)) {
-			VehicleServiceInterface vService = new VehicleServiceImp();
-			int id=Integer.parseInt(req.getParameter("id"));
-			
-			boolean flag = vService.delete(id);
+			if(!employeeService.canManageVehicle(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				VehicleServiceInterface vService = new VehicleServiceImp();
+				int id=Integer.parseInt(req.getParameter("id"));
 
-		
-			resp.sendRedirect(req.getContextPath() + "/vehicle/research");
+				boolean flag = vService.delete(id);
+
+				resp.sendRedirect(req.getContextPath() + "/vehicle/research");
+			}
 		}
 	}
 }

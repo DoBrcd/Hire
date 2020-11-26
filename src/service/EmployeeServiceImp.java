@@ -75,7 +75,7 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
 
 
 	@Override
-	public Object canManageEmployee(Employee employee) {
+	public boolean canManageEmployee(Employee employee) {
 		return employee instanceof GeneralManager;
 	}
 

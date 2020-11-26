@@ -49,7 +49,7 @@ public interface EmployeeServiceInterface {
 	 * @param employee as an Employee object
 	 * @return True if the user is allowed to manage (create, update, delete) employees, else false
 	 */
-	public Object canManageEmployee(Employee employee);
+	public boolean canManageEmployee(Employee employee);
 
 	/**
 	 * Tells if a given employee can manage, whatever it is
