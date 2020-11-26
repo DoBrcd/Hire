@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import='model.StateVehicle' %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import='com.hire.model.StateVehicle' %>
 <%@include file="../templates/header.jsp" %>
 
 <div class="container">
@@ -18,7 +18,7 @@
 </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip01">model</label>
+      <label for="validationTooltip01">com.hire.model</label>
       <input type="text" class="form-control" id="validationTooltip01" name="model" value="Mark" required>
       <div class="valid-tooltip">
         Looks good!

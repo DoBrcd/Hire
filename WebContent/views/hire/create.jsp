@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List" %>
-<%@ page import="model.Vehicle" %>
-<%@ page import="model.Customer" %>
+<%@ page import="com.hire.model.Vehicle" %>
+<%@ page import="com.hire.model.Customer" %>
 
 <%@include file="../templates/header.jsp" %>
 	<% List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles"); %>
