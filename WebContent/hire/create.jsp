@@ -36,10 +36,6 @@
 			<input type="number" name="km">
 		</div>
 		<div>
-			<label name="prix">Prix prévionnel</label>
-			<input type="number" name="prix">
-		</div>
-		<div>
 			<input type="checkbox" name="reduction" id="reduction" value="yes">
 			<label name="reduction" disabled>Appliquer une réduction</label>
 		</div>
