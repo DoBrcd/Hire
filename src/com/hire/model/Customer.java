@@ -22,5 +22,4 @@ public class Customer extends Person {
 		return "Customer [address=" + address + ", getName()=" + getName() + ", getFirstName()=" + getFirstName()
 				+ ", getPhone()=" + getPhone() + ", getEmail()=" + getEmail() + ", getId()" + getId() + "]";
 	}
-	
 }

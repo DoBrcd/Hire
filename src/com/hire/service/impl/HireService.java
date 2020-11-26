@@ -8,7 +8,7 @@ public class HireService implements HireServiceInterface
 {
 	private HireDao hireDao = new HireDao();
 	/**
-	 * Cr�er une location
+	 * Créer une location
 	 * 
 	 * @param une location
 	 */

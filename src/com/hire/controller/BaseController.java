@@ -89,8 +89,8 @@ public class BaseController extends HttpServlet {
 	
 	/**
 	 * Sends a given view to user
-	 * @param request The current HttpServletRequest to be sent to JSP
-	 * @param response The response that will be sent to user, which is dispatch to JSP
+	 * @param req The current HttpServletRequest to be sent to JSP
+	 * @param resp The response that will be sent to user, which is dispatch to JSP
 	 * @param viewName The view name as the path to the corresponding JSP file
 	 */
 	protected void redirectToView(HttpServletRequest req, HttpServletResponse resp, final String viewName)

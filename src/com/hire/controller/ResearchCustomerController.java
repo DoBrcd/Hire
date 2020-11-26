@@ -3,13 +3,6 @@ package com.hire.controller;
 import com.hire.model.Customer;
 import com.hire.service.CustomerServiceInterface;
 import com.hire.service.impl.CustomerServiceImp;
-import com.hire.model.Airplane;
-import com.hire.model.Car;
-import com.hire.model.Motorbike;
-import com.hire.model.Vehicle;
-import service.CustomerServiceImp;
-import service.VehicleServiceImp;
-import service.VehicleServiceInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

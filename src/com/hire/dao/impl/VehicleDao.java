@@ -22,7 +22,6 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les vehicules
 	 * 
-	 * @param null
 	 * @return List de toutes les vehicules
 	 */
 	@Override
@@ -42,41 +41,31 @@ public class VehicleDao implements VehicleDaoInterface
 			return null;
 
 	}
+
 	/**
 	 * lister toutes les vehicules
 	 * 
-	 * @param null
+	 * @param vehicleType The vehicle type
 	 * @return List de toutes les vehicules
 	 */
 	@Override
 	public List<Vehicle> getAllParType(String vehicleType) {
-	
-		
 		switch (vehicleType) {
 		case "Car":
 			List<Vehicle> vehiclesCar = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
 			return vehiclesCar;
-			
-		
 		case "Motorbike":
 			List<Vehicle> vehiclesMotorbike = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
 			return vehiclesMotorbike;
-		
-			
 		case "Airplane":
 			List<Vehicle> vehiclesAirplan = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
 			return vehiclesAirplan;
-		
-			
-		
 		default:
 			List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
 			return vehicles;
-			
-			
-			
 		}
 	}
+
 	/**
 	 * recuperer un vehicule par id
 	 * 
@@ -85,14 +74,13 @@ public class VehicleDao implements VehicleDaoInterface
 	 */
 	@Override
 	public Vehicle getById(int id) {
-
 		return em.find(Vehicle.class, id);
 	}
 
 	/**
 	 * ajouter un vehicule
 	 * 
-	 * @param un vehicle (car , moto ou avion)
+	 * @param v un vehicle (car , moto ou avion)
 	 * @return vehicule ajoutée
 	 */
 	@Override
@@ -107,7 +95,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * modifier un vehicule
 	 * 
-	 * @param instance de la vehicle modifie (car , moto ou avion)
+	 * @param v instance de la vehicle modifie (car , moto ou avion)
 	 * @return vehicule modifée
 	 */
 	@Override
@@ -132,7 +120,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * pour supprimer un vehicle
 	 * 
-	 * @param id du véhicule
+	 * @param v id du véhicule
 	 * @return boolean true ou false
 	 */
 	@Override
@@ -159,7 +147,6 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * pour recuperer tous les models
 	 * 
-	 * @param null
 	 * @return liste de tous les models
 	 */
 	@Override
@@ -179,7 +166,6 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * pour recuperer tous les brand
 	 * 
-	 * @param null
 	 * @return liste de tous les brand
 	 */
 	@Override
@@ -229,7 +215,8 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les voitures disponible entre deux dates
 	 * 
-	 * @param Date de debut de la location et la date de fin
+	 * @param dateBegin Date de debut de la location
+	 * @param dateEnd La date de fin
 	 * @return List de toutes les voitures correpondant aux crit�re
 	 */
 	@Override
@@ -255,7 +242,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les Airplanes par critaria
 	 * 
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les Airplanes correpondant aux critaire
 	 */
 	@Override
@@ -282,7 +269,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les Motorbikes par critaria
 	 * 
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les Motorbikes correpondant aux critaire
 	 */
 	@Override
@@ -309,7 +296,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les vehicules par critaria
 	 * 
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	@Override

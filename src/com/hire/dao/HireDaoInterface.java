@@ -4,9 +4,9 @@ import com.hire.model.Hire;
 
 public interface HireDaoInterface {
 	/**
-	 * Cr�er une location
+	 * Créer une location
 	 * 
-	 * @param une location
+	 * @param hire une location
 	 */
 	public void create(Hire hire);
 }

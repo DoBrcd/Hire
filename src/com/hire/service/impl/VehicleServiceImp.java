@@ -15,7 +15,6 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	VehicleDaoInterface vehicleDao=new VehicleDao();
 	/**
 	 * lister toutes les vehicules
-	 * @param null
 	 * @return List de toutes les vehicules
 	 */
 	@Override
@@ -25,7 +24,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	/**
 	 * lister toutes les vehicules par type
 	 * 
-	 * @param string type
+	 * @param type string type
 	 * @return List de toutes les vehicules
 	 */
 	public List<Vehicle> getAllParType(String type){
@@ -43,7 +42,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * ajouter un vehicule
-	 * @param un vehcule (car , moto ou avion)
+	 * @param v un vehcule (car , moto ou avion)
 	 * @return vehicule ajoutée
 	 */
 
@@ -54,7 +53,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * modifier un vehicule
-	 * @param instance de la vehcule modifie (car , moto ou avion)
+	 * @param v instance de la vehcule modifie (car , moto ou avion)
 	 * @return vehicule modifée
 	 */
 	@Override
@@ -64,7 +63,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * pour supprimer un vehcule
-	 * @param instance conteine le id
+	 * @param v instance conteine le id
 	 * @return boolean true ou false
 	 */
 	@Override
@@ -74,7 +73,6 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * pour recuperer tous les Models
-	 * @param null
 	 * @return liste de tous les Models
 	 */
 	@Override
@@ -84,7 +82,6 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * pour recuperer tous les brand
-	 * @param null
 	 * @return liste de tous les brand
 	 */
 	@Override
@@ -95,7 +92,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Vehicle> getAllByCriteria(String model,String brand){
@@ -104,7 +101,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Car> getAllCarByCriteria(String model,String brand){
@@ -112,7 +109,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Airplane> getAllAirplaneByCriteria(String model,String brand){
@@ -120,7 +117,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand){

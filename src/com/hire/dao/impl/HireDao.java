@@ -13,7 +13,7 @@ public class HireDao implements HireDaoInterface
 	/**
 	 * Créer une location
 	 * 
-	 * @param une location
+	 * @param hire une location
 	 */
 	public void create(Hire hire) {
 		try {

@@ -22,8 +22,8 @@ public class ResearchVehicleController extends BaseController {
 	private final String pageName = "/views/vehicle/research.jsp";
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see javax.servlet.http.HttpServlet#doGet(HttpServletRequest, HttpServletResponse)
+	 *
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		VehicleServiceInterface vService = new VehicleServiceImp();
@@ -40,7 +40,7 @@ public class ResearchVehicleController extends BaseController {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -108,7 +108,6 @@ public class ResearchVehicleController extends BaseController {
 			req.setAttribute("models", models);
 			req.setAttribute("brands", brands);
 			redirectToView(req, resp, pageName, "Research Vehicle");
-			
 		}
 
 	}

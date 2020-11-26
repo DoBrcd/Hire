@@ -70,7 +70,7 @@ public class CustomerDao implements CustomerDaoInterface
 	
 	/**
 	 * Update a customer in database
-	 * @param A customer instance with the updated data
+	 * @param customer A customer instance with the updated data
 	 */
 	@Override
 	public void update(Customer customer) {
@@ -94,7 +94,7 @@ public class CustomerDao implements CustomerDaoInterface
 	
 	/**
 	 * remove a customer from database
-	 * @param The Id of the customer to remove
+	 * @param customerId The Id of the customer to remove
 	 */
 	@Override
 	public void remove(int customerId) {

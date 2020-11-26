@@ -4,7 +4,7 @@ import com.hire.model.Hire;
 
 public interface HireServiceInterface {
 	/**
-	 * Cr�er une location
+	 * Créer une location
 	 * 
 	 * @param une location
 	 */
