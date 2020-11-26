@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="../templates/header.jsp" %>
 <%@ page import="model.Customer" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>fiche client</title>
-</head>
-<body>
+
 	<% Customer customer = (Customer) request.getAttribute("customer"); %>
 	<h1>Fiche client numero : <%= customer.getId() %></h1>
 	<div>
@@ -22,5 +17,6 @@
 		<input type="hidden" name="id" value="<%= customer.getId() %>" />
 		<button type="submit">Supprimer</button>
 	</form>
-</body>
-</html>
+
+	
+<%@include file="../templates/footer.jsp" %>

@@ -47,5 +47,5 @@ background-size: cover;
 			  <button type="submit" class="btn btn-primary">Login</button>
 			</form>
 	</div>
-</body>
-</html>
+	
+<%@include file="templates/footer.jsp" %>

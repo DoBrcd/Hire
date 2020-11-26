@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("CustomerManager")
 public class CustomerManager extends Employee implements I_CustomerManager {
+	public CustomerManager(String username, String password) {
+		super(username, password);
+	}
+
 	@Override
 	public void createClient() {
 		// TODO Auto-generated method stub
