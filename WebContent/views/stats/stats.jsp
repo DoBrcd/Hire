@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@include file="/views/templates/header.jsp" %>
 
 <%@ page import="com.hire.model.Customer" %>

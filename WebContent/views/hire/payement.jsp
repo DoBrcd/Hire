@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
 
 
-<%@include file="../templates/header.jsp" %>
+<%@include file="/views/templates/header.jsp" %>
+<% String idHire = (String) request.getAttribute("idHire"); %>
 
 <form method="post">
-	<input type="number" value="12" name="idHire">
+	<input type="hidden" value="<%= idHire %>" name="idHire">
 	<div>
 		<label name="km">Km parcourus</label>
 		<input type="number" name="km">
@@ -13,4 +14,4 @@
 	<button type="submit">Envoyer</button>
 </form>
 
-<%@include file="../templates/footer.jsp" %>
+<%@include file="/views/templates/footer.jsp" %>
