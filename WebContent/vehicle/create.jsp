@@ -31,8 +31,12 @@
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">state</label>    
-        <input type="text" class="form-control" id="state"  name="state"aria-describedby="validationTooltipUsernamePrepend" required>
+      <label for="validationTooltipUsername">state</label>
+      <select name="state" id="name">
+        <% for(StateVehicle state : StateVehicle.values()){ %>
+        	<option value="<%= state.name() %>"><%= state.name() %></option>
+        <% } %>
+        </select>
     </div>
   </div>
   <div class="form-row">

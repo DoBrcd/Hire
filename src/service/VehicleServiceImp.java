@@ -18,7 +18,6 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 */
 	@Override
 	public List<Vehicle> getAll() {
-		//  Auto-generated method stub
 		return vehicleDao.getAll();
 	}
 	/**
@@ -115,6 +114,10 @@ public class VehicleServiceImp implements VehicleServiceInterface {
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand){
 		return vehicleDao.getAllMotorbikeByCriteria( model, brand);
+	}
+	
+	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
+		return this.vehicleDao.getFreevehicle(dateBegin, dateEnd);
 	}
 
 }

@@ -1,22 +1,17 @@
 package dao;
 
-import java.util.List;
+import model.Airplane;
+import model.Car;
+import model.Motorbike;
+import model.Vehicle;
+import service.DBManager;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import org.hibernate.Session;
-
-import model.Airplane;
-import model.Car;
-import model.Customer;
-import model.Motorbike;
-import model.Vehicle;
-import service.DBManager;
+import java.util.List;
 
 public class VehicleDao implements VehicleDaoInterface {
 
@@ -30,8 +25,20 @@ public class VehicleDao implements VehicleDaoInterface {
 	 */
 	@Override
 	public List<Vehicle> getAll() {
-		List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("Select v From Vehicle v").getResultList();
-		return vehicles;
+			if (em != null) {
+				try {
+					  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("select p from Vehicle p").getResultList();
+					  return vehicles;
+				} catch (Exception exception) {
+					System.out.println("Exception occured while reading user data: " + exception.getMessage());
+					return null;
+				}
+
+			} else {
+				System.out.println("DB server down.....");
+			}
+			return null;
+
 	}
 
 	/**
@@ -157,7 +164,7 @@ public class VehicleDao implements VehicleDaoInterface {
 	 * lister toutes les voitures par critaria
 	 * 
 	 * @param String model,String brand,String type
-	 * @return List de toutes les voitures correpondant aux critaire
+	 * @return List de toutes les voitures correpondant aux crit�re
 	 */
 
 	@Override
@@ -182,6 +189,30 @@ public class VehicleDao implements VehicleDaoInterface {
 
 		return null;
 
+	}
+	/**
+	 * lister toutes les voitures disponible entre deux dates
+	 * 
+	 * @param Date de debut de la location et la date de fin
+	 * @return List de toutes les voitures correpondant aux crit�re
+	 */
+	@Override
+	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
+		if (em != null) {
+			try {
+				String query = "SELECT DISTINCT v FROM Vehicle v LEFT JOIN v.hires h WHERE h IS NULL OR NOT (('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
+				//String query = "SELECT v FROM Vehicle v WHERE v.id NOT IN( SELECT h.idVehicle_fk FROM Hire h WHERE ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
+				  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery(query).getResultList();
+				  return vehicles;
+			} catch (Exception exception) {
+				System.out.println("Exception occured while reading user data: " + exception.getMessage());
+				return null;
+			}
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;		
 	}
 
 	/**
