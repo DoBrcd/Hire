@@ -67,7 +67,7 @@ public class ResearchCustomerController extends BaseController {
 			CustomerServiceInterface customerService = new CustomerServiceImp();
 
 			String reqResearch = req.getParameter("reqResearch");
-			
+			System.out.println(reqResearch);
 			List<Customer> customers = customerService.getAllCustomersByCriteria(reqResearch);
 			req.setAttribute("id", customers);
 			req.setAttribute("noms", customers);
