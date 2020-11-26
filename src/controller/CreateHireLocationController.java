@@ -26,8 +26,9 @@ import service.HireService;
 import service.VehicleServiceImp;
 
 @WebServlet("/create")
-public class CreateHireLocation extends BaseController {
+public class CreateHireLocationController extends BaseController {
 	private String pageName;
+	private String pageTitle;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
@@ -36,8 +37,10 @@ public class CreateHireLocation extends BaseController {
 			String dateEnd = req.getParameter("dateFin");
 			if( dateBegin == null || dateEnd == null) {
 				pageName="/hire/selectDate.jsp";
+				pageTitle="Selectionner une date";
 			}else {
 				pageName = "/hire/create.jsp";
+				pageTitle = "Créer une location";
 				boolean reduction = false;
 				LocalDate  dateBeginFormat = LocalDate.parse(dateBegin);
 				LocalDate  dateEndFormat = LocalDate.parse(dateEnd);
@@ -53,7 +56,7 @@ public class CreateHireLocation extends BaseController {
 				req.setAttribute("dateBegin", dateBegin);
 				req.setAttribute("dateEnd", dateEnd);
 			}
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, pageTitle);
 		}
 	}
 	
