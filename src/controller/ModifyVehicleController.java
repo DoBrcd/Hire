@@ -18,7 +18,7 @@ import java.io.PrintWriter;
 
 @WebServlet("/vehicle/modify")
 public class ModifyVehicleController extends BaseController {
-	private final String pageName = "/vehicle/modify.jsp";
+	private final String pageName = "/views/vehicle/modify.jsp";
 	private static final long serialVersionUID = 1L;
 
 	@Override

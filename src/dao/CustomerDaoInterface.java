@@ -37,4 +37,10 @@ public interface CustomerDaoInterface {
 	 * @param The Id of the customer to remove
 	 */
 	public void remove(int customerId);
+	
+	/**
+	 * return a list of customers by criteria
+	 * @return List of customers by criteria
+	 */
+	public List<Customer> getAllCustomersByCriteria(String name);
 }

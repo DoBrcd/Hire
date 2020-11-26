@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet("/")
 public class AuthentificationController extends BaseController
 {
-    public static final String pageName = "/login.jsp";
+    public static final String pageName = "/views/login.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException

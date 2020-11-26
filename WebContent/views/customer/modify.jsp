@@ -32,7 +32,7 @@
 				<td><button type="submit">Modifier</button></td>
 			</tr>
 		</table>
-		<p><button><a href="${pageContext.request.contextPath}/client/sheet?id=<%= customer.getId() %>">Retour</a></button></p>
+		<p><button><a href="${pageContext.request.contextPath}/customer/sheet?id=<%= customer.getId() %>">Retour</a></button></p>
 	</form>
 	
 	
