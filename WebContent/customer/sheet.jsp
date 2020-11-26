@@ -18,7 +18,7 @@
 		<p><strong>E-mail</strong> : <%= customer.getEmail() %></p>
 		<p><button><a href="${pageContext.request.contextPath}/customer/modify?id=<%= customer.getId() %>">Modifier</a></button></p>
 	</div>
-	<form method="post" action="${pageContext.request.contextPath}/customer/remove">
+	<form method="get" action="${pageContext.request.contextPath}/customer/delete">
 		<input type="hidden" name="id" value="<%= customer.getId() %>"></input>
 		<button type="submit">Supprimer</button>
 	</form>

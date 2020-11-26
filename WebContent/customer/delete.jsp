@@ -17,7 +17,7 @@
 		<p><strong>Téléphone</strong> : <%= customer.getPhone() %></p>
 		<p><strong>E-mail</strong> : <%= customer.getEmail() %></p>
 	</div>
-	<form method="post" action="${pageContext.request.contextPath}/customer/remove" class="form-customer">
+	<form method="post" action="${pageContext.request.contextPath}/customer/delete" class="form-customer">
 	
 		<p><strong>Etes vous sur de vouloir supprimer ce client ?</strong> </p>
 		<input type="hidden" name="id" value="<%= customer.getId() %>"></input>
