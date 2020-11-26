@@ -185,7 +185,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les voitures par critaria
 	 * 
-	 * @param String model,String brand,String type
+	 * @param model String model,String brand,String type
 	 * @return List de toutes les voitures correpondant aux crit�re
 	 */
 

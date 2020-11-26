@@ -41,7 +41,7 @@ public class CustomerServiceImp implements CustomerServiceInterface
 	}
 	/**
 	 * Update a customer in database
-	 * @param A customer instance with the updated data
+	 * @param customer A customer instance with the updated data
 	 */
 	public void update(Customer customer) {
 		dao.update(customer);
@@ -49,7 +49,7 @@ public class CustomerServiceImp implements CustomerServiceInterface
 	
 	/**
 	 * remove a customer from database
-	 * @param The Id of the customer to remove
+	 * @param customerId The Id of the customer to remove
 	 */
 	public void remove(int customerId) {
 		dao.remove(customerId);
