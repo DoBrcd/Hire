@@ -90,9 +90,9 @@ public class ResearchVehicleController extends BaseController {
 
 						break;
 					case "Airplane":
-						List<Airplane> vehiclesAireplane = vService.getAllAirplaneByCriteria(model, brand);
+						List<Airplane> vehiclesAirplane = vService.getAllAirplaneByCriteria(model, brand);
 						
-						req.setAttribute("vehicles", vehiclesAireplane);
+						req.setAttribute("vehicles", vehiclesAirplane);
 						req.setAttribute("msg", "msg");
 
 						break;

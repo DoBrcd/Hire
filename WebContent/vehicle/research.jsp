@@ -64,7 +64,7 @@ body {
 				<option selected value="not-selected">Choose...</option>
 				<option value="Motorbike">Motorbike</option>
 				<option value="Car">Car</option>
-				<option value="Airplane">Aireplane</option>
+				<option value="Airplane">Airplane</option>
 			</select>
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="model">Vehicle model</label>
