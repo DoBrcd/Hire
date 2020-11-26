@@ -14,7 +14,7 @@
 	<div>
 		<p>Si c'est un nouveau client : <a href="/Hire/client/create">Créer une fiche</a></p>
 	</div>
-	<form method="post" action="#">
+	<form method="post">
 		<div>
 			<label name="customer">La liste des clients</label>
 			<select name="customer">
