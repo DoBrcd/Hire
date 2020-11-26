@@ -21,7 +21,7 @@
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Hire</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}">Hire</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -32,11 +32,11 @@
             <% if((boolean)request.getAttribute("userCanCreate")) { %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
-                       data-toggle="dropdown">Crï¿½ation</a>
+                       data-toggle="dropdown">Création</a>
                     <div class="dropdown-menu">
                         <% if((boolean)request.getAttribute("userCanCreateVehicle")) { %>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/create">
-                                Vï¿½hicule
+                                Véhicule
                             </a>
                         <% } if((boolean)request.getAttribute("userCanCreateCustomer")) { %>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/create">
@@ -51,7 +51,7 @@
                    data-toggle="dropdown">Recherche</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/research">
-                        Vï¿½hicule
+                        Véhicule
                     </a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/research">
                         Client
@@ -73,7 +73,7 @@
             <% } %>
             <% if((boolean)request.getAttribute("userCanCreate") && (boolean)request.getAttribute("userCanCreateEmployee")) { %>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Nouvel employï¿½e</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Nouvel employée</a>
                 </li>
             <% } %>
             <li class="nav-item">
