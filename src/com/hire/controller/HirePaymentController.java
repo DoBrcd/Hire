@@ -8,14 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.hire.model.Hire;
 import com.hire.model.Vehicle;
 import com.hire.service.impl.HireService;
-import com.hire.service.impl.VehicleServiceImp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/return")
 public class HirePaymentController extends BaseController {
-	String viewName = "/hire/payement.jsp";
+	String viewName = "/views/hire/payement.jsp";
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
@@ -24,7 +22,7 @@ public class HirePaymentController extends BaseController {
 				redirectToHome(req, resp);
 			else
 			{
-				redirectToView(req, resp, viewName);
+				redirectToView(req, resp, viewName, "Paiement location");
 			}
 		}
 	}

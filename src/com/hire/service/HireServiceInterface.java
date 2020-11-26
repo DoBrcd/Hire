@@ -1,14 +1,53 @@
 package com.hire.service;
 
+import java.util.List;
+
 import com.hire.model.Hire;
 
 public interface HireServiceInterface {
 	/**
-	 * Créer une location
+	 * Cr�er une location
 	 * 
-	 * @param hire une location
+	 * @param une location
 	 */
 	public void create(Hire hire);
+	
+	
+	/**
+	 * lister toutes les loactions
+	 * @param null
+	 * @return List de toutes les loactions
+	 */
+	public List<Hire> getAll();
+	
+	/**
+	 * lister toutes les loactions
+	 * @param code de rechrche corrposndant au cas de filtre
+	 * @return List de toutes les loactions correpondants
+	 */
+	public List<Hire> getAll(int code,String model,String brand,String typeVehicle, String research);
+	
+	
+	/**
+	 * recuperer un loaction par id
+	 * @param id de la loaction
+	 * @return un loaction ou null
+	 */
+	public Hire getById(int id);
+
+	/**
+	 * modifier un loaction
+	 * @param instance de la vehcule modifie (car , moto ou avion)
+	 * @return loaction modifée
+	 */
+	public Hire update(Hire v);
+	/**
+	 * pour supprimer un vehcule
+	 * @param instance conteine le id
+	 * @return boolean true ou false
+	 */
+	public boolean delete(int v);
+	
 
 	/**
 	 * Faire les calculs puis renvoie le prix de la location
@@ -17,16 +56,4 @@ public interface HireServiceInterface {
 	 * @return le prix
 	 */
 	public float getPayement(int km, float vehiclePrice, boolean reduction);
-	/**
-	 * Retourne la location en fonction de l'id
-	 * @param idHire l'id de la location
-	 * @return la location
-	 */
-	public Hire getById(int idHire);
-
-	/**
-	 * Met à jour la location après payement
-	 * @param hire la nouvelle location
-	 */
-	public void update(Hire hire);
 }

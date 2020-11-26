@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.hire.model.Customer" %>
-<%@include file="/views/templates/header.jsp"%>
+    pageEncoding="ISO-8859-1"%>
+	<%@ page import="java.util.List" %>
+	<%@ page import="com.hire.model.Customer" %>
 
+<%@include file="/views/templates/header.jsp" %>
 <div class="container">
-	<h1>La liste des Clients</h1>
 	<form class="needs-validation bg-light p-3 mt-5"
 		  action="<%=request.getContextPath()%>/customer/research" method="post">
 		<% if(request.getAttribute("msg") != null) { %>
@@ -56,4 +55,4 @@
 	</table>
 </div>
 
-<%@include file="/views/templates/footer.jsp"%>
+<%@include file="/views/templates/footer.jsp" %>
