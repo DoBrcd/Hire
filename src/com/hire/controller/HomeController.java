@@ -9,7 +9,7 @@ import java.io.IOException;
 @WebServlet("/home")
 public class HomeController extends BaseController
 {
-    public static final String pageName = "/home.jsp";
+    public static final String pageName = "/views/home.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException

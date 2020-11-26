@@ -31,10 +31,10 @@ public class CreateHireLocationController extends BaseController {
 			String dateBegin = req.getParameter("dateDebut");
 			String dateEnd = req.getParameter("dateFin");
 			if( dateBegin == null || dateEnd == null) {
-				pageName="/hire/selectDate.jsp";
+				pageName="/views/hire/selectDate.jsp";
 				pageTitle="Selectionner une date";
 			}else {
-				pageName = "/hire/create.jsp";
+				pageName = "/views/hire/create.jsp";
 				pageTitle = "Créer une location";
 				boolean reduction = false;
 				LocalDate  dateBeginFormat = LocalDate.parse(dateBegin);

@@ -55,6 +55,15 @@ public class CustomerServiceImp implements CustomerServiceInterface
 		dao.remove(customerId);
 	}
 
+	/**
+	 * return a list of customers
+	 * @return List of customers by criteria
+	 */
+	@Override
+	public List<Customer> getAllCustomersByCriteria(String name) {
+		return dao.getAllCustomersByCriteria(name);
+	}
+
 	@Override
 	public List<Map.Entry<Customer, Long>> getBestHiringCustomer()
 	{

@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/client/create")
+@WebServlet("/customer/create")
 public class CreateCustomerController extends BaseController {
-	public static final String pageName = "/client/create.jsp";
+	public static final String pageName = "/views/customer/create.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

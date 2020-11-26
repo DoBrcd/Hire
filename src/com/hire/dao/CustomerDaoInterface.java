@@ -39,6 +39,12 @@ public interface CustomerDaoInterface {
 	 */
 	public void remove(int customerId);
 
+	/**
+	 * return a list of customers by criteria
+	 * @return List of customers by criteria
+	 */
+	public List<Customer> getAllCustomersByCriteria(String name);
+
 	public List<Map.Entry<Customer, Long>> getBestHiringCustomer();
 
 	public List<Map.Entry<Customer, Double>> getBestBuyerCustomer();

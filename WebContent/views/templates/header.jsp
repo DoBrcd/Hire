@@ -21,7 +21,7 @@
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Hire</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}">Hire</a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -39,7 +39,7 @@
                                 Véhicule
                             </a>
                         <% } if((boolean)request.getAttribute("userCanCreateCustomer")) { %>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/client/create">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/create">
                                 Client
                             </a>
                         <% } %>
@@ -53,7 +53,7 @@
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/research">
                         Véhicule
                     </a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/client/search">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/research">
                         Client
                     </a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/research">

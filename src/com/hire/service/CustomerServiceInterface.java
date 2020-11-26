@@ -39,6 +39,13 @@ public interface CustomerServiceInterface {
 	 */
 	public void remove(int customerId);
 
+	/**
+	 * lister toutes les clients par critère
+	 * @param String name
+	 * @return List de toutes les clients correpondant au crit�re
+	 */
+	public List<Customer> getAllCustomersByCriteria(String name);
+
 	public List<Map.Entry<Customer, Long>> getBestHiringCustomer();
 
 	public List<Map.Entry<Customer, Double>> getBestBuyerCustomer();

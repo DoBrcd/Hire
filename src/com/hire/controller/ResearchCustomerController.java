@@ -3,6 +3,13 @@ package com.hire.controller;
 import com.hire.model.Customer;
 import com.hire.service.CustomerServiceInterface;
 import com.hire.service.impl.CustomerServiceImp;
+import com.hire.model.Airplane;
+import com.hire.model.Car;
+import com.hire.model.Motorbike;
+import com.hire.model.Vehicle;
+import service.CustomerServiceImp;
+import service.VehicleServiceImp;
+import service.VehicleServiceInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,19 +18,41 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/client/search")
+@WebServlet("/customer/research")
 public class ResearchCustomerController extends BaseController {
 
-	public static final String pageName = "/client/research.jsp";
+	public static final String pageName = "/views/customer/research.jsp";
 
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		CustomerServiceInterface customerService = new CustomerServiceImp();
+
 		if (isAuthenticated(req, resp)) {
-			CustomerServiceInterface customerService = new CustomerServiceImp();
+
 			List<Customer> customers = customerService.getAllCustomers();
+			req.setAttribute("id", customers);
+			req.setAttribute("noms", customers);
 			req.setAttribute("customers", customers);
 
-			redirectToView(req, resp, pageName, "Research Customer");
+			redirectToView(req, resp, pageName, "Recherche Clients");
 		}
 	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		if (isAuthenticated(req, resp)) {
+			CustomerServiceInterface customerService = new CustomerServiceImp();
+
+			String reqResearch = req.getParameter("reqResearch");
+			System.out.println(reqResearch);
+			List<Customer> customers = customerService.getAllCustomersByCriteria(reqResearch);
+			req.setAttribute("id", customers);
+			req.setAttribute("noms", customers);
+			req.setAttribute("customers", customers);
+			redirectToView(req, resp, pageName, "Recherche Clients");
+
+		}
+
+	}
+
 }
+

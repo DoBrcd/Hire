@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @WebServlet("/vehicle/sheet")
 public class VehicleSheetController extends BaseController {
-	public static final String pageName = "/vehicle/sheet.jsp";
+	public static final String pageName = "/views/vehicle/sheet.jsp";
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
