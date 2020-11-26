@@ -12,7 +12,7 @@
 	<% String dateEnd = (String) request.getAttribute("dateEnd"); %>
 	<h1>Louer un véhicule</h1>
 	<div>
-		<p>Si c'est un nouveau client : <a href="/Hire/client/create">Créer une fiche</a></p>
+		<p>Si c'est un nouveau client : <a href="/Hire/customer/create">Créer une fiche</a></p>
 	</div>
 	<form method="post">
 		<div>

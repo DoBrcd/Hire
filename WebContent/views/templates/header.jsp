@@ -39,7 +39,7 @@
                                 V�hicule
                             </a>
                         <% } if((boolean)request.getAttribute("userCanCreateCustomer")) { %>
-                            <a class="dropdown-item" href="${pageContext.request.contextPath}/client/create">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/create">
                                 Client
                             </a>
                         <% } %>
@@ -53,7 +53,7 @@
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/research">
                         V�hicule
                     </a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/client/search">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/research">
                         Client
                     </a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/research">

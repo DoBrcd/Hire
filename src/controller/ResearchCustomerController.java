@@ -20,23 +20,8 @@ import java.util.List;
 @WebServlet("/customer/research")
 public class ResearchCustomerController extends BaseController {
 
-	public static final String pageName = "/customer/research.jsp";
-/*
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		if (isAuthenticated(req, resp)) {
-			CustomerServiceInterface customerService = new CustomerServiceImp();
-			List<Customer> customers = customerService.getAllCustomers();
-			req.setAttribute("customers", customers);
+	public static final String pageName = "/views/customer/research.jsp";
 
-			redirectToView(req, resp, pageName, "Research Customer");
-		}
-	}
-	*/
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		CustomerServiceInterface customerService = new CustomerServiceImp();
 
@@ -47,20 +32,10 @@ public class ResearchCustomerController extends BaseController {
 			req.setAttribute("noms", customers);
 			req.setAttribute("customers", customers);
 
-			redirectToView(req, resp, pageName);
-			/*
-			List<Vehicle> vehicles = vService.getAll();
-			req.setAttribute("models", models);
-			req.setAttribute("brands", brands);
-			req.setAttribute("vehicles", vehicles);
-			redirectToView(req, resp, pageName);*/
+			redirectToView(req, resp, pageName, "Recherche Clients");
 		}
 	}	
 	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		if (isAuthenticated(req, resp)) {
@@ -72,7 +47,7 @@ public class ResearchCustomerController extends BaseController {
 			req.setAttribute("id", customers);
 			req.setAttribute("noms", customers);
 			req.setAttribute("customers", customers);
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Recherche Clients");
 			
 		}
 

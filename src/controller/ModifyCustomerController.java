@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/customer/modify")
 public class ModifyCustomerController extends BaseController {
-	public static final String pageName = "/customer/modify.jsp";
+	public static final String pageName = "/views/customer/modify.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 
 @WebServlet("/customer/delete")
 public class DeleteCustomerController extends BaseController {
-	public static final String pageName = "/customer/delete.jsp";
+	public static final String pageName = "/views/customer/delete.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
