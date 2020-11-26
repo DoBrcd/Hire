@@ -11,7 +11,7 @@ public class Encrypt {
 			Key clef = new SecretKeySpec(key.getBytes("UTF-8"), "Blowfish");
 			Cipher cipher = Cipher.getInstance("Blowfish");
 			cipher.init(Cipher.ENCRYPT_MODE, clef);
-			return new String(cipher.doFinal(password.getBytes()));
+			return new String(cipher.doFinal(password.getBytes("UTF-8")));
 		} catch (Exception e) {
 			return null;
 		}
@@ -22,7 +22,7 @@ public class Encrypt {
 			Key clef = new SecretKeySpec(key.getBytes("UTF-8"), "Blowfish");
 			Cipher cipher = Cipher.getInstance("Blowfish");
 			cipher.init(Cipher.DECRYPT_MODE, clef);
-			return new String(cipher.doFinal(password.getBytes()));
+			return new String(cipher.doFinal(password.getBytes("UTF-8")));
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
