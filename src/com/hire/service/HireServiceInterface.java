@@ -6,7 +6,7 @@ public interface HireServiceInterface {
 	/**
 	 * Créer une location
 	 * 
-	 * @param une location
+	 * @param hire une location
 	 */
 	public void create(Hire hire);
 }

@@ -52,19 +52,19 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
 
 
 	@Override
-	public boolean canCreateVehicle(Employee employee) {
+	public boolean canManageVehicle(Employee employee) {
 		return employee instanceof I_TechnicalManager;
 	}
 
 
 	@Override
-	public boolean canCreateCustomer(Employee employee) {
+	public boolean canManageCustomer(Employee employee) {
 		return employee instanceof I_CustomerManager;
 	}
 
 
 	@Override
-	public boolean canCreateHiring(Employee employee) {
+	public boolean canManageHiring(Employee employee) {
 		return employee instanceof GeneralManager; 
 	}
 
@@ -76,13 +76,13 @@ public class EmployeeServiceImp implements EmployeeServiceInterface
 
 
 	@Override
-	public Object canCreateEmployee(Employee employee) {
+	public boolean canManageEmployee(Employee employee) {
 		return employee instanceof GeneralManager;
 	}
 
 
 	@Override
-	public boolean canCreate(Employee employee) {
+	public boolean canManage(Employee employee) {
 		return employee instanceof I_CustomerManager 
 				|| employee instanceof I_TechnicalManager;
 	}

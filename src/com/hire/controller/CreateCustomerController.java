@@ -18,7 +18,10 @@ public class CreateCustomerController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			redirectToView(req, resp, pageName, "Create Customer");
+			if(!employeeService.canManageCustomer(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+				redirectToView(req, resp, pageName, "Create Customer");
 		}
 	}
 
@@ -26,32 +29,37 @@ public class CreateCustomerController extends BaseController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			Customer newClient = new Customer();
-			String name = req.getParameter("name");
-			String firstName = req.getParameter("firstName");
-			String phone = req.getParameter("phone");
-			String email = req.getParameter("email");
-			String address = req.getParameter("address");
+			if(!employeeService.canManageCustomer(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				Customer newClient = new Customer();
+				String name = req.getParameter("name");
+				String firstName = req.getParameter("firstName");
+				String phone = req.getParameter("phone");
+				String email = req.getParameter("email");
+				String address = req.getParameter("address");
 
-			newClient.setName(name);
-			newClient.setFirstName(firstName);
-			newClient.setPhone(phone);
-			newClient.setEmail(email);
-			newClient.setAddress(address);
+				newClient.setName(name);
+				newClient.setFirstName(firstName);
+				newClient.setPhone(phone);
+				newClient.setEmail(email);
+				newClient.setAddress(address);
 
-			CustomerServiceInterface clientService = new CustomerServiceImp();
-			int result = clientService.createNewCustomer(newClient);
+				CustomerServiceInterface clientService = new CustomerServiceImp();
+				int result = clientService.createNewCustomer(newClient);
 
-			switch (result) {
-				case -1:
-					System.out.println("Already exist");
-					break;
-				default:
-					resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + newClient.getId());
-					return;
+				switch (result) {
+					case -1:
+						System.out.println("Already exist");
+						break;
+					default:
+						resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + newClient.getId());
+						return;
+				}
+
+				redirectToView(req, resp, pageName, "Create Customer");
 			}
-
-			redirectToView(req, resp, pageName, "Create Customer");
 		}
 	}
 }

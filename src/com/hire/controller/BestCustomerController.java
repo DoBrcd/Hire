@@ -13,17 +13,23 @@ import java.io.IOException;
 public class BestCustomerController extends BaseController {
 
 	private static final String pageName = "/views/stats/stats.jsp";
+	private static final String pageTitle = "Statistiques clients";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			CustomerServiceInterface service = new CustomerServiceImp();
+			if(!employeeService.canAccessStats(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				CustomerServiceInterface service = new CustomerServiceImp();
 
-			req.setAttribute("bestHiring", service.getBestHiringCustomer());
-			req.setAttribute("bestBuyer", service.getBestBuyerCustomer());
+				req.setAttribute("bestHiring", service.getBestHiringCustomer());
+				req.setAttribute("bestBuyer", service.getBestBuyerCustomer());
 
-			redirectToView(req, resp, pageName);
+				redirectToView(req, resp, pageName, pageTitle);
+			}
 		}
 	}
 }

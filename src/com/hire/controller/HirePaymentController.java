@@ -13,13 +13,18 @@ public class HirePaymentController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			resp.setContentType("text/html");
-			PrintWriter out = resp.getWriter();
-			out.println("<html>");
-			out.println("<head><title>Hello World </title></head>");
-			out.println("<body>");
-			out.println("<h1>Hello World test !</h1>");
-			out.println("</body></html>");
+			if(!employeeService.canManageHiring(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				resp.setContentType("text/html");
+				PrintWriter out = resp.getWriter();
+				out.println("<html>");
+				out.println("<head><title>Hello World </title></head>");
+				out.println("<body>");
+				out.println("<h1>Hello World test !</h1>");
+				out.println("</body></html>");
+			}
 		}
 	}
 }

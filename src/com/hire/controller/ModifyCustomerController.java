@@ -18,12 +18,17 @@ public class ModifyCustomerController extends BaseController {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			CustomerServiceInterface customerService = new CustomerServiceImp();
-			Customer customer = customerService.getById(Integer.parseInt(req.getParameter("id")));
+			if(!employeeService.canManageCustomer(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				CustomerServiceInterface customerService = new CustomerServiceImp();
+				Customer customer = customerService.getById(Integer.parseInt(req.getParameter("id")));
 
-			req.setAttribute("customer",customer);
+				req.setAttribute("customer",customer);
 
-			redirectToView(req, resp, pageName, "Modify Customer");
+				redirectToView(req, resp, pageName, "Modify Customer");
+			}
 		}
 	}
 	
@@ -31,18 +36,23 @@ public class ModifyCustomerController extends BaseController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
 		{
-			Customer customer = new Customer();
-			customer.setId(Integer.parseInt(req.getParameter("id")));
-			customer.setName(req.getParameter("name"));
-			customer.setFirstName(req.getParameter("firstName"));
-			customer.setAddress(req.getParameter("address"));
-			customer.setEmail(req.getParameter("email"));
-			customer.setPhone(req.getParameter("phone"));
+			if(!employeeService.canManageCustomer(getEmployee(req)))
+				redirectToHome(req, resp);
+			else
+			{
+				Customer customer = new Customer();
+				customer.setId(Integer.parseInt(req.getParameter("id")));
+				customer.setName(req.getParameter("name"));
+				customer.setFirstName(req.getParameter("firstName"));
+				customer.setAddress(req.getParameter("address"));
+				customer.setEmail(req.getParameter("email"));
+				customer.setPhone(req.getParameter("phone"));
 
-			CustomerServiceInterface customerService = new CustomerServiceImp();
-			customerService.update(customer);
+				CustomerServiceInterface customerService = new CustomerServiceImp();
+				customerService.update(customer);
 
-			resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + customer.getId());
+				resp.sendRedirect(req.getContextPath() + "/client/sheet?id=" + customer.getId());
+			}
 		}
 	}
 }

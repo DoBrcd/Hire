@@ -29,19 +29,19 @@ public interface CustomerServiceInterface {
 	public List<Customer> getAllCustomers();
 	/**
 	 * Update a customer in database
-	 * @param A customer instance with the updated data
+	 * @param customer A customer instance with the updated data
 	 */
 	public void update(Customer customer);
 	
 	/**
 	 * remove a customer from database
-	 * @param The Id of the customer to remove
+	 * @param customerId The Id of the customer to remove
 	 */
 	public void remove(int customerId);
 
 	/**
 	 * lister toutes les clients par critère
-	 * @param String name
+	 * @param name String name
 	 * @return List de toutes les clients correpondant au crit�re
 	 */
 	public List<Customer> getAllCustomersByCriteria(String name);

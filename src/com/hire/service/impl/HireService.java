@@ -10,7 +10,7 @@ public class HireService implements HireServiceInterface
 	/**
 	 * Créer une location
 	 * 
-	 * @param une location
+	 * @param hire une location
 	 */
 	@Override
 	public void create(Hire hire) {
