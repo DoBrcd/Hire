@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="../templates/header.jsp" %>
 	<h1>Selectionnez une fourchette de date pour la location</h1>
 	<form method="get">
 		<div>
-			<p><label name="dateDebut">Une date de début</label></p>
+			<p><label name="dateDebut">Une date de dÃ©but</label></p>
 			<p><input type="date" name="dateDebut"></input></p>
 		</div>
 		<div>

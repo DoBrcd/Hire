@@ -46,4 +46,11 @@ public interface HireDaoInterface {
 	 */
 	public boolean delete(int v);
 	
+	/**
+	 * Faire les calculs puis renvoie le prix de la location
+	 *
+	 * @param km le nombre de kilomètres, le prix de la location du véhicule et si il y a une réduction
+	 * @return le prix
+	 */
+	public float getPayement(int km, float vehiclePrice, boolean reduction);
 }

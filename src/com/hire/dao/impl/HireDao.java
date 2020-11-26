@@ -16,7 +16,7 @@ import com.hire.model.Vehicle;
 import com.hire.service.DBManager;
 
 public class HireDao implements HireDaoInterface {
-
+    
 	private EntityManager em = DBManager.getEntityManager();
 
 	/**
@@ -193,5 +193,42 @@ public class HireDao implements HireDaoInterface {
 			System.out.println("DB server down.....");
 		}
 		return null;
+	}
+	/**
+	 * Faire les calculs puis renvoie le prix de la location
+	 *
+	 * @param km le nombre de kilomètres, le prix de la location du véhicule et si il y a une réduction
+	 * @return le prix
+	 */
+	public float getPayement(int km, float vehiclePrice, boolean reduction) {
+		float prix = vehiclePrice;
+		km -= 50;
+		if(km > 0 && km <= 50) {
+			prix += km * 0.5;
+		}else if(km > 51 && km <= 150) {
+			prix += 50 * 0.5;
+			km -= 50;
+			prix += km * 0.3;
+		}else if(km > 151 && km <= 250) {
+			prix += 50 * 0.5;
+			km -= 50;
+			prix += 100 * 0.3;
+			km -= 100;
+			prix += km * 0.2;
+		}else {
+			prix += 50 * 0.5;
+			km -= 50;
+			prix += 100 * 0.3;
+			km -= 100;
+			prix += 100 * 0.2;
+			km -= 100;
+			prix += km * 0.10;
+		}
+
+		if(reduction) {
+			prix = (float) (prix * 0.9);
+		}
+
+		return prix;
 	}
 }

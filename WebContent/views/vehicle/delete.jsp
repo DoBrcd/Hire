@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="../templates/header.jsp" %>
-<%@ page import='com.hire.model.StateVehicle' %>
 <%@ page import="com.hire.model.Vehicle"%>
 <%@ page import="com.hire.model.Car"%>
 <%@ page import="com.hire.model.Motorbike"%>
@@ -12,7 +11,7 @@
 	<div class="container">
 		<form  method="post" class="needs-validation bg-light p-3 mt-5"
 			action="<%=request.getContextPath()%>/vehicle/delete" method="post">
-			<h3 class="text-center">Mettre à jour vehicule</h3>
+			<h3 class="text-center">Mettre Ã  jour vehicule</h3>
 			<%
 				Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
 			%>

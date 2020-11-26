@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,11 +34,11 @@
             <% if((boolean)request.getAttribute("userCanCreate")) { %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"
-                       data-toggle="dropdown">Création</a>
+                       data-toggle="dropdown">CrÃ©ation</a>
                     <div class="dropdown-menu">
                         <% if((boolean)request.getAttribute("userCanCreateVehicle")) { %>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/create">
-                                Véhicule
+                                VÃ©hicule
                             </a>
                         <% } if((boolean)request.getAttribute("userCanCreateCustomer")) { %>
                             <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/create">
@@ -51,7 +53,7 @@
                    data-toggle="dropdown">Recherche</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/vehicle/research">
-                        Véhicule
+                        VÃ©hicule
                     </a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/customer/research">
                         Client
@@ -73,14 +75,12 @@
             <% } %>
             <% if((boolean)request.getAttribute("userCanCreate") && (boolean)request.getAttribute("userCanCreateEmployee")) { %>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Nouvel employée</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/register">Nouvel employÃ©</a>
                 </li>
             <% } %>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>
-
         </ul>
-        <%--        <h3><%= session.getAttribute("id")  %> <%= session.getAttribute("position")  %></h3> --%>
     </div>
 </nav>

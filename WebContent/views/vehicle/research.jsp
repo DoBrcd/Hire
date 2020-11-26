@@ -20,7 +20,7 @@
 				<option value="Airplane">Airplane</option>
 			</select>
 			<div class="input-group-prepend">
-				<label class="input-group-text" for="model">Vehicle com.hire.model</label>
+				<label class="input-group-text" for="model">Vehicle model</label>
 			</div>
 			<select class="custom-select col-md-3" name="model" id="model">
 				<option selected value="not-selected">Choose...</option>

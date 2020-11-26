@@ -1,10 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@include file="/views/templates/header.jsp" %>
 
 <%@ page import="com.hire.model.Customer" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container">
     <h1 class="align-center">Statistiques clients</h1>
