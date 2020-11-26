@@ -36,7 +36,7 @@ public class AuthentificationController extends BaseController
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         password = Encrypt.encrypt(password, "ENSSAT-Lannion");
-
+        System.out.print(password);
         if(username != null && password != null && username.trim().length() > 0 && password.trim().length() > 0)
         {
             EmployeeServiceInterface employeeService = new EmployeeServiceImp();

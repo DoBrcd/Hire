@@ -23,6 +23,7 @@ public class Hire {
 	private Vehicle vehicle;
 	
 	public Date getDateBegining() {
+		
 		return dateBegining;
 	}
 	public void setDateBegining(Date dateBegining) {
