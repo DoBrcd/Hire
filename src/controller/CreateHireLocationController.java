@@ -23,7 +23,7 @@ import model.StatePayement;
 import model.Vehicle;
 import service.CustomerServiceImp;
 import service.CustomerServiceInterface;
-import service.HireService;
+import service.HireServiceImp;
 import service.VehicleServiceImp;
 
 @WebServlet("/create")
@@ -91,47 +91,21 @@ public class CreateHireLocationController extends BaseController {
 			Customer customer = customerService.getById(idCustomer);
 			VehicleServiceImp vehicleService = new VehicleServiceImp();
 			Vehicle vehicle = vehicleService.getById(idVehicle);
-			
-			float prix = vehicle.getHirePrice();
-			int selectKm = km;
-			km -= 50;
-			if(km > 0 && km <= 50) {
-				prix += km * 0.5;
-			}else if(km > 51 && km <= 150) {
-				prix += 50 * 0.5;
-				km -= 50;
-				prix += km * 0.3;
-			}else if(km > 151 && km <= 250) {
-				prix += 50 * 0.5;
-				km -= 50;
-				prix += 100 * 0.3;
-				km -= 100;
-				prix += km * 0.2;
-			}else {
-				prix += 50 * 0.5;
-				km -= 50;
-				prix += 100 * 0.3;
-				km -= 100;
-				prix += 100 * 0.2;
-				km -= 100;
-				prix += km * 0.10;
-			}
-			
-			if(result) {
-				prix = (float) (prix * 0.9);
-			}
-			
+			HireServiceImp hireService = new HireServiceImp();
 			Hire hire = new Hire();
+			
+			float prix = hireService.getPayement(km, vehicle.getHirePrice(), result);
+			
 			hire.setClient(customer);
 			hire.setVehicle(vehicle);
 			hire.setDateBegining(dateBegin);
 			hire.setDateEnding(dateEnd);
-			hire.setKmExpected(selectKm);
+			hire.setKmExpected(km);
 			hire.setPriceExpected(prix);
 			hire.setReduction(result);
 			hire.setPayement(StatePayement.NotPaid);
 			
-			HireService hireService = new HireService();
+			
 			hireService.create(hire);
 			resp.sendRedirect(req.getContextPath() + "/research");
 		}
