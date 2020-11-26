@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="../templates/header.jsp" %>
 <%@ page import="java.util.List"%>
-<%@ page import="model.Vehicle"%>
+<%@ page import="com.hire.model.Vehicle"%>
 
 	<div class="container">
 	<form class="needs-validation bg-light p-3 mt-5"
@@ -20,7 +20,7 @@
 				<option value="Airplane">Airplane</option>
 			</select>
 			<div class="input-group-prepend">
-				<label class="input-group-text" for="model">Vehicle model</label>
+				<label class="input-group-text" for="model">Vehicle com.hire.model</label>
 			</div>
 			<select class="custom-select col-md-3" name="model" id="model">
 				<option selected value="not-selected">Choose...</option>

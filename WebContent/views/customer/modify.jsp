@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../templates/header.jsp" %>
-<%@ page import="model.Customer" %>
+<%@ page import="com.hire.model.Customer" %>
 
 	<% Customer customer = (Customer) request.getAttribute("customer"); %>
 	<h1>Modifier les informations de votre client</h1>
@@ -34,8 +34,7 @@
 		</table>
 		<p><button><a href="${pageContext.request.contextPath}/customer/sheet?id=<%= customer.getId() %>">Retour</a></button></p>
 	</form>
-	
-	
+
+
 <%@include file="../templates/footer.jsp" %>
-	
-	
+
