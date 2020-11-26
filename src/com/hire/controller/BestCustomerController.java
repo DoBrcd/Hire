@@ -13,6 +13,7 @@ import java.io.IOException;
 public class BestCustomerController extends BaseController {
 
 	private static final String pageName = "/views/stats/stats.jsp";
+	private static final String pageTitle = "Statistiques clients";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +28,7 @@ public class BestCustomerController extends BaseController {
 				req.setAttribute("bestHiring", service.getBestHiringCustomer());
 				req.setAttribute("bestBuyer", service.getBestBuyerCustomer());
 
-				redirectToView(req, resp, pageName);
+				redirectToView(req, resp, pageName, pageTitle);
 			}
 		}
 	}
