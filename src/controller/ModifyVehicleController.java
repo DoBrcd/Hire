@@ -77,7 +77,6 @@ public class ModifyVehicleController extends BaseController {
 				vehicleCar.setBrand(brand);
 				vehicleCar.setHirePrice(price);
 				vehicleCar.setMaxSpeed(maxSpeed);
-				vehicleCar.setState(state);
 				vehicleCar.setModel(model);
 				Car c = (Car) vehicleCar;
 				int powercar = Integer.parseInt(req.getParameter("powercar"));
@@ -95,7 +94,6 @@ public class ModifyVehicleController extends BaseController {
 				vehicleMotorbike.setBrand(brand);
 				vehicleMotorbike.setHirePrice(price);
 				vehicleMotorbike.setMaxSpeed(maxSpeed);
-				vehicleMotorbike.setState(state);
 				vehicleMotorbike.setModel(model);
 				Motorbike m = (Motorbike) vehicleMotorbike;
 				int powerMotor = Integer.parseInt(req.getParameter("powerMotor"));
@@ -111,7 +109,6 @@ public class ModifyVehicleController extends BaseController {
 				vehicleAirplane.setBrand(brand);
 				vehicleAirplane.setHirePrice(price);
 				vehicleAirplane.setMaxSpeed(maxSpeed);
-				vehicleAirplane.setState(state);
 				vehicleAirplane.setModel(model);
 				Airplane a = (Airplane) vehicleAirplane;
 				int nbMotors = Integer.parseInt(req.getParameter("nbMotors"));

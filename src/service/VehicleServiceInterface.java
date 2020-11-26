@@ -37,6 +37,9 @@ public interface VehicleServiceInterface {
 	 * @param instance conteine le id
 	 * @return boolean true ou false
 	 */
+
+	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd);
+
 	public boolean delete(int v);
 	/**
 	 * pour recuperer tous les models
@@ -77,5 +80,4 @@ public interface VehicleServiceInterface {
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand);
 
-	
 }
