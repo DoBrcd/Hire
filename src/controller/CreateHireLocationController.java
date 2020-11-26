@@ -83,7 +83,6 @@ public class CreateHireLocationController extends BaseController {
 			  result = false;
 			}
 			int km = Integer.parseInt(req.getParameter("km"));
-			float prix = Float.parseFloat(req.getParameter("prix"));
 			int idVehicle = Integer.parseInt(req.getParameter("vehicle"));
 			int idCustomer = Integer.parseInt(req.getParameter("customer"));
 			
@@ -91,6 +90,30 @@ public class CreateHireLocationController extends BaseController {
 			Customer customer = customerService.getById(idCustomer);
 			VehicleServiceImp vehicleService = new VehicleServiceImp();
 			Vehicle vehicle = vehicleService.getById(idVehicle);
+			
+			float prix = vehicle.getHirePrice();
+			if(km > 50 && km <= 100) {
+				prix += km * 0.5;
+			}else if(km > 101 && km <= 200) {
+				prix += 50 * 0.5;
+				km -= 50;
+				prix += km * 0.3;
+			}else if(km > 201 && km <= 300) {
+				prix += 50 * 0.5;
+				km -= 50;
+				prix += 100 * 0.3;
+				km -= 100;
+				prix += km * 0.2;
+			}else {
+				prix += 50 * 0.5;
+				km -= 50;
+				prix += 100 * 0.3;
+				km -= 100;
+				prix += 100 * 0.2;
+				km -= 100;
+				prix += km * 0.10;
+			}
+			
 			Hire hire = new Hire();
 			hire.setClient(customer);
 			hire.setVehicle(vehicle);
