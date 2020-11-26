@@ -205,7 +205,7 @@ public class VehicleDao implements VehicleDaoInterface {
 	 * lister toutes les voitures par critaria
 	 * 
 	 * @param String model,String brand,String type
-	 * @return List de toutes les voitures correpondant aux critaire
+	 * @return List de toutes les voitures correpondant aux critère
 	 */
 
 	@Override
@@ -231,7 +231,13 @@ public class VehicleDao implements VehicleDaoInterface {
 		return null;
 
 	}
-	
+	/**
+	 * lister toutes les voitures disponible entre deux dates
+	 * 
+	 * @param Date de debut de la location et la date de fin
+	 * @return List de toutes les voitures correpondant aux critère
+	 */
+	@Override
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
 		if (em != null) {
 			try {

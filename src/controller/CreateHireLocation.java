@@ -59,46 +59,49 @@ public class CreateHireLocation extends BaseController {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateBegin = null;
-		Date dateEnd = null;
-		try {
-			dateBegin = df.parse(req.getParameter("dateBegin"));
-			dateEnd = df.parse(req.getParameter("dateEnd"));			
-		}catch(Exception e){
-			System.out.println(e.getMessage());
+		if(isAuthenticated(req, resp)) {
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			Date dateBegin = null;
+			Date dateEnd = null;
+			try {
+				dateBegin = df.parse(req.getParameter("dateBegin"));
+				dateEnd = df.parse(req.getParameter("dateEnd"));			
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			System.out.println("baise ta mere java "  + req.getParameter("reduction"));
+			String reduction = req.getParameter("reduction");
+			boolean result;
+			if(reduction != null && reduction.equals("null")) {
+			  result = false;
+			} else if(reduction != null && reduction.equals("yes")) {
+			  result = true;
+			} else {
+			  result = false;
+			}
+			int km = Integer.parseInt(req.getParameter("km"));
+			float prix = Float.parseFloat(req.getParameter("prix"));
+			int idVehicle = Integer.parseInt(req.getParameter("vehicle"));
+			int idCustomer = Integer.parseInt(req.getParameter("customer"));
+			
+			CustomerServiceImp customerService = new CustomerServiceImp();
+			Customer customer = customerService.getById(idCustomer);
+			VehicleServiceImp vehicleService = new VehicleServiceImp();
+			Vehicle vehicle = vehicleService.getById(idVehicle);
+			Hire hire = new Hire();
+			hire.setClient(customer);
+			hire.setVehicle(vehicle);
+			hire.setDateBegining(dateBegin);
+			hire.setDateEnding(dateEnd);
+			hire.setKmExpected(km);
+			hire.setPriceExpected(prix);
+			hire.setReduction(result);
+			
+			HireService hireService = new HireService();
+			hireService.create(hire);
+			resp.sendRedirect(req.getContextPath() + "/research");
 		}
-		System.out.println("baise ta mere java "  + req.getParameter("reduction"));
-		String reduction = req.getParameter("reduction");
-		boolean result;
-		if(reduction != null && reduction.equals("null")) {
-		  result = false;
-		} else if(reduction != null && reduction.equals("yes")) {
-		  result = true;
-		} else {
-		  result = false;
-		}
-		int km = Integer.parseInt(req.getParameter("km"));
-		float prix = Float.parseFloat(req.getParameter("prix"));
-		int idVehicle = Integer.parseInt(req.getParameter("vehicle"));
-		int idCustomer = Integer.parseInt(req.getParameter("customer"));
-		
-		CustomerServiceImp customerService = new CustomerServiceImp();
-		Customer customer = customerService.getById(idCustomer);
-		VehicleServiceImp vehicleService = new VehicleServiceImp();
-		Vehicle vehicle = vehicleService.getById(idVehicle);
-		Hire hire = new Hire();
-		hire.setClient(customer);
-		hire.setVehicle(vehicle);
-		hire.setDateBegining(dateBegin);
-		hire.setDateEnding(dateEnd);
-		hire.setKmExpected(km);
-		hire.setPriceExpected(prix);
-		hire.setReduction(result);
-		
-		HireService hireService = new HireService();
-		hireService.create(hire);
-		resp.sendRedirect(req.getContextPath() + "/research");
+
 		
 	}
 }
