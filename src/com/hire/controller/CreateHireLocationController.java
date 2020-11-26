@@ -75,7 +75,6 @@ public class CreateHireLocationController extends BaseController {
 				}catch(Exception e){
 					System.out.println(e.getMessage());
 				}
-				System.out.println("baise ta mere java "  + req.getParameter("reduction"));
 				String reduction = req.getParameter("reduction");
 				boolean result;
 				if(reduction != null && reduction.equals("null")) {

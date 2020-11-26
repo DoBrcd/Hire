@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/templates/header.jsp" %>
+<%@include file="/views/templates/header.jsp" %>
 
 <%@ page import="com.hire.model.Customer" %>
 <%@ page import="java.util.Map" %>
@@ -48,4 +48,4 @@
     </div>
 </div>
 
-<%@include file="/templates/footer.jsp" %>
+<%@include file="/views/templates/footer.jsp" %>
