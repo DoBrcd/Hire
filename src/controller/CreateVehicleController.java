@@ -24,7 +24,7 @@ public class CreateVehicleController extends BaseController {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (isAuthenticated(req, resp)) {
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Create Vehicle");
 		}
 	}
 
@@ -107,7 +107,7 @@ public class CreateVehicleController extends BaseController {
 				req.setAttribute("flag", "false");
 
 			}
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Create Vehicle");
 		}
 	}
 }

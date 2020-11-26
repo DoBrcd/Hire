@@ -56,13 +56,14 @@ public class VehicleDao implements VehicleDaoInterface {
 	/**
 	 * ajouter un vehicule
 	 * 
-	 * @param un vehcule (car , moto ou avion)
+	 * @param un vehicle (car , moto ou avion)
 	 * @return vehicule ajoutÃ©e
 	 */
 	@Override
 	public Vehicle add(Vehicle v) {
 		em.getTransaction().begin();
 		em.persist(v);
+		em.flush();
 		em.getTransaction().commit();
 		return v;
 	}
@@ -70,7 +71,7 @@ public class VehicleDao implements VehicleDaoInterface {
 	/**
 	 * modifier un vehicule
 	 * 
-	 * @param instance de la vehcule modifie (car , moto ou avion)
+	 * @param instance de la vehicle modifie (car , moto ou avion)
 	 * @return vehicule modifÃ©e
 	 */
 	@Override
@@ -78,53 +79,10 @@ public class VehicleDao implements VehicleDaoInterface {
 
 		if (em != null) {
 			try {
-				
-		
-			
-				
-				if (v instanceof Car) {
-					Car entityCar = em.find(Car.class, v.getId());
-					Car c=(Car)v;
-					em.getTransaction().begin();
-					entityCar.setModel(c.getModel());
-					entityCar.setBrand(c.getBrand());
-					entityCar.setHirePrice(c.getHirePrice());
-					entityCar.setMaxSpeed(c.getMaxSpeed());
-					entityCar.setSitsNumber(c.getSitsNumber());
-					entityCar.setKm(c.getKm());
-					entityCar.setPower(c.getPower());
-					em.merge(entityCar);
-					em.getTransaction().commit();
-
-				}
-				if (v instanceof Motorbike) {
-					Motorbike entityMotorbike = em.find(Motorbike.class, v.getId());
-					Motorbike m=(Motorbike)v;
-					em.getTransaction().begin();
-					entityMotorbike.setModel(m.getModel());
-					entityMotorbike.setBrand(m.getBrand());
-					entityMotorbike.setHirePrice(m.getHirePrice());
-					entityMotorbike.setMaxSpeed(m.getMaxSpeed());
-					entityMotorbike.setKm(m.getKm());
-					entityMotorbike.setPower(m.getPower());
-					em.merge(entityMotorbike);
-					em.getTransaction().commit();
-
-				}
-				if (v instanceof Airplane) {
-					Airplane entityAirplane = em.find(Airplane.class, v.getId());
-					Airplane a=(Airplane)v;
-					em.getTransaction().begin();
-					entityAirplane.setModel(a.getModel());
-					entityAirplane.setBrand(a.getBrand());
-					entityAirplane.setHirePrice(a.getHirePrice());
-					entityAirplane.setMaxSpeed(a.getMaxSpeed());
-					entityAirplane.setNbMotor(a.getNbMotor());
-					em.merge(entityAirplane);
-					em.getTransaction().commit();
-
-				}
-				
+				em.getTransaction().begin();
+				em.merge(v);
+				em.flush();
+				em.getTransaction().commit();
 				return v;
 			} catch (Exception exception) {
 				System.out.println("Exception occured while reading user data: " + exception.getMessage());
@@ -136,24 +94,25 @@ public class VehicleDao implements VehicleDaoInterface {
 	}
 
 	/**
-	 * pour supprimer un vehcule
+	 * pour supprimer un vehicle
 	 * 
-	 * @param instance conteine le id
+	 * @param id du vÃ©hicule
 	 * @return boolean true ou false
 	 */
 	@Override
 	public boolean delete(int v) {
-		if(em != null) {
+		if (em != null) {
 			try {
 				Vehicle vehicle = em.find(Vehicle.class, v);
 				em.getTransaction().begin();
 				em.remove(vehicle);
+				em.flush();
 				em.getTransaction().commit();
 				return true;
-			}catch(Exception exception) {
+			} catch (Exception exception) {
 				System.out.println("Exception occured while reading user dara: " + exception.getMessage());
 			}
-		}else {
+		} else {
 			System.out.println("DB server down.....");
 			return false;
 		}
@@ -205,7 +164,7 @@ public class VehicleDao implements VehicleDaoInterface {
 	 * lister toutes les voitures par critaria
 	 * 
 	 * @param String model,String brand,String type
-	 * @return List de toutes les voitures correpondant aux critère
+	 * @return List de toutes les voitures correpondant aux critï¿½re
 	 */
 
 	@Override
@@ -235,7 +194,7 @@ public class VehicleDao implements VehicleDaoInterface {
 	 * lister toutes les voitures disponible entre deux dates
 	 * 
 	 * @param Date de debut de la location et la date de fin
-	 * @return List de toutes les voitures correpondant aux critère
+	 * @return List de toutes les voitures correpondant aux critï¿½re
 	 */
 	@Override
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
@@ -282,8 +241,7 @@ public class VehicleDao implements VehicleDaoInterface {
 		}
 		return null;
 	}
-	
-	
+
 	/**
 	 * lister toutes les Motorbikes par critaria
 	 * 

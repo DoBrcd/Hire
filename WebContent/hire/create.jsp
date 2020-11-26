@@ -3,13 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.Vehicle" %>
 <%@ page import="model.Customer" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Louer un véhicule</title>
-</head>
-<body>
+
+<%@include file="../templates/header.jsp" %>
 	<% List<Vehicle> vehicles = (List<Vehicle>) request.getAttribute("vehicles"); %>
 	<% List<Customer> customers = (List<Customer>) request.getAttribute("customers"); %>
 	<% boolean reduction = (boolean) request.getAttribute("reduction"); %>
@@ -57,5 +52,5 @@
 		document.getElementById("reduction").disabled = true;
 	</script>
 	<% } %>
-</body>
-</html>
+
+<%@include file="../templates/footer.jsp" %>

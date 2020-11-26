@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>selection date</title>
-</head>
-<body>
+<%@include file="../templates/header.jsp" %>
 	<h1>Selectionnez une fourchette de date pour la location</h1>
 	<form method="get" action="#">
 		<div>
@@ -20,5 +14,4 @@
 		<button type="submit">Envoyer</button>
 	
 	</form>
-</body>
-</html>
+<%@include file="../templates/footer.jsp" %>

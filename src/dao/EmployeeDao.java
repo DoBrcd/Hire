@@ -14,36 +14,38 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	private EntityManager em = DBManager.getEntityManager();
 
 	@Override
-	public boolean login(String username, String password) {
+	public Employee login(String username, String password) {
 
 		if (em != null) {
 			try {
-				Query query = em.createQuery("select p from Employee p where p.identifiant=:identifiant")
-						.setParameter("identifiant", username);
+				Query query = em.createQuery("select p from Employee p where p.identifiant=:identifiant").setParameter("identifiant", username);
 				Employee employee = (Employee) query.getSingleResult();
 				if (employee == null) {
 					System.out.println("Personne non trouvée");
 				} else {
 					if (password.equals(employee.getPassword())) {
 						System.out.println("employee: " + employee.toString() + " " + employee.getDecriminatorValue());
-						return true;
+						return employee;
 					}
 				}
 			} catch (Exception exception) {
 				System.out.println("Exception occred while reading user data: " + exception.getMessage());
-				return false;
+				return null;
 			}
 
 		} else {
 			System.out.println("DB server down.....");
 		}
-		return false;
+		return null;
 	}
 
 	@Override
-	public String register(Employee user) {
-		String msg = "Registration unsuccessful, try again.....";
-		return "jjjjjjjjjj";
+	public int register(Employee user) {
+		em.getTransaction().begin();
+		em.persist(user);
+		em.flush();
+		em.getTransaction().commit();
+		return user.getId();
 	}
 
 	@Override
@@ -74,23 +76,13 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	}
 
 	@Override
-	public Employee CreateEmployee(Employee e) {
-
-		EntityTransaction transac = em.getTransaction();
-		transac.begin();
-		em.merge(e);
-		transac.commit();
-		return e;
-	}
-
-	@Override
 	public List<Employee> getAll() {
 		List<Employee> employees = em.createQuery("Select v From Employee v", Employee.class).getResultList();
 		return employees;
 	}
 
 	@Override
-	public Employee getByid(Long id) {
+	public Employee getByid(int id) {
 		return em.find(Employee.class, id);
 	}
 

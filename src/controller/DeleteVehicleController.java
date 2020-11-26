@@ -17,9 +17,6 @@ import java.io.PrintWriter;
 
 @WebServlet("/vehicle/delete")
 public class DeleteVehicleController extends BaseController {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public static final String pageName = "/vehicle/delete.jsp";
 
@@ -53,7 +50,7 @@ public class DeleteVehicleController extends BaseController {
 
 			}
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Delete Vehicle");
 		}
 	
 	}

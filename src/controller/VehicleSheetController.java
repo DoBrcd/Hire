@@ -50,7 +50,7 @@ public class VehicleSheetController extends BaseController {
 				req.setAttribute("vehicle", a);
 
 			}
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Vehicle Sheet #" + v.getId());
 		}
 	}
 }
