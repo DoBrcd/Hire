@@ -1,10 +1,5 @@
 package controller;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import model.Airplane;
 import model.Car;
 import model.Motorbike;
@@ -12,8 +7,11 @@ import model.Vehicle;
 import service.VehicleServiceImp;
 import service.VehicleServiceInterface;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/vehicle/delete")
 public class DeleteVehicleController extends BaseController {
@@ -22,7 +20,6 @@ public class DeleteVehicleController extends BaseController {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		if (isAuthenticated(req, resp)) {
 			int id = Integer.parseInt(req.getParameter("id"));
 

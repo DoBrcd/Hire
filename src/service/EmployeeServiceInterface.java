@@ -1,8 +1,8 @@
 package service;
 
-import java.util.List;
-
 import model.Employee;
+
+import java.util.List;
 
 public interface EmployeeServiceInterface {
 	public Employee login(String username, String password);
@@ -17,25 +17,25 @@ public interface EmployeeServiceInterface {
 	 public boolean delete(Employee v);
 
 	/**
-	 * Tells if a given employee can create a vehicle
+	 * Tells if a given employee can manage vehicles
 	 * @param employee as an Employee object
-	 * @return True if the user is allowed to create a vehicle, else false
+	 * @return True if the user is allowed to manage (create, update, delete) vehicles, else false
 	 */
-	public boolean canCreateVehicle(Employee employee);
+	public boolean canManageVehicle(Employee employee);
 
 	/**
-	 * Tells if a given employee can create a customer
+	 * Tells if a given employee can manage customers
 	 * @param employee as an Employee object
-	 * @return True if the user is allowed to create a customer, else false
+	 * @return True if the user is allowed to manage (create, update, delete) customers, else false
 	 */
-	public boolean canCreateCustomer(Employee employee);
+	public boolean canManageCustomer(Employee employee);
 
 	/**
-	 * Tells if a given employee can create a hiring
+	 * Tells if a given employee can manage hiring
 	 * @param employee as an Employee object
-	 * @return True if the user is allowed to create an hiring, else false
+	 * @return True if the user is allowed to manage (create, update, delete, ...) hiring, else false
 	 */
-	public boolean canCreateHiring(Employee employee);
+	public boolean canManageHiring(Employee employee);
 
 	/**
 	 * Tells if a given employee can access to statistics
@@ -45,17 +45,17 @@ public interface EmployeeServiceInterface {
 	public boolean canAccessStats(Employee employee);
 
 	/**
-	 * Tells if a given employee can access to create employee
+	 * Tells if a given employee can manage employees
 	 * @param employee as an Employee object
-	 * @return True if the user is allowed to access create employee, else false
+	 * @return True if the user is allowed to manage (create, update, delete) employees, else false
 	 */
-	public Object canCreateEmployee(Employee employee);
+	public Object canManageEmployee(Employee employee);
 
 	/**
-	 * Tells if a given employee can do a creation, whatever it is
+	 * Tells if a given employee can manage, whatever it is
 	 * @param employee as an Employee object
-	 * @return True if the user is allowed to do a creation, else false
+	 * @return True if the user is allowed to do management, else false
 	 */
-	boolean canCreate(Employee employee);
+	boolean canManage(Employee employee);
 
 }
