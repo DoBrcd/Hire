@@ -10,6 +10,15 @@
 <div class="container">
 	<form class="needs-validation bg-light p-3 mt-5"
 		action="<%=request.getContextPath()%>/hire/research" method="post">
+			<div class="input-group mb-6">
+
+				<div class="form-group">
+					<label for="exampleInputEmail1">Nom ou mail du client</label> <input
+						type="text" class="form-control" id="exampleInputEmail1"
+						aria-describedby="emailHelp" name="reqResearch">
+				</div>
+
+			</div>
 		<div class="input-group mb-3">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Vehicle
@@ -50,15 +59,7 @@
 				%>
 
 			</select>
-			<div class="input-group mb-3">
-
-				<div class="form-group">
-					<label for="exampleInputEmail1">Nom ou mail du client</label> <input
-						type="text" class="form-control" id="exampleInputEmail1"
-						aria-describedby="emailHelp" name="reqResearch">
-				</div>
-
-			</div>
+		
 		</div>
 		<button type="submit" class="btn btn-success">Rechercher</button>
 	</form>
@@ -97,15 +98,11 @@
 						<input type="hidden" name="id" value="<%=hire.getId()%>" />
 						<button class=" btn btn-secondary" type="submit">Voir</button>
 					</form>
-					<form class="btn " action="<%=request.getContextPath()%>/modify"
-						method="GET">
+				
+						<form class="btn "
+						action="<%=request.getContextPath()%>/return" method="GET">
 						<input type="hidden" name="id" value="<%=hire.getId()%>" />
-						<button class=" btn btn-success" type="submit">Modifier</button>
-					</form>
-					<form class="btn "
-						action="<%=request.getContextPath()%>/hire/delete" method="GET">
-						<input type="hidden" name="id" value="<%=hire.getId()%>" />
-						<button class=" btn btn-danger" type="submit">Supprimer</button>
+						<button class=" btn btn-success" type="submit">Payer</button>
 					</form></td>
 			</tr>
 			<%

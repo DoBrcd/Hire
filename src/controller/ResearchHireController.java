@@ -52,7 +52,20 @@ public class ResearchHireController extends BaseController {
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
+		 HireServiceInterface hService = new HireService();
+		 VehicleServiceInterface vService = new VehicleServiceImp();
+		 List<String> models = vService.getAllModels();
+		 List<String> brands = vService.getAllBrand();
+		if (isAuthenticated(req, resp)) {
+
+			List<Hire> Hires = hService.getAll();
+			req.setAttribute("models", models);
+			req.setAttribute("brands", brands);
+			req.setAttribute("Hires", Hires);
 			redirectToView(req, resp, pageName, "Research Hire");
+		}
+			
 			
 		
 
