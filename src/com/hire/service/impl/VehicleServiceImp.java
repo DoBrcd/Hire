@@ -95,7 +95,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Vehicle> getAllByCriteria(String model,String brand){
@@ -104,7 +104,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Car> getAllCarByCriteria(String model,String brand){
@@ -112,7 +112,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Airplane> getAllAirplaneByCriteria(String model,String brand){
@@ -120,7 +120,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	}
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand){

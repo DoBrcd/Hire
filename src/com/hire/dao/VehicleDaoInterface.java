@@ -54,7 +54,7 @@ public interface VehicleDaoInterface {
 	/**
 	 * pour recuperer tous les models
 	 * @param null
-	 * @return liste de tous les com.hire.model
+	 * @return liste de tous les model
 	 */
 	public List<String> getAllModels();
 	/**
@@ -66,26 +66,26 @@ public interface VehicleDaoInterface {
 	
 	/**
 	 * lister toutes les vehicules par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	public List<Vehicle> getAllByCriteria(String model,String brand);
 	
 	/**
 	 * lister toutes les voitures par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les voitures correpondant aux critaire
 	 */
 	public List<Car> getAllCarByCriteria(String model,String brand);
 	/**
 	 * lister toutes les avions par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les avions correpondant aux critaire
 	 */
 	public List<Airplane> getAllAirplaneByCriteria(String model,String brand);
 	/**
 	 * lister toutes les moto par critaria
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les moto correpondant aux critaire
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand);

@@ -3,6 +3,7 @@ package com.hire.controller;
 
 import com.hire.model.Customer;
 import com.hire.model.Hire;
+import com.hire.model.StatePayement;
 import com.hire.model.Vehicle;
 import com.hire.service.impl.CustomerServiceImp;
 import com.hire.service.impl.HireService;

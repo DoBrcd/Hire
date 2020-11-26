@@ -26,7 +26,7 @@
 				<option selected value="not-selected">Choose...</option>
 				<%
 					List<String> models = (List<String>) request.getAttribute("models");
-				for (String com.hire.model : models) {
+				for (String model : models) {
 				%>
 				<option><%=model%></option>
 				<%

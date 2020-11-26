@@ -1,4 +1,4 @@
-package model;
+package com.hire.model;
 
 public enum StatePayement {
 	NotPaid,

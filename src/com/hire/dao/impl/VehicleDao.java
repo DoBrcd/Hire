@@ -199,7 +199,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les voitures par critaria
 	 * 
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les voitures correpondant aux crit�re
 	 */
 
@@ -255,7 +255,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les Airplanes par critaria
 	 * 
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les Airplanes correpondant aux critaire
 	 */
 	@Override
@@ -282,7 +282,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les Motorbikes par critaria
 	 * 
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les Motorbikes correpondant aux critaire
 	 */
 	@Override
@@ -309,7 +309,7 @@ public class VehicleDao implements VehicleDaoInterface
 	/**
 	 * lister toutes les vehicules par critaria
 	 * 
-	 * @param String com.hire.model,String brand,String type
+	 * @param String model,String brand,String type
 	 * @return List de toutes les vehicules correpondant aux critaire
 	 */
 	@Override
