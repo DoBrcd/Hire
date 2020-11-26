@@ -21,15 +21,14 @@ public class ResearchVehicleController extends BaseController {
 
 	private final String pageName = "/vehicle/research.jsp";
 
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 VehicleServiceInterface vService = new VehicleServiceImp();
-		 List<String> models = vService.getAllModels();
-		 List<String> brands = vService.getAllBrand();
+		VehicleServiceInterface vService = new VehicleServiceImp();
+		List<String> models = vService.getAllModels();
+		List<String> brands = vService.getAllBrand();
 		if (isAuthenticated(req, resp)) {
 
 			List<Vehicle> vehicles = vService.getAll();
@@ -47,48 +46,67 @@ public class ResearchVehicleController extends BaseController {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		if (isAuthenticated(req, resp)) {
-			 VehicleServiceInterface vService = new VehicleServiceImp();
-			 List<String> models = vService.getAllModels();
-			 List<String> brands = vService.getAllBrand();
-			
+			VehicleServiceInterface vService = new VehicleServiceImp();
+			List<String> models = vService.getAllModels();
+			List<String> brands = vService.getAllBrand();
+
 			String vehicleType = req.getParameter("vehicleType");
 			String brand = req.getParameter("brand");
-			String model = req.getParameter("com/hire/model");
-			
-			switch (vehicleType) {
-			case "Car":
-				List<Car> vehiclesCar = vService.getAllCarByCriteria(model,brand);
-				req.setAttribute("models", models);
-				req.setAttribute("brands", brands);
-				req.setAttribute("vehicles", vehiclesCar);
-				req.setAttribute("msg", "msg");
-				
-				break;
-			case "Motorbike":
-				List<Motorbike> vehiclesMotorbike = vService.getAllMotorbikeByCriteria(model,brand);
-				req.setAttribute("models", models);
-				req.setAttribute("brands", brands);
-				req.setAttribute("vehicles", vehiclesMotorbike);
-				req.setAttribute("msg", "msg");
-			
-				break;
-			case "Aireplane":
-				List<Airplane> vehiclesAireplane = vService.getAllAirplaneByCriteria(model,brand);
-				req.setAttribute("models", models);
-				req.setAttribute("brands", brands);
-				req.setAttribute("vehicles", vehiclesAireplane);
-				req.setAttribute("msg", "msg");
-				redirectToView(req, resp, pageName);
-				break;
-			default:
-		
-				List<Vehicle> vehicles = vService.getAllByCriteria(model,brand);
-				req.setAttribute("models", models);
-				req.setAttribute("brands", brands);
+			String model = req.getParameter("model");
+			System.out.print("test serach 1");
+
+			if ((vehicleType.equals("not-selected"))
+					&& (brand.equals("not-selected") && model.equals("not-selected"))) {
+				System.out.print("test serach xxxxxx");
+				List<Vehicle> vehiclesParType = vService.getAllParType(vehicleType);
+				List<Vehicle> vehicles = vService.getAllByCriteria(model, brand);
+
 				req.setAttribute("vehicles", vehicles);
 				req.setAttribute("msg", "msg");
-				
+			} else {
+				if ((!vehicleType.equals("not-selected"))
+						&& (brand.equals("not-selected") && model.equals("not-selected"))) {
+
+					List<Vehicle> vehiclesParType = vService.getAllParType(vehicleType);
+					req.setAttribute("vehicles", vehiclesParType);
+
+					req.setAttribute("msg", "msg");
+				} else {
+					switch (vehicleType) {
+					case "Car":
+						List<Car> vehiclesCar = vService.getAllCarByCriteria(model, brand);
+
+						req.setAttribute("vehicles", vehiclesCar);
+						req.setAttribute("msg", "msg");
+
+						break;
+					case "Motorbike":
+						List<Motorbike> vehiclesMotorbike = vService.getAllMotorbikeByCriteria(model, brand);
+
+						req.setAttribute("vehicles", vehiclesMotorbike);
+						req.setAttribute("msg", "msg");
+
+						break;
+					case "Airplane":
+						List<Airplane> vehiclesAirplane = vService.getAllAirplaneByCriteria(model, brand);
+
+						req.setAttribute("vehicles", vehiclesAirplane);
+						req.setAttribute("msg", "msg");
+
+						break;
+					default:
+						List<Vehicle> vehicles = vService.getAllByCriteria(model, brand);
+						req.setAttribute("models", models);
+
+						req.setAttribute("vehicles", vehicles);
+						req.setAttribute("msg", "msg");
+
+					}
+
+				}
 			}
+			req.setAttribute("models", models);
+			req.setAttribute("brands", brands);
 			redirectToView(req, resp, pageName, "Research Vehicle");
 			
 		}

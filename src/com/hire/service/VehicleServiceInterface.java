@@ -21,6 +21,13 @@ public interface VehicleServiceInterface {
 	 */
 	public Vehicle getById(int id);
 	/**
+	 * lister toutes les vehicules par type
+	 * 
+	 * @param string type
+	 * @return List de toutes les vehicules
+	 */
+	public List<Vehicle> getAllParType(String type);
+	/**
 	 * ajouter un vehicule
 	 * @param un vehcule (car , moto ou avion)
 	 * @return vehicule ajoutée

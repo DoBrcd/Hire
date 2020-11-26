@@ -19,6 +19,13 @@ public interface VehicleDaoInterface {
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd);
 	
 	/**
+	 * lister toutes les vehicules
+	 * 
+	 * @param null
+	 * @return List de toutes les vehicules
+	 */
+	public List<Vehicle> getAllParType(String type);
+	/**
 	 * recuperer un vehicule par id
 	 * @param id de la vehicule
 	 * @return un vehicule ou null

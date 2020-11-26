@@ -42,7 +42,41 @@ public class VehicleDao implements VehicleDaoInterface
 			return null;
 
 	}
-
+	/**
+	 * lister toutes les vehicules
+	 * 
+	 * @param null
+	 * @return List de toutes les vehicules
+	 */
+	@Override
+	public List<Vehicle> getAllParType(String vehicleType) {
+	
+		
+		switch (vehicleType) {
+		case "Car":
+			List<Vehicle> vehiclesCar = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+			return vehiclesCar;
+			
+		
+		case "Motorbike":
+			List<Vehicle> vehiclesMotorbike = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+			return vehiclesMotorbike;
+		
+			
+		case "Airplane":
+			List<Vehicle> vehiclesAirplan = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+			return vehiclesAirplan;
+		
+			
+		
+		default:
+			List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+			return vehicles;
+			
+			
+			
+		}
+	}
 	/**
 	 * recuperer un vehicule par id
 	 * 

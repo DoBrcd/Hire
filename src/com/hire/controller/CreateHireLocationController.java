@@ -77,7 +77,6 @@ public class CreateHireLocationController extends BaseController {
 			  result = false;
 			}
 			int km = Integer.parseInt(req.getParameter("km"));
-			float prix = Float.parseFloat(req.getParameter("prix"));
 			int idVehicle = Integer.parseInt(req.getParameter("vehicle"));
 			int idCustomer = Integer.parseInt(req.getParameter("customer"));
 			
@@ -85,15 +84,46 @@ public class CreateHireLocationController extends BaseController {
 			Customer customer = customerService.getById(idCustomer);
 			VehicleServiceImp vehicleService = new VehicleServiceImp();
 			Vehicle vehicle = vehicleService.getById(idVehicle);
+
+			float prix = vehicle.getHirePrice();
+			int selectKm = km;
+			km -= 50;
+			if(km > 0 && km <= 50) {
+				prix += km * 0.5;
+			}else if(km > 51 && km <= 150) {
+				prix += 50 * 0.5;
+				km -= 50;
+				prix += km * 0.3;
+			}else if(km > 151 && km <= 250) {
+				prix += 50 * 0.5;
+				km -= 50;
+				prix += 100 * 0.3;
+				km -= 100;
+				prix += km * 0.2;
+			}else {
+				prix += 50 * 0.5;
+				km -= 50;
+				prix += 100 * 0.3;
+				km -= 100;
+				prix += 100 * 0.2;
+				km -= 100;
+				prix += km * 0.10;
+			}
+
+			if(result) {
+				prix = (float) (prix * 0.9);
+			}
+
 			Hire hire = new Hire();
 			hire.setClient(customer);
 			hire.setVehicle(vehicle);
 			hire.setDateBegining(dateBegin);
 			hire.setDateEnding(dateEnd);
-			hire.setKmExpected(km);
+			hire.setKmExpected(selectKm);
 			hire.setPriceExpected(prix);
 			hire.setReduction(result);
-			
+			hire.setPayement(StatePayement.NotPaid);
+
 			HireService hireService = new HireService();
 			hireService.create(hire);
 			resp.sendRedirect(req.getContextPath() + "/research");
