@@ -4,10 +4,6 @@ import com.hire.model.*;
 import com.hire.service.VehicleServiceInterface;
 import com.hire.service.impl.VehicleServiceImp;
 
-import model.*;
-import service.VehicleServiceImp;
-import service.VehicleServiceInterface;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;

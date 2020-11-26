@@ -9,14 +9,6 @@ import com.hire.service.impl.CustomerServiceImp;
 import com.hire.service.impl.HireService;
 import com.hire.service.impl.VehicleServiceImp;
 
-import model.Customer;
-import model.Hire;
-import model.StatePayement;
-import model.Vehicle;
-import service.CustomerServiceImp;
-import service.HireService;
-import service.VehicleServiceImp;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
