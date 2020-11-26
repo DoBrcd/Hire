@@ -19,6 +19,7 @@ import java.util.List;
 
 import model.Customer;
 import model.Hire;
+import model.StatePayement;
 import model.Vehicle;
 import service.CustomerServiceImp;
 import service.CustomerServiceInterface;
@@ -92,13 +93,14 @@ public class CreateHireLocationController extends BaseController {
 			Vehicle vehicle = vehicleService.getById(idVehicle);
 			
 			float prix = vehicle.getHirePrice();
-			if(km > 50 && km <= 100) {
+			km -= 50;
+			if(km > 0 && km <= 50) {
 				prix += km * 0.5;
-			}else if(km > 101 && km <= 200) {
+			}else if(km > 51 && km <= 150) {
 				prix += 50 * 0.5;
 				km -= 50;
 				prix += km * 0.3;
-			}else if(km > 201 && km <= 300) {
+			}else if(km > 151 && km <= 250) {
 				prix += 50 * 0.5;
 				km -= 50;
 				prix += 100 * 0.3;
@@ -122,6 +124,7 @@ public class CreateHireLocationController extends BaseController {
 			hire.setKmExpected(km);
 			hire.setPriceExpected(prix);
 			hire.setReduction(result);
+			hire.setPayement(StatePayement.NotPaid);
 			
 			HireService hireService = new HireService();
 			hireService.create(hire);
