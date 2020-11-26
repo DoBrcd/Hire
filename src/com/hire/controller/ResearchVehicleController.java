@@ -53,11 +53,11 @@ public class ResearchVehicleController extends BaseController {
 			String vehicleType = req.getParameter("vehicleType");
 			String brand = req.getParameter("brand");
 			String model = req.getParameter("model");
-			System.out.print("test serach 1");
+		
 
 			if ((vehicleType.equals("not-selected"))
 					&& (brand.equals("not-selected") && model.equals("not-selected"))) {
-				System.out.print("test serach xxxxxx");
+				
 				List<Vehicle> vehiclesParType = vService.getAllParType(vehicleType);
 				List<Vehicle> vehicles = vService.getAllByCriteria(model, brand);
 
