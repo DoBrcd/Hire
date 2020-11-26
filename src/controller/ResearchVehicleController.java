@@ -37,7 +37,7 @@ public class ResearchVehicleController extends BaseController {
 			req.setAttribute("models", models);
 			req.setAttribute("brands", brands);
 			req.setAttribute("vehicles", vehicles);
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Research Vehicle");
 		}
 	}
 
@@ -107,11 +107,10 @@ public class ResearchVehicleController extends BaseController {
 
 				}
 			}
-
 			req.setAttribute("models", models);
 			req.setAttribute("brands", brands);
-			redirectToView(req, resp, pageName);
-
+			redirectToView(req, resp, pageName, "Research Vehicle");
+			
 		}
 
 	}

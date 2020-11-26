@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@include file="../templates/header.jsp" %>
 	<%@ page import="java.util.List" %>
 	<%@ page import="model.Customer" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Liste Client</title>
-</head>
-<body>
+
 	<h1>La liste des Clients</h1>
 
 	<%
@@ -22,5 +17,5 @@
 	<%
 		}
 	%>
-</body>
-</html>
+	
+<%@include file="../templates/footer.jsp" %>

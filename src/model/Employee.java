@@ -17,10 +17,10 @@ public class Employee extends Person {
 	private String password;
 	
 	public Employee() {
-		super();
+		
 	}
+	
 	public Employee(String identifiant, String password) {
-		super();
 		this.identifiant = identifiant;
 		this.password = password;
 	}

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Airplane;
 import model.Car;
 import model.Motorbike;
+import model.StateVehicle;
 import model.Vehicle;
 import service.VehicleServiceImp;
 import service.VehicleServiceInterface;
@@ -50,7 +51,7 @@ public class ModifyVehicleController extends BaseController {
 
 			}
 
-			redirectToView(req, resp, pageName);
+			redirectToView(req, resp, pageName, "Modify Vehicle");
 		}
 	}
 
@@ -68,69 +69,41 @@ public class ModifyVehicleController extends BaseController {
 			int maxSpeed = Integer.parseInt(req.getParameter("maxSpeed"));
 
 			VehicleServiceInterface vehicleservice = new VehicleServiceImp();
+			Vehicle v = vehicleservice.getById(id);
+
+			v.setId(id);
+			v.setBrand(brand);
+			v.setHirePrice(price);
+			v.setMaxSpeed(maxSpeed);
+			v.setState(StateVehicle.valueOf(state));
+			v.setModel(model);
 			
 			switch (vehicleType) {
 			case "Car":
-				// code block
-				Vehicle vehicleCar = new Car();
-				vehicleCar.setId(id);
-				vehicleCar.setBrand(brand);
-				vehicleCar.setHirePrice(price);
-				vehicleCar.setMaxSpeed(maxSpeed);
-				vehicleCar.setState(state);
-				vehicleCar.setModel(model);
-				Car c = (Car) vehicleCar;
+				Car c = (Car) v;
 				int powercar = Integer.parseInt(req.getParameter("powercar"));
 				int kmCar = Integer.parseInt(req.getParameter("kmCar"));
 				int sitsnumber = Integer.parseInt(req.getParameter("sitsnumber"));
 				c.setPower(powercar);
 				c.setKm(kmCar);
 				c.setSitsNumber(sitsnumber);
-				vehicleCar = vehicleservice.update(c);
+				v = vehicleservice.update(c);
 				break;
 			case "Motorbike":
-				// code block
-				Vehicle vehicleMotorbike = new Motorbike();
-				vehicleMotorbike.setId(id);
-				vehicleMotorbike.setBrand(brand);
-				vehicleMotorbike.setHirePrice(price);
-				vehicleMotorbike.setMaxSpeed(maxSpeed);
-				vehicleMotorbike.setState(state);
-				vehicleMotorbike.setModel(model);
-				Motorbike m = (Motorbike) vehicleMotorbike;
+				Motorbike m = (Motorbike) v;
 				int powerMotor = Integer.parseInt(req.getParameter("powerMotor"));
 				int kmMotor = Integer.parseInt(req.getParameter("kmMotor"));
 				m.setPower(powerMotor);
 				m.setKm(kmMotor);
-				vehicleMotorbike = vehicleservice.update(m);
+				v = vehicleservice.update(m);
 				break;
 			case "Airplane":
-				// code block
-				Vehicle vehicleAirplane = new Airplane();
-				vehicleAirplane.setId(id);
-				vehicleAirplane.setBrand(brand);
-				vehicleAirplane.setHirePrice(price);
-				vehicleAirplane.setMaxSpeed(maxSpeed);
-				vehicleAirplane.setState(state);
-				vehicleAirplane.setModel(model);
-				Airplane a = (Airplane) vehicleAirplane;
+				Airplane a = (Airplane) v;
 				int nbMotors = Integer.parseInt(req.getParameter("nbMotors"));
 				a.setNbMotor(nbMotors);
-				vehicleMotorbike = vehicleservice.update(a);
+				v = vehicleservice.update(a);
 				break;
 			}
-
-		/*	if (vehicle instanceof Vehicle) {
-
-				req.setAttribute("msg", "mission faild");
-				req.setAttribute("flag", "false");
-
-			} else {
-
-				req.setAttribute("msg", "mission accomplished");
-				req.setAttribute("flag", "true");
-
-			}*/
 
 			resp.sendRedirect(req.getContextPath() + "/vehicle/sheet?id=" + id);
 		}

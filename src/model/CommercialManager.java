@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 @DiscriminatorValue("CommercialManager")
 public class CommercialManager extends Employee implements I_CommercialManager {
 
+	public CommercialManager(String username, String password) {
+		super(username, password);
+	}
+
 	@Override
 	public void getTheTenMostSpending() {
 		// TODO Auto-generated method stub

@@ -6,6 +6,14 @@ import javax.persistence.Entity;
 @Entity
 public class GeneralManager extends Employee implements I_CommercialManager, I_CustomerManager, I_TechnicalManager {
 
+	public GeneralManager() {
+		super();
+	}
+	
+	public GeneralManager(String username, String password) {
+		super(username, password);
+	}
+
 	@Override
 	public void createVehicle() {
 		// TODO Auto-generated method stub
