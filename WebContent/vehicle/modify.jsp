@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="../templates/header.jsp" %>
+<%@ page import='model.StateVehicle' %>
 <%@ page import="model.Vehicle"%>
 <%@ page import="model.Car"%>
 <%@ page import="model.Motorbike"%>

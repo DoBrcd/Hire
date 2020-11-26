@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Airplane;
 import model.Car;
 import model.Motorbike;
+import model.StateVehicle;
 import model.Vehicle;
 import service.VehicleServiceImp;
 import service.VehicleServiceInterface;
@@ -74,7 +75,7 @@ public class ModifyVehicleController extends BaseController {
 			v.setBrand(brand);
 			v.setHirePrice(price);
 			v.setMaxSpeed(maxSpeed);
-			v.setState(state);
+			v.setState(StateVehicle.valueOf(state));
 			v.setModel(model);
 			
 			switch (vehicleType) {

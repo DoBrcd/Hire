@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@include file="../templates/header.jsp" %>
 	<h1>Selectionnez une fourchette de date pour la location</h1>
-	<form method="get" action="#">
+	<form method="get">
 		<div>
 			<p><label name="dateDebut">Une date de début</label></p>
 			<p><input type="date" name="dateDebut"></input></p>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import='model.StateVehicle' %>
 <%@include file="../templates/header.jsp" %>
 
 <div class="container">
@@ -31,7 +32,7 @@
       </div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">state</label>
+      <label for="validationTooltipUsername">state</label><br>
       <select name="state" id="name">
         <% for(StateVehicle state : StateVehicle.values()){ %>
         	<option value="<%= state.name() %>"><%= state.name() %></option>

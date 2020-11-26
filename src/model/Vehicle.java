@@ -27,7 +27,7 @@ public  class Vehicle {
 	private int maxSpeed;
 	private String model;
 
-	private String state;
+	private StateVehicle state = StateVehicle.Good;
 	private StateHiring isHiring=StateHiring.Free;
 	private String brand;
 	
@@ -69,6 +69,12 @@ public  class Vehicle {
 	}
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	public StateVehicle getState() {
+		return state;
+	}
+	public void setState(StateVehicle state) {
+		this.state = state;
 	}
 
 }
