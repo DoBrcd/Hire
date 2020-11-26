@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@include file="../templates/header.jsp" %>
-<%@ page import='model.StateVehicle' %>
-<%@ page import="model.Vehicle"%>
-<%@ page import="model.Car"%>
-<%@ page import="model.Motorbike"%>
-<%@ page import="model.Airplane"%>
+<%@ page import='com.hire.model.StateVehicle' %>
+<%@ page import="com.hire.model.Vehicle"%>
+<%@ page import="com.hire.model.Car"%>
+<%@ page import="com.hire.model.Motorbike"%>
+<%@ page import="com.hire.model.Airplane"%>
 
 
 	<%String typeVehicle = (String) request.getAttribute("typeVehicle");%>
@@ -21,7 +21,7 @@
 
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
-					<label for="validationTooltip01">model</label> <input type="text"
+					<label for="validationTooltip01">com.hire.model</label> <input type="text"
 						class="form-control" id="validationTooltip01" name="model"
 						value="<%=vehicle.getModel()%>" disabled>
 				

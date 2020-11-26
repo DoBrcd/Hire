@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@include file="templates/header.jsp" %>
 
-	<%@ page import="controller.RegisterController" %>
+	<%@ page import="com.hire.controller.RegisterController" %>
 	<div align="center" class="container">
 	<h2 align="center">
 	<% if(request.getAttribute("msg2") != null) { %>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../templates/header.jsp" %>
 	<%@ page import="java.util.List" %>
-	<%@ page import="model.Customer" %>
+	<%@ page import="com.hire.model.Customer" %>
 
 	<h1>La liste des Clients</h1>
 

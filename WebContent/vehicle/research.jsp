@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../templates/header.jsp" %>
 <%@ page import="java.util.List"%>
-<%@ page import="model.Vehicle"%>
+<%@ page import="com.hire.model.Vehicle"%>
 
 	<div class="container">
 	<form class="needs-validation bg-light p-3 mt-5"
@@ -20,13 +20,13 @@
 				<option value="Aireplane">Aireplane</option>
 			</select>
 			<div class="input-group-prepend">
-				<label class="input-group-text" for="model">Vehicle model</label>
+				<label class="input-group-text" for="model">Vehicle com.hire.model</label>
 			</div>
 			<select class="custom-select col-md-3" name="model" id="model">
 				<option selected>Choose...</option>
 				<%
 					List<String> models = (List<String>) request.getAttribute("models");
-				for (String model : models) {
+				for (String com.hire.model : models) {
 				%>
 				<option><%=model%></option>
 				<%
