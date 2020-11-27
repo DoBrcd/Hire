@@ -10,6 +10,16 @@ Si vous voulez en utiliser une autre, il suffit de déclarer cette conenction so
 et de lui conner comme nom : "mainApp" avec comme ContextPath : "/". Ainsi, la resource déclarée dans le war sera
 écrasée par celle de votre serveur.
 
+#Comptes utilisateurs
+Une fois l'application lancée une première fois, Hibernate aura généré les tables. Pour ajouter des utilisateurs,
+vous pouvez utiliser le fichier SQL "team5_schema_Employee.sql".
+Voici les accès :  
+username    / password  
+general     / admin  
+commercial  / azerty  
+technical   / azerty  
+customer    / azerty  
+
 #Compilation à partir des sources
 Si vous voulez recompiler le projet à partir du code source, il faudra copier le fichier 
 WebContent/META-INF/context.xml.dist dans le même dossier et le renommer "context.xml".
