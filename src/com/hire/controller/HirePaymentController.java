@@ -51,8 +51,6 @@ public class HirePaymentController extends BaseController {
 			{
 				int idHire = Integer.parseInt(req.getParameter("idHire"));
 				int km = Integer.parseInt(req.getParameter("km"));
-				System.out.println(idHire);
-				System.out.println(km);
 				HireService hireService = new HireService();
 				Hire hire = hireService.getById(idHire);
 				Vehicle vehicle = hire.getVehicle();
