@@ -46,7 +46,15 @@ public interface CustomerServiceInterface {
 	 */
 	public List<Customer> getAllCustomersByCriteria(String name);
 
+	/**
+	 * List the 10 customers that have hired the most
+	 * @return A list of maximum 10 pairs of customers and the number of hiring. The list is ordered DESC.
+	 */
 	public List<Map.Entry<Customer, Long>> getBestHiringCustomer();
 
+	/**
+	 * List the 10 customers that have payed the most
+	 * @return A list of maximum 10 pairs of customers and the total amount of money they spent. The list is ordered DESC.
+	 */
 	public List<Map.Entry<Customer, Double>> getBestBuyerCustomer();
 }

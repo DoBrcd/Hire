@@ -4,6 +4,9 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
+/**
+ * Class which filters all request done on the application to set request (if not set) and response character encoding
+ */
 @WebFilter(urlPatterns = "/*")
 public class CharacterSetFilter implements Filter
 {
@@ -12,6 +15,14 @@ public class CharacterSetFilter implements Filter
     {
     }
 
+    /**
+     * Filters all the request to add on request (if not already set) and response the character encoding to UTF-8
+     * @param servletRequest The incoming request
+     * @param servletResponse The response to be sent
+     * @param filterChain The next filter to call
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException
     {
