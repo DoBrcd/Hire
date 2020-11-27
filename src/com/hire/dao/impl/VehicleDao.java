@@ -19,11 +19,6 @@ public class VehicleDao implements VehicleDaoInterface
 
 	private EntityManager em = DBManager.getEntityManager();
 
-	/**
-	 * lister toutes les vehicules
-	 * 
-	 * @return List de toutes les vehicules
-	 */
 	@Override
 	public List<Vehicle> getAll() {
 			if (em != null) {
@@ -42,12 +37,6 @@ public class VehicleDao implements VehicleDaoInterface
 
 	}
 
-	/**
-	 * lister toutes les vehicules
-	 * 
-	 * @param vehicleType The vehicle type
-	 * @return List de toutes les vehicules
-	 */
 	@Override
 	public List<Vehicle> getAllByType(String vehicleType) {
 		switch (vehicleType) {
@@ -66,23 +55,11 @@ public class VehicleDao implements VehicleDaoInterface
 		}
 	}
 
-	/**
-	 * recuperer un vehicule par id
-	 * 
-	 * @param id de la vehicule
-	 * @return un vehicule ou null
-	 */
 	@Override
 	public Vehicle getById(int id) {
 		return em.find(Vehicle.class, id);
 	}
 
-	/**
-	 * ajouter un vehicule
-	 * 
-	 * @param v un vehicle (car , moto ou avion)
-	 * @return vehicule ajoutée
-	 */
 	@Override
 	public Vehicle add(Vehicle v) {
 		em.getTransaction().begin();
@@ -92,12 +69,6 @@ public class VehicleDao implements VehicleDaoInterface
 		return v;
 	}
 
-	/**
-	 * modifier un vehicule
-	 * 
-	 * @param v instance de la vehicle modifie (car , moto ou avion)
-	 * @return vehicule modifée
-	 */
 	@Override
 	public Vehicle update(Vehicle v) {
 
@@ -117,12 +88,6 @@ public class VehicleDao implements VehicleDaoInterface
 		return null;
 	}
 
-	/**
-	 * pour supprimer un vehicle
-	 * 
-	 * @param v id du véhicule
-	 * @return boolean true ou false
-	 */
 	@Override
 	public boolean delete(int v) {
 		if (em != null) {
@@ -144,11 +109,6 @@ public class VehicleDao implements VehicleDaoInterface
 
 	}
 
-	/**
-	 * pour recuperer tous les models
-	 * 
-	 * @return liste de tous les models
-	 */
 	@Override
 	public List<String> getAllModels() {
 		try {
@@ -163,11 +123,6 @@ public class VehicleDao implements VehicleDaoInterface
 		return null;
 	}
 
-	/**
-	 * pour recuperer tous les brand
-	 * 
-	 * @return liste de tous les brand
-	 */
 	@Override
 	public List<String> getAllBrand() {
 		try {
@@ -181,13 +136,6 @@ public class VehicleDao implements VehicleDaoInterface
 		}
 		return null;
 	}
-
-	/**
-	 * lister toutes les voitures par critaria
-	 * 
-	 * @param model String model,String brand,String type
-	 * @return List de toutes les voitures correpondant aux crit�re
-	 */
 
 	@Override
 	public List<Car> getAllCarByCriteria(String model, String brand) {
@@ -212,13 +160,7 @@ public class VehicleDao implements VehicleDaoInterface
 		return null;
 
 	}
-	/**
-	 * lister toutes les voitures disponible entre deux dates
-	 * 
-	 * @param dateBegin Date de debut de la location
-	 * @param dateEnd La date de fin
-	 * @return List de toutes les voitures correpondant aux crit�re
-	 */
+
 	@Override
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
 		if (em != null) {
@@ -238,12 +180,6 @@ public class VehicleDao implements VehicleDaoInterface
 		return null;		
 	}
 
-	/**
-	 * lister toutes les Airplanes par critaria
-	 * 
-	 * @param model String model,String brand,String type
-	 * @return List de toutes les Airplanes correpondant aux critaire
-	 */
 	@Override
 	public List<Airplane> getAllAirplaneByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -265,12 +201,6 @@ public class VehicleDao implements VehicleDaoInterface
 		return null;
 	}
 
-	/**
-	 * lister toutes les Motorbikes par critaria
-	 * 
-	 * @param model String model,String brand,String type
-	 * @return List de toutes les Motorbikes correpondant aux critaire
-	 */
 	@Override
 	public List<Motorbike> getAllMotorbikeByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -292,12 +222,6 @@ public class VehicleDao implements VehicleDaoInterface
 		return null;
 	}
 
-	/**
-	 * lister toutes les vehicules par critaria
-	 * 
-	 * @param model String model,String brand,String type
-	 * @return List de toutes les vehicules correpondant aux critaire
-	 */
 	@Override
 	public List<Vehicle> getAllByCriteria(String model, String brand) {
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();

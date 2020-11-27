@@ -1,29 +1,17 @@
 package com.hire.dao.impl;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
 import com.hire.dao.HireDaoInterface;
-
-import com.hire.model.Airplane;
 import com.hire.model.Hire;
 import com.hire.model.Vehicle;
 import com.hire.service.DBManager;
+
+import javax.persistence.EntityManager;
+import java.util.List;
 
 public class HireDao implements HireDaoInterface {
     
 	private EntityManager em = DBManager.getEntityManager();
 
-	/**
-	 * Créer une location
-	 * 
-	 * @param une location
-	 */
 	public void create(Hire hire) {
 		try {
 			em.getTransaction().begin();
@@ -35,12 +23,6 @@ public class HireDao implements HireDaoInterface {
 		}
 	}
 
-	/**
-	 * lister toutes les loactions
-	 * 
-	 * @param null
-	 * @return List de toutes les loactions
-	 */
 	public List<Hire> getAll() {
 		if (em != null) {
 			try {
@@ -57,22 +39,10 @@ public class HireDao implements HireDaoInterface {
 		return null;
 	}
 
-	/**
-	 * recuperer un loaction par id
-	 * 
-	 * @param id de la loaction
-	 * @return un loaction ou null
-	 */
 	public Hire getById(int id) {
 		return em.find(Hire.class, id);
 	}
 
-	/**
-	 * modifier un loaction
-	 * 
-	 * @param instance de la vehcule modifie (car , moto ou avion)
-	 * @return loaction modifée
-	 */
 	public Hire update(Hire v) {
 
 		if (em != null) {
@@ -91,12 +61,6 @@ public class HireDao implements HireDaoInterface {
 		return null;
 	}
 
-	/**
-	 * pour supprimer un vehcule
-	 * 
-	 * @param instance conteine le id
-	 * @return boolean true ou false
-	 */
 	public boolean delete(int v) {
 		if (em != null) {
 			try {
@@ -194,12 +158,7 @@ public class HireDao implements HireDaoInterface {
 		}
 		return null;
 	}
-	/**
-	 * Faire les calculs puis renvoie le prix de la location
-	 *
-	 * @param km le nombre de kilomètres, le prix de la location du véhicule et si il y a une réduction
-	 * @return le prix
-	 */
+
 	public float getPayement(int km, float vehiclePrice, boolean reduction) {
 		float prix = vehiclePrice;
 		km -= 50;
