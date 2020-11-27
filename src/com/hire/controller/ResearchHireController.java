@@ -1,18 +1,17 @@
 package com.hire.controller;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.hire.model.Hire;
 import com.hire.service.HireServiceInterface;
 import com.hire.service.VehicleServiceInterface;
 import com.hire.service.impl.HireService;
 import com.hire.service.impl.VehicleServiceImp;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/research")
@@ -47,8 +46,6 @@ public class ResearchHireController extends BaseController {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
 		if (isAuthenticated(req, resp)) {
 			 HireServiceInterface hService = new HireService();
 			VehicleServiceInterface vService = new VehicleServiceImp();

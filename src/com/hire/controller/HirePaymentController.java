@@ -1,20 +1,25 @@
 package com.hire.controller;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.hire.model.Hire;
 import com.hire.model.StatePayement;
 import com.hire.model.Vehicle;
 import com.hire.service.impl.HireService;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/return")
 public class HirePaymentController extends BaseController {
 	String viewName = "/views/hire/payement.jsp";
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
@@ -32,6 +37,10 @@ public class HirePaymentController extends BaseController {
 		}
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int idHire = Integer.parseInt(req.getParameter("idHire"));

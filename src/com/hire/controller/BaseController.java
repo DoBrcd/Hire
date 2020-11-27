@@ -114,6 +114,11 @@ public class BaseController extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/home");
 	}
 
+	/**
+	 * Returns the current authenticated employee if there is one
+	 * @param req The current request
+	 * @return The employee instance or null
+	 */
 	protected Employee getEmployee(HttpServletRequest req)
 	{
 		Employee e = null;

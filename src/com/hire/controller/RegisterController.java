@@ -7,24 +7,40 @@ import com.hire.service.impl.EmployeeServiceImp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/register")
 public class RegisterController extends BaseController {
+	/**
+	 * Enum which list all available position for an employee
+	 */
 	public enum Position {
 		Employee, GeneralManager, TechnicalManager, CustomerManager, CommercialManager
 	}
 
 	public static final String pageName = "/views/register.jsp";
+
+	/**
+	 * Array containing all employee's positions
+	 */
 	private static final Position[] positionsList = { Position.Employee, Position.GeneralManager,
 			Position.TechnicalManager, Position.CustomerManager, Position.CommercialManager };
 
+	/**
+	 * Returns the array of all the possible employee's positions
+	 * @return Array of all possible employee' positions
+	 */
 	public static Position[] getPositionsList() {
 		return positionsList;
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(isAuthenticated(req, resp))
@@ -36,6 +52,10 @@ public class RegisterController extends BaseController {
 		}
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (isAuthenticated(req, resp)) {
