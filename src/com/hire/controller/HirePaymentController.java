@@ -26,12 +26,11 @@ public class HirePaymentController extends BaseController {
 		{
 			if(!employeeService.canManageHiring(getEmployee(req))) {
 				redirectToHome(req, resp);
-			}else
+			}
+			else
 			{
-				System.out.println("coucou1111");
 				String idHire  = req.getParameter("id");
 				req.setAttribute("idHire", idHire);
-				System.out.println(idHire);
 				redirectToView(req, resp, viewName, "Paiement location");
 			}
 		}
@@ -43,18 +42,27 @@ public class HirePaymentController extends BaseController {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		int idHire = Integer.parseInt(req.getParameter("idHire"));
-		int km = Integer.parseInt(req.getParameter("km"));
-		System.out.println(idHire);
-		System.out.println(km);
-		HireService hireService = new HireService();
-		Hire hire = hireService.getById(idHire);
-		Vehicle vehicle = hire.getVehicle();
-		float prix = hireService.getPayement(km, vehicle.getHirePrice(), hire.getReduction());
-		hire.setKmExpected(km);
-		hire.setPriceExpected(prix);
-		hire.setPayement(StatePayement.Paid);
-		hireService.update(hire);
-		resp.sendRedirect("/Hire/research");
+		if(isAuthenticated(req, resp))
+		{
+			if(!employeeService.canManageHiring(getEmployee(req))) {
+				redirectToHome(req, resp);
+			}
+			else
+			{
+				int idHire = Integer.parseInt(req.getParameter("idHire"));
+				int km = Integer.parseInt(req.getParameter("km"));
+				System.out.println(idHire);
+				System.out.println(km);
+				HireService hireService = new HireService();
+				Hire hire = hireService.getById(idHire);
+				Vehicle vehicle = hire.getVehicle();
+				float prix = hireService.getPayement(km, vehicle.getHirePrice(), hire.getReduction());
+				hire.setKmExpected(km);
+				hire.setPriceExpected(prix);
+				hire.setPayement(StatePayement.Paid);
+				hireService.update(hire);
+				resp.sendRedirect("/Hire/research");
+			}
+		}
 	}
 }
