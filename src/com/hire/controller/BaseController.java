@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Base class used to centralized some methods shared by all application's controllers
  */
-public class BaseController extends HttpServlet {
+public abstract class BaseController extends HttpServlet {
 	protected EmployeeServiceInterface employeeService;
 
 	public BaseController()

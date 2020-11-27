@@ -1,10 +1,7 @@
 package com.hire.dao.impl;
 
 import com.hire.dao.VehicleDaoInterface;
-import com.hire.model.Airplane;
-import com.hire.model.Car;
-import com.hire.model.Motorbike;
-import com.hire.model.Vehicle;
+import com.hire.model.*;
 import com.hire.service.DBManager;
 
 import javax.persistence.EntityManager;
@@ -21,37 +18,37 @@ public class VehicleDao implements VehicleDaoInterface
 
 	@Override
 	public List<Vehicle> getAll() {
-			if (em != null) {
-				try {
-					  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("select p from Vehicle p").getResultList();
-					  return vehicles;
-				} catch (Exception exception) {
-					System.out.println("Exception occured while reading user data: " + exception.getMessage());
-					return null;
-				}
-
-			} else {
-				System.out.println("DB server down.....");
+		if (em != null) {
+			try {
+				List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("select p from Vehicle p").getResultList();
+				return vehicles;
+			} catch (Exception exception) {
+				System.out.println("Exception occured while reading user data: " + exception.getMessage());
+				return null;
 			}
-			return null;
+
+		} else {
+			System.out.println("DB server down.....");
+		}
+		return null;
 
 	}
 
 	@Override
 	public List<Vehicle> getAllByType(String vehicleType) {
 		switch (vehicleType) {
-		case "Car":
-			List<Vehicle> vehiclesCar = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
-			return vehiclesCar;
-		case "Motorbike":
-			List<Vehicle> vehiclesMotorbike = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
-			return vehiclesMotorbike;
-		case "Airplane":
-			List<Vehicle> vehiclesAirplan = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
-			return vehiclesAirplan;
-		default:
-			List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
-			return vehicles;
+			case "Car":
+				List<Vehicle> vehiclesCar = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+				return vehiclesCar;
+			case "Motorbike":
+				List<Vehicle> vehiclesMotorbike = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+				return vehiclesMotorbike;
+			case "Airplane":
+				List<Vehicle> vehiclesAirplan = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+				return vehiclesAirplan;
+			default:
+				List<Vehicle> vehicles = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();
+				return vehicles;
 		}
 	}
 
@@ -165,10 +162,31 @@ public class VehicleDao implements VehicleDaoInterface
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd){
 		if (em != null) {
 			try {
-				String query = "SELECT DISTINCT v FROM Vehicle v LEFT JOIN v.hires h WHERE h IS NULL OR NOT (('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
-				//String query = "SELECT v FROM Vehicle v WHERE v.id NOT IN( SELECT h.idVehicle_fk FROM Hire h WHERE ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding))";
-				  List<Vehicle> vehicles = (List<Vehicle>) em.createQuery(query).getResultList();
-				  return vehicles;
+				String hireQuery = new String("SELECT DISTINCT h FROM Hire h where ('"+ dateBegin + "' >= h.dateBegining AND '" + dateBegin + "' <= h.dateEnding) " +
+						"OR ('"+ dateEnd + "' >= h.dateBegining AND '"+ dateEnd +"' <= h.dateEnding) " +
+						"OR ('"+ dateEnd + "' >= h.dateEnding AND '" + dateBegin + "' <= h.dateBegining)");
+
+				List<Hire> hireList = (List<Hire>)em.createQuery(hireQuery).getResultList();
+				StringBuilder idList = new StringBuilder(new String(""));
+
+				int i = 0;
+
+				while(i < hireList.size())
+				{
+					idList.append(hireList.get(i).getVehicle().getId());
+
+					if(i != hireList.size() - 1)
+						idList.append(',');
+					i++;
+				}
+
+				String query = "SELECT DISTINCT v FROM Vehicle v";
+
+				if(idList.length() != 0)
+					query += " LEFT JOIN v.hires h WHERE h IS NULL OR v.id NOT IN (" + idList + ")";
+
+				List<Vehicle> vehicles = (List<Vehicle>) em.createQuery(query).getResultList();
+				return vehicles;
 			} catch (Exception exception) {
 				System.out.println("Exception occured while reading user data: " + exception.getMessage());
 				return null;
@@ -177,7 +195,7 @@ public class VehicleDao implements VehicleDaoInterface
 		} else {
 			System.out.println("DB server down.....");
 		}
-		return null;		
+		return null;
 	}
 
 	@Override
