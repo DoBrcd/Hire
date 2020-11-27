@@ -1,56 +1,63 @@
 package com.hire.dao;
 
-import java.util.List;
-
 import com.hire.model.Hire;
+
+import java.util.List;
 
 public interface HireDaoInterface {
 	/**
-	 * Créer une location
+	 * Save a new hire in datasource
 	 * 
-	 * @param une location
+	 * @param hire The new hire to persist in datasource
 	 */
 	public void create(Hire hire);
 	
 	/**
-	 * lister toutes les loactions
-	 * @param null
-	 * @return List de toutes les loactions
+	 * Lists all the hiring
+	 * @return List of all the hiring
 	 */
 	public List<Hire> getAll();
+
 	/**
-	 * lister toutes les loactions
-	 * @param code de rechrche corrposndant au cas de filtre
-	 * @return List de toutes les loactions correpondants
+	 * List of hiring corresponding to a list of different optionnal criteria
+	 * @param code Code of a specific research mode
+	 * @param model Model criteria
+	 * @param brand Brand criteria
+	 * @param typeVehicle Vehicle type criteria
+	 * @param research The research string
+	 * @return List of all vehicle corresponding to the given list of criteria
 	 */
 	public List<Hire> getAll(int code,String model,String brand,String typeVehicle, String research);
-	
-	
+
 	/**
-	 * recuperer un loaction par id
-	 * @param id de la loaction
-	 * @return un loaction ou null
+	 * Retrieves a hire by its id
+	 * @param id Hring's identifier
+	 * @return The hiring or null if not found
 	 */
 	public Hire getById(int id);
 
 	/**
-	 * modifier un loaction
-	 * @param instance de la vehcule modifie (car , moto ou avion)
-	 * @return loaction modifée
+	 * Updates an hiring in datasource according to the changes done in given hiring
+	 * @param v Modified hiring
+	 * @return The newly updated hiring
 	 */
 	public Hire update(Hire v);
+
 	/**
-	 * pour supprimer un vehcule
-	 * @param instance conteine le id
-	 * @return boolean true ou false
+	 * Deletes an hiring from datasource
+	 * @param v Hiring to delete
+	 * @return True if deletion went well, else false
 	 */
 	public boolean delete(int v);
 	
 	/**
-	 * Faire les calculs puis renvoie le prix de la location
+	 * Computes the price of an hiring according to the number of kilometers, the vehicle base price and with or
+	 * without a discount
 	 *
-	 * @param km le nombre de kilomètres, le prix de la location du véhicule et si il y a une réduction
-	 * @return le prix
+	 * @param km The number of kilometers to take into account
+	 * @param vehiclePrice The base price of the vehicle's hiring (price according to kilometers will be added to this base)
+	 * @param reduction True if we gie a discount, else false
+	 * @return The computed price
 	 */
 	public float getPayement(int km, float vehiclePrice, boolean reduction);
 }

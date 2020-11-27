@@ -9,82 +9,101 @@ import java.util.List;
 
 public interface VehicleDaoInterface {
 	/**
-	 * lister toutes les vehicules
-	 * @return List de toutes les vehicules
+	 * Lists all vehicles
+	 * @return List of all the vehicles
 	 */
 	public List<Vehicle> getAll();
-	
-	
+
+	/**
+	 * Returns the list of all free vehicles (not hired) during a period
+	 * @param dateBegin Beginning date of the period
+	 * @param dateEnd Ending date of the period
+	 * @return List of all free vehicles
+	 */
 	public List<Vehicle> getFreevehicle(String dateBegin, String dateEnd);
 	
 	/**
-	 * lister toutes les vehicules
+	 * Lists all vehicles by a specific type (car, plane, ...)
 	 * 
-	 * @param type null
-	 * @return List de toutes les vehicules
+	 * @param type The type of vehicles we want to get (Car, Motorbike, Airplane)
+	 * @return The list of all the vehicles of the given type
 	 */
-	public List<Vehicle> getAllParType(String type);
+	public List<Vehicle> getAllByType(String type);
+
 	/**
-	 * recuperer un vehicule par id
-	 * @param id de la vehicule
-	 * @return un vehicule ou null
+	 * Retrieves a vehicle by its id
+	 * @param id Identifier of the vehicle
+	 * @return The found vehicle if any, else null
 	 */
 	public Vehicle getById(int id);
+
 	/**
-	 * ajouter un vehicule
-	 * @param v un vehcule (car , moto ou avion)
-	 * @return vehicule ajoutée
+	 * Adds a new vehicle in data source
+	 * @param v The new vehicle to add
+	 * @return The newly added vehicle
 	 */
 	public Vehicle add(Vehicle v);
+
 	/**
-	 * modifier un vehicule
-	 * @param v instance de la vehcule modifie (car , moto ou avion)
-	 * @return vehicule modifée
+	 * Updates a vehicle
+	 * @param v The vehicle that has been modified. The instance of the corresponding vehicle in datasource will be
+	 *          updated according to this given instance
+	 * @return The newly modified vehicle
 	 */
 	public Vehicle update(Vehicle v);
+
 	/**
-	 * pour supprimer un vehcule
-	 * @param v instance conteine le id
-	 * @return boolean true ou false
+	 * Deletes a vehicle
+	 * @param v The vehicles to delete in datasource
+	 * @return boolean True if it has succeeded, else false
 	 */
 	public boolean delete(int v);
-	
-	
+
 	/**
-	 * pour recuperer tous les models
-	 * @return liste de tous les model
+	 * Retrieves the list of all available models
+	 * @return List of all different vehicles models
 	 */
 	public List<String> getAllModels();
+
 	/**
-	 * pour recuperer tous les brand
-	 * @return liste de tous les brand
+	 * Retrieves the list of all available brands
+	 * @return List of all different vehciles brands
 	 */
 	public List<String> getAllBrand();
 	
 	/**
-	 * lister toutes les vehicules par critaria
-	 * @param model String model,String brand,String type
-	 * @param brand The brand
-	 * @return List de toutes les vehicules correpondant aux critaire
+	 * List all vehicles according to model and brand criteria
+	 *
+	 * @param model The searched model
+	 * @param brand The searched brand
+	 * @return List of all vehicles of the given brand and model
 	 */
 	public List<Vehicle> getAllByCriteria(String model,String brand);
-	
+
 	/**
-	 * lister toutes les voitures par critaria
-	 * @param model model,String brand,String type
-	 * @return List de toutes les voitures correpondant aux critaire
+	 * List all cars according to model and brand criteria
+	 *
+	 * @param model The searched model
+	 * @param brand The searched brand
+	 * @return List of all cars of the given brand and model
 	 */
 	public List<Car> getAllCarByCriteria(String model,String brand);
+
 	/**
-	 * lister toutes les avions par critaria
-	 * @param model String model,String brand,String type
-	 * @return List de toutes les avions correpondant aux critaire
+	 * List all airplane according to model and brand criteria
+	 *
+	 * @param model The searched model
+	 * @param brand The searched brand
+	 * @return List of all airplane of the given brand and model
 	 */
 	public List<Airplane> getAllAirplaneByCriteria(String model,String brand);
+
 	/**
-	 * lister toutes les moto par critaria
-	 * @param model String model,String brand,String type
-	 * @return List de toutes les moto correpondant aux critaire
+	 * List all motorbike according to model and brand criteria
+	 *
+	 * @param model The searched model
+	 * @param brand The searched brand
+	 * @return List of all motorbike of the given brand and model
 	 */
 	public List<Motorbike> getAllMotorbikeByCriteria(String model,String brand);
 }

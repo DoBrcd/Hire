@@ -49,7 +49,7 @@ public class VehicleDao implements VehicleDaoInterface
 	 * @return List de toutes les vehicules
 	 */
 	@Override
-	public List<Vehicle> getAllParType(String vehicleType) {
+	public List<Vehicle> getAllByType(String vehicleType) {
 		switch (vehicleType) {
 		case "Car":
 			List<Vehicle> vehiclesCar = (List<Vehicle>) em.createQuery("Select v From "+vehicleType+" v").getResultList();

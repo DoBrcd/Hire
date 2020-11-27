@@ -28,7 +28,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 	 * @return List de toutes les vehicules
 	 */
 	public List<Vehicle> getAllParType(String type){
-		return vehicleDao.getAllParType(type);
+		return vehicleDao.getAllByType(type);
 	}
 	/**
 	 * recuperer un vehicule par id
