@@ -58,7 +58,7 @@ public class ResearchVehicleController extends BaseController {
 			if ((vehicleType.equals("not-selected"))
 					&& (brand.equals("not-selected") && model.equals("not-selected"))) {
 				
-				List<Vehicle> vehiclesParType = vService.getAllParType(vehicleType);
+				List<Vehicle> vehiclesParType = vService.getAllByType(vehicleType);
 				List<Vehicle> vehicles = vService.getAllByCriteria(model, brand);
 
 				req.setAttribute("vehicles", vehicles);
@@ -67,7 +67,7 @@ public class ResearchVehicleController extends BaseController {
 				if ((!vehicleType.equals("not-selected"))
 						&& (brand.equals("not-selected") && model.equals("not-selected"))) {
 
-					List<Vehicle> vehiclesParType = vService.getAllParType(vehicleType);
+					List<Vehicle> vehiclesParType = vService.getAllByType(vehicleType);
 					req.setAttribute("vehicles", vehiclesParType);
 
 					req.setAttribute("msg", "msg");

@@ -41,6 +41,7 @@ public interface CustomerDaoInterface {
 
 	/**
 	 * return a list of customers by criteria
+	 * @param name returns all customer with this given "name" in their name or email
 	 * @return List of customers by criteria
 	 */
 	public List<Customer> getAllCustomersByCriteria(String name);

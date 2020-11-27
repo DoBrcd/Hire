@@ -19,7 +19,7 @@ public class VehicleServiceImp implements VehicleServiceInterface
 		return vehicleDao.getAll();
 	}
 
-	public List<Vehicle> getAllParType(String type){
+	public List<Vehicle> getAllByType(String type){
 		return vehicleDao.getAllByType(type);
 	}
 
